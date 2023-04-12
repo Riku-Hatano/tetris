@@ -5,7 +5,7 @@ const Game = () => {
     CheckLogUser();
     return (
         <>
-            <h1>game</h1>
+            <p>game</p>
             <Tetris />
         </>
     )

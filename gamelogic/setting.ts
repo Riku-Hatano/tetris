@@ -7,8 +7,6 @@ export const blockSetting = {
 export const fieldSetting = {
     width: 100,
     height: 100,
-    // xBlocks: Math.floor(200 / 10),
-    // yBlocks: Math.floor(400 / 10),
     status: new Array(),
 }
 

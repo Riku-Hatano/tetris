@@ -1,11 +1,13 @@
 interface GS {
     block: any,
-    field: any
+    field: any,
+    blockCounter: number,
 }
 
 const GameStatus: GS = {
     block: "",
-    field: ""
+    field: "",
+    blockCounter: 1
 }
 
 export default GameStatus

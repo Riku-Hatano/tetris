@@ -6,13 +6,13 @@ class BlockClass {
     positionY: number;
     id: number;
     isFixed: boolean;
-    constructor(size: number, initialX: number, initialY: number) {
+    constructor(size: number, initialX: number, initialY: number, id: number) {
         this.size = size,
         this.initialX = initialX,
         this.initialY = initialY,
         this.positionX = initialX,
         this.positionY = initialY,
-        this.id = this.id++
+        this.id = id,
         this.isFixed = false
     }
     returnAll() {
