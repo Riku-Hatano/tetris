@@ -8,18 +8,18 @@ const CheckLogUser = (): null | string => {
 
     useEffect(() => { //This useEffect will run in the first rendering, which means just after web page is refreshed.
         if(sessionStorage.getItem("logUser") !== null) {
-            console.log(sessionStorage.getItem("logUser"));
+            // console.log(sessionStorage.getItem("logUser"));
             logUser = sessionStorage.getItem("logUser");
         } else {
-            console.log("no logged in user");
+            // console.log("no logged in user");
         }
     }, []);
     useEffect(() => { //This useEffect will run after second rendering. Only with the useEffecth which doesn't contain the pathname as the watching variable.
         if(sessionStorage.getItem("logUser") !== null) {
-            console.log(sessionStorage.getItem("logUser"));
+            // console.log(sessionStorage.getItem("logUser"));
             logUser = sessionStorage.getItem("logUser");
         } else {
-            console.log("no logged in user");
+            // console.log("no logged in user");
         }
     }, [router.pathname]);
 
