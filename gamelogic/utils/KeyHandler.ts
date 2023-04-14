@@ -2,7 +2,9 @@ import { speedSetting, fieldSetting, blockSetting } from "../setting";
 import GameStatus from "../status";
 import { canvas } from "../Main";
 import GetToBottom from "./GetToBottom";
-import Game from "../../pages/game";
+import CalcPiles from "./gettobottom/CalcPiles";
+import OneBlock from "./OneBlock";
+import DrawBlocks from "./DrawBlocks";
 
 const KeyHandler = (e: any) => {
     switch(e.key) {
@@ -23,14 +25,15 @@ const KeyHandler = (e: any) => {
             }
             break;
         case "ArrowDown":
-            if((GameStatus.block.positionY + speedSetting.testSpeed) - (GameStatus.field.calcPiles()[GameStatus.block.positionX / GameStatus.block.size]) <= fieldSetting.height - blockSetting.size * 2) { //checkout if current block is getting to bottom of field.
+            if((GameStatus.block.positionY + speedSetting.testSpeed) + (CalcPiles()[GameStatus.block.positionX / GameStatus.block.size] * GameStatus.block.size) <= fieldSetting.height - blockSetting.size * 2) { //checkout if current block is getting to bottom of field.
+                // canvas.clearRect(0, 0, GameStatus.field.width, GameStatus.field.height);
                 canvas.clearRect(GameStatus.block.positionX, GameStatus.block.positionY, GameStatus.block.size, GameStatus.block.size);
                 GameStatus.block.positionY += speedSetting.testSpeed;
             } else {
-                // console.log((GameStatus.field.calcPiles()[GameStatus.block.positionX / GameStatus.block.size]));
-                canvas.clearRect(GameStatus.block.positionX, GameStatus.block.positionY, GameStatus.block.size, GameStatus.block.size);
+                // canvas.clearRect(0, 0, GameStatus.field.width, GameStatus.field.height);
+                // canvas.clearRect(GameStatus.block.positionX, GameStatus.block.positionY, GameStatus.block.size, GameStatus.block.size);
                 GameStatus.block.positionY += speedSetting.testSpeed;
-                canvas.fillRect(GameStatus.block.positionX, GameStatus.block.positionY, GameStatus.block.size, GameStatus.block.size);
+                // canvas.fillRect(GameStatus.block.positionX, GameStatus.block.positionY, GameStatus.block.size, GameStatus.block.size);
                 GetToBottom();
             }
             break;
@@ -46,7 +49,10 @@ const KeyHandler = (e: any) => {
             console.log("other key");
             break;
     }
-    canvas.fillRect(GameStatus.block.positionX, GameStatus.block.positionY, GameStatus.block.size, GameStatus.block.size);
+    // canvas.fillRect(GameStatus.block.positionX, GameStatus.block.positionY, GameStatus.block.size, GameStatus.block.size);
+    canvas.clearRect(0, 0, GameStatus.field.width, GameStatus.field.height);
+    OneBlock(GameStatus.block.positionX, GameStatus.block.positionY, GameStatus.block.size, GameStatus.block.size);
+    DrawBlocks();
 }
 
 export default KeyHandler;
