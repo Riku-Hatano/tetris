@@ -1,8 +1,9 @@
 import { speedSetting, fieldSetting, blockSetting } from "../setting";
 import GameStatus from "../status";
 import { canvas } from "../Main";
-import CreateRect from "./CreateRect";
+import GetToBottom from "./GetToBottom";
 import Game from "../../pages/game";
+
 const KeyHandler = (e: any) => {
     switch(e.key) {
         case "ArrowRight":
@@ -22,14 +23,15 @@ const KeyHandler = (e: any) => {
             }
             break;
         case "ArrowDown":
-            if(GameStatus.block.positionY + speedSetting.testSpeed <= fieldSetting.height - blockSetting.size * 2) {
+            if((GameStatus.block.positionY + speedSetting.testSpeed) - (GameStatus.field.calcPiles()[GameStatus.block.positionX / GameStatus.block.size]) <= fieldSetting.height - blockSetting.size * 2) { //checkout if current block is getting to bottom of field.
                 canvas.clearRect(GameStatus.block.positionX, GameStatus.block.positionY, GameStatus.block.size, GameStatus.block.size);
                 GameStatus.block.positionY += speedSetting.testSpeed;
             } else {
+                // console.log((GameStatus.field.calcPiles()[GameStatus.block.positionX / GameStatus.block.size]));
                 canvas.clearRect(GameStatus.block.positionX, GameStatus.block.positionY, GameStatus.block.size, GameStatus.block.size);
                 GameStatus.block.positionY += speedSetting.testSpeed;
                 canvas.fillRect(GameStatus.block.positionX, GameStatus.block.positionY, GameStatus.block.size, GameStatus.block.size);
-                CreateRect();
+                GetToBottom();
             }
             break;
         case "ArrowUp":

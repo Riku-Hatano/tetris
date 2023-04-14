@@ -19,7 +19,8 @@ class FieldClass {
             height: this.height,
             widthBlock: this.widthBlock,
             heightBlock: this.heightBlock,
-            field: this.field
+            field: this.field,
+            calcPiles: this.calcPiles,
         }
     }
     initializeField(): any {
@@ -32,6 +33,20 @@ class FieldClass {
             returnField.push(row);
         }
         return returnField;
+    }
+    calcPiles() {
+        const piles = [];
+        for(let i = 0 ; i < this.widthBlock ; i++) {
+            piles.push(0);
+        }
+        for(let row of this.field) {
+            for(let i = 0 ; i < row.length ; i++) {
+                if(row[i] !== null) {
+                    piles[i]++;
+                }
+            }
+        }
+        return piles;
     }
 }
 

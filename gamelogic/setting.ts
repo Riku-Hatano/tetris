@@ -5,7 +5,7 @@ export const blockSetting = {
 }
 
 export const fieldSetting = {
-    width: 100,
+    width: 50,
     height: 100,
     status: new Array(),
 }
@@ -17,6 +17,6 @@ export const speedSetting = {
 }
 
 export const scoreSetting = {
-    addPoing: 10,
-    tetrisPoing: 100
+    addPoint: 10,
+    tetrisPoint: 100
 }
