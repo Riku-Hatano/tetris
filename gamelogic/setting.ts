@@ -1,12 +1,12 @@
 export const blockSetting = {
     size: 10,
-    initialX: 20,
+    initialX: 50,
     initialY: 20,
 }
 
 export const fieldSetting = {
-    width: 50,
-    height: 100,
+    width: 100,
+    height: 200,
     status: new Array(),
 }
 

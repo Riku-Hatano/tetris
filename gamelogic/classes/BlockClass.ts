@@ -6,14 +6,17 @@ class BlockClass {
     positionY: number;
     id: number;
     isFixed: boolean;
-    constructor(size: number, initialX: number, initialY: number, id: number) {
+    shape: string;
+    blockState: [];
+    constructor(size: number, initialX: number, initialY: number, id: number, shape: string) {
         this.size = size,
         this.initialX = initialX,
         this.initialY = initialY,
         this.positionX = initialX,
         this.positionY = initialY,
         this.id = id,
-        this.isFixed = false
+        this.isFixed = false,
+        this.shape = shape
     }
     returnAll() {
         return {
@@ -24,24 +27,6 @@ class BlockClass {
             positionY: this.positionY,
             id: this.id,
             isFixed: this.isFixed
-        }
-    }
-    move(direction: string) {
-        switch(direction) {
-            case "right":
-                this.positionX += 10;
-                break;
-            case "left":
-                this.positionX -= 10;
-                break;
-            case "down":
-                this.positionY += 10;
-                break;
-            case "up":
-                this.positionY -= 10;
-                break;
-            default: 
-                alert("illegal direction, please checkout typo!");
         }
     }
 }
