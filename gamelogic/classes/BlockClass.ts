@@ -26,7 +26,8 @@ class BlockClass {
             positionX: this.positionX,
             positionY: this.positionY,
             id: this.id,
-            isFixed: this.isFixed
+            isFixed: this.isFixed,
+            shape: this.shape
         }
     }
 }
