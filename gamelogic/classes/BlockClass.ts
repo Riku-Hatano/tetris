@@ -7,7 +7,7 @@ class BlockClass {
     id: number;
     isFixed: boolean;
     shape: string;
-    blockState: [];
+    rotateStatus: number
     constructor(size: number, initialX: number, initialY: number, id: number, shape: string) {
         this.size = size,
         this.initialX = initialX,
@@ -16,7 +16,8 @@ class BlockClass {
         this.positionY = initialY,
         this.id = id,
         this.isFixed = false,
-        this.shape = shape
+        this.shape = shape,
+        this.rotateStatus = 0
     }
     returnAll() {
         return {
@@ -27,7 +28,8 @@ class BlockClass {
             positionY: this.positionY,
             id: this.id,
             isFixed: this.isFixed,
-            shape: this.shape
+            shape: this.shape,
+            rotateStatus: this.rotateStatus
         }
     }
 }
