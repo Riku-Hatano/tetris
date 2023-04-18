@@ -6,6 +6,7 @@ import CalcPiles from "./gettobottom/CalcPiles";
 import DrawBlocks from "./DrawBlocks";
 import Rotate from "./Rotate";
 import Move from "./Move";
+import Move2 from "./Move2";
 
 const KeyHandler = (e: any) => {
     GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size] = null; //delete previous block
@@ -29,12 +30,12 @@ const KeyHandler = (e: any) => {
         case "ArrowDown":
             if((GameStatus.block.positionY + speedSetting.testSpeed) + (CalcPiles()[GameStatus.block.positionX / GameStatus.block.size] * GameStatus.block.size) <= fieldSetting.height - blockSetting.size * 2) { //checkout if current block is getting to bottom of field.
                 GameStatus.block.positionY += speedSetting.testSpeed;
-                console.log({
-                    initialx: GameStatus.block.initialX,
-                    initialy: GameStatus.block.initialY,
-                    positionx: GameStatus.block.positionX,
-                    positiony: GameStatus.block.positionY
-                })
+                // console.log({
+                //     initialx: GameStatus.block.initialX,
+                //     initialy: GameStatus.block.initialY,
+                //     positionx: GameStatus.block.positionX,
+                //     positiony: GameStatus.block.positionY
+                // })
                 Move("down");
             } else {
                 GameStatus.block.positionY += speedSetting.testSpeed;

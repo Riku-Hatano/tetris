@@ -1,5 +1,6 @@
-import Game from "../../pages/game";
 import GameStatus from "../status";
+import MoveCheck from "./MoveCheck";
+import { speedSetting } from "../setting";
 
 const Move = (direction: string) => {
     switch(direction) {
@@ -9,7 +10,7 @@ const Move = (direction: string) => {
                     switch(GameStatus.block.rotateStatus) {
                         case 0:
                             GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 1] = null;
-                            GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size ][GameStatus.block.positionX / GameStatus.block.size - 1 - 1] = null;
+                            GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 1 - 1] = null;
                             GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 2 - 1] = null;
                             GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 1 - 1] = null; //delete previous place
 
