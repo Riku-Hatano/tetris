@@ -6,36 +6,29 @@ import CalcPiles from "./gettobottom/CalcPiles";
 import DrawBlocks from "./DrawBlocks";
 import Rotate from "./Rotate";
 import Move from "./Move";
-import Move2 from "./Move2";
 
 const KeyHandler = (e: any) => {
     GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size] = null; //delete previous block
     switch(e.key) {
         case "ArrowRight":
-            if(GameStatus.block.positionX + speedSetting.testSpeed <= fieldSetting.width - blockSetting.size) {
-                GameStatus.block.positionX += speedSetting.testSpeed;
+            // if(GameStatus.block.positionX + speedSetting.testSpeed <= fieldSetting.width - blockSetting.size) {
+                // GameStatus.block.positionX += speedSetting.testSpeed;
                 Move("right");
-            } else {
-                GameStatus.block.positionX = GameStatus.field.width - GameStatus.block.size;
-            }
+            // } else {
+            //     GameStatus.block.positionX = GameStatus.field.width - GameStatus.block.size;
+            // }
             break;
         case "ArrowLeft":
-            if(GameStatus.block.positionX - speedSetting.testSpeed >= 0) {
+            // if(GameStatus.block.positionX - speedSetting.testSpeed >= 0) {
                 GameStatus.block.positionX -= speedSetting.testSpeed;
                 Move("left");
-            } else {
-                GameStatus.block.positionX = 0;
-            }
+            // } else {
+            //     GameStatus.block.positionX = 0;
+            // }
             break;
         case "ArrowDown":
             if((GameStatus.block.positionY + speedSetting.testSpeed) + (CalcPiles()[GameStatus.block.positionX / GameStatus.block.size] * GameStatus.block.size) <= fieldSetting.height - blockSetting.size * 2) { //checkout if current block is getting to bottom of field.
                 GameStatus.block.positionY += speedSetting.testSpeed;
-                // console.log({
-                //     initialx: GameStatus.block.initialX,
-                //     initialy: GameStatus.block.initialY,
-                //     positionx: GameStatus.block.positionX,
-                //     positiony: GameStatus.block.positionY
-                // })
                 Move("down");
             } else {
                 GameStatus.block.positionY += speedSetting.testSpeed;
