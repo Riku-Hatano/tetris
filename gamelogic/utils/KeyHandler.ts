@@ -20,7 +20,7 @@ const KeyHandler = (e: any) => {
             break;
         case "ArrowLeft":
             // if(GameStatus.block.positionX - speedSetting.testSpeed >= 0) {
-                GameStatus.block.positionX -= speedSetting.testSpeed;
+                // GameStatus.block.positionX -= speedSetting.testSpeed;
                 Move("left");
             // } else {
             //     GameStatus.block.positionX = 0;

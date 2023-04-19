@@ -25,13 +25,36 @@ class FieldClass {
     }
     initializeField(): any {
         let returnField = new Array();
-        for(let i = 0 ; i < this.heightBlock ; i++) {
-            let row = new Array();
-            for(let j = 0 ; j < this.widthBlock ; j++) {
-                row.push(null);
-            }
-            returnField.push(row);
-        }
+        // for(let i = 0 ; i < this.heightBlock ; i++) {
+        //     let row = new Array();
+        //     for(let j = 0 ; j < this.widthBlock ; j++) {
+        //         row.push(null);
+        //     }
+        //     returnField.push(row);
+        // } //this can be initialized depending on the size of block
+
+        returnField =[
+        [null, null, null, null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null, null, null, null],
+        ["wall", null, null, null, null, null, null, null, null, "wall"],
+        ["wall", null, null, null, null, null, null, null, "wall", null],
+        [null, null, null, null, null, null, null, null, null, null],
+        ["wall", null, null, null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null, null, "wall", null],
+        ["wall", "wall", null, null, null, null, null, null, "wall", null],
+        ["wall", "wall", null, null, null, null, null, null,"wall", null],
+        [null, null, null, null, null, null, null, null, null, null],
+        ["wall", "wall", null, null, null, null, null, null, "wall", null],
+        [null, null, null, null, null, null, null, null, null, null],
+        [null, null, null, "wall", null, null, null, "wall", null, null],
+        [null, null, null, null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null, null, null, null]
+        ]
         return returnField;
     }
     calcPiles() {
