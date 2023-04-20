@@ -48,104 +48,170 @@ const canMoveDown = () => {
             } else {
                 return false;
             }
+            break;
         case "t":
             switch(GameStatus.block.rotateStatus) {
                 case 0:
-                    console.log("down t 0");
-                    return true;
-                    break;
+                    if(y > bottom) { return false; }
+                    if(field[y + 1][x - 1] === null && field[y + 1][x] === null && field[y + 1][x + 1] === null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
                 case 1:
-                    console.log("down t 1");
-                    return true;
-                    break;
+                    if(y + 1 > bottom) { return false; }
+                    if(field[y + 2][x] === null && field[y + 1][x + 1] === null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
                 case 2:
-                    console.log("down t 2");
-                    return true;
-                    break;
+                    if(y > bottom) { return false; }
+                    if(field[y + 1][x - 1] === null && field[y + 2][x] === null && field[y + 1][x + 1] === null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
                 case 3:
-                    console.log("down t 3");
-                    return true;
-                    break;
+                    if(y + 1 > bottom) { return false; }
+                    if(field[y + 1][x - 1] === null && field[y + 2][x] === null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
             }
             break;
         case "s":
             switch(GameStatus.block.rotateStatus) {
                 case 0:
-                    console.log("down s 0");
-                    return true;
-                    break;
+                    if(y > bottom) { return false; }
+                    if(field[y + 1][x - 1] === null && field[y + 1][x] === null && field[y][x + 1] === null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
                 case 1:
-                    console.log("down s 1");
-                    return true;
-                    break;
+                    if(y + 1 > bottom) { return false; }
+                    if(field[y + 1][x] === null && field[y + 2][x + 1] === null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
                 case 2:
-                    console.log("down s 2");
-                    return true;
-                    break;
+                    if(y + 1 > bottom) { return false; }
+                    if(field[y + 2][x - 1] === null && field[y + 2][x] === null && field[y + 1][x + 1] === null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
                 case 3:
-                    console.log("down s 3");
-                    return true;
-                    break;
+                    if(y + 1 > bottom) { return false; }
+                    if(field[y + 2][x - 1] === null && field[y + 1][x] === null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
             }
             break;
         case "z":
             switch(GameStatus.block.rotateStatus) {
                 case 0:
-                    console.log("down z 0");
-                    return true;
-                    break;
+                    if(y + 1 > bottom) { return false; }
+                    if(field[y + 1][x - 1] === null && field[y + 2][x] === null && field[y + 2][x + 1] === null) {
+                        console.log("true")
+                        return true;
+                    } else {
+                        console.log("false")
+                        return false;
+                    }
                 case 1:
-                    console.log("down z 1");
-                    return true;
-                    break;
+                    if(y + 1 > bottom) { return false; }
+                    if(field[y + 2][x - 1] === null && field[y + 1][x] === null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
                 case 2:
-                    console.log("down z 2");
-                    return true;
-                    break;
+                    if(y > bottom) { return false; }
+                    if(field[y][x - 1] === null && field[y + 1][x] === null && field[y + 1][x + 1] === null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
                 case 3:
-                    console.log("down z 3");
-                    return true;
-                    break;
+                    if(y + 1 > bottom) { return false; }
+                    if(field[y + 2][x] === null && field[y + 1][x + 1] === null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
             }
             break;
         case "j":
             switch(GameStatus.block.rotateStatus) {
                 case 0:
-                    console.log("down j 0");
-                    return true;
-                    break;
+                    if(y > bottom) { return false; }
+                    if(field[y + 1][x - 1] === null && field[y + 1][x] === null && field[y + 1][x + 1] === null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
                 case 1:
-                    console.log("down j 1");
-                    return true;
-                    break;
+                    if(y + 1 > bottom) { return false; }
+                    if(field[y + 2][x] === null && field[y][x + 1] === null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
                 case 2:
-                    console.log("down j 2");
-                    return true;
-                    break;
+                    if(y + 1 > bottom) { return false; }
+                    if(field[y + 1][x - 1] === null && field[y + 1][x] === null && field[y + 2][x + 1] === null) {
+                        console.log("true")
+                        return true;
+                    } else {
+                        console.log("false")
+                        return false;
+                    }
                 case 3:
-                    console.log("down j 3");
-                    return true;
-                    break;
+                    if(y + 1 > bottom) { return false; }
+                    if(field[y + 2][x - 1] === null && field[y + 2][x] === null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
             }
             break;
         case "l":
             switch(GameStatus.block.rotateStatus) {
                 case 0:
-                    console.log("down l 0");
-                    return true;
-                    break;
+                    if(y > bottom) { return false; }
+                    if(field[y + 1][x - 1] === null && field[y + 1][x] === null && field[y + 1][x + 1] === null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
                 case 1:
-                    console.log("down l 1");
-                    return true;
-                    break;
+                    if(y + 1 > bottom) { return false; }
+                    if(field[y + 2][x] === null && field[y + 2][x + 1] === null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
                 case 2:
-                    console.log("down l 2");
-                    return true;
-                    break;
+                    if(y + 1 > bottom) { return false; }
+                    if(field[y + 2][x - 1] === null && field[y + 1][x] === null && field[y + 1][x + 1] === null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
                 case 3:
-                    console.log("down l 3");
-                    return true;
-                    break;
+                    if(y + 1 > bottom) { return false; }
+                    if(field[y][x - 1] === null && field[y + 2][x] === null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                    
             }
             break;
     }
