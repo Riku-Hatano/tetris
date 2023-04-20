@@ -4,7 +4,7 @@ import { speedSetting } from "../../setting";
 
 const canMoveRight = (): boolean => {
     const field = GameStatus.field.field;
-    const wall = GameStatus.field.field[0].length;
+    const wall = 10;
     let x = GameStatus.block.positionX / GameStatus.block.size;
     let y = GameStatus.block.positionY / GameStatus.block.size;
 
@@ -12,6 +12,7 @@ const canMoveRight = (): boolean => {
         case "i":
             switch(GameStatus.block.rotateStatus) {
                 case 0:
+                    console.log(field[y][x + 2]);
                     if(x + 2 < wall && field[y][x + 2] === null) { return true; }
                     break;
                 case 1:

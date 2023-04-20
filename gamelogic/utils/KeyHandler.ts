@@ -11,30 +11,20 @@ const KeyHandler = (e: any) => {
     GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size] = null; //delete previous block
     switch(e.key) {
         case "ArrowRight":
-            // if(GameStatus.block.positionX + speedSetting.testSpeed <= fieldSetting.width - blockSetting.size) {
-                // GameStatus.block.positionX += speedSetting.testSpeed;
-                Move("right");
-            // } else {
-            //     GameStatus.block.positionX = GameStatus.field.width - GameStatus.block.size;
-            // }
+            Move("right");
             break;
         case "ArrowLeft":
-            // if(GameStatus.block.positionX - speedSetting.testSpeed >= 0) {
-                // GameStatus.block.positionX -= speedSetting.testSpeed;
-                Move("left");
-            // } else {
-            //     GameStatus.block.positionX = 0;
-            // }
+            Move("left");
             break;
         case "ArrowDown":
-            if((GameStatus.block.positionY + speedSetting.testSpeed) + (CalcPiles()[GameStatus.block.positionX / GameStatus.block.size] * GameStatus.block.size) <= fieldSetting.height - blockSetting.size * 2) { //checkout if current block is getting to bottom of field.
-                GameStatus.block.positionY += speedSetting.testSpeed;
+            // if((GameStatus.block.positionY + speedSetting.testSpeed) + (CalcPiles()[GameStatus.block.positionX / GameStatus.block.size] * GameStatus.block.size) <= fieldSetting.height - blockSetting.size * 2) { //checkout if current block is getting to bottom of field.
+            //     GameStatus.block.positionY += speedSetting.testSpeed;
                 Move("down");
-            } else {
-                GameStatus.block.positionY += speedSetting.testSpeed;
-                Move("down");
-                GetToBottom();
-            }
+            // } else {
+            //     GameStatus.block.positionY += speedSetting.testSpeed;
+            //     Move("down");
+            //     GetToBottom();
+            // }
             break;
         case "ArrowUp":
             Rotate();
