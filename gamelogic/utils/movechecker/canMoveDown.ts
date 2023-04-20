@@ -1,6 +1,4 @@
 import GameStatus from "../../status";
-import { speedSetting } from "../../setting";
-import CalcPiles from "../gettobottom/CalcPiles";
 
 const canMoveDown = () => {
     const field = GameStatus.field.field;
