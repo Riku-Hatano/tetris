@@ -1,11 +1,8 @@
-import { speedSetting, fieldSetting, blockSetting } from "../setting";
 import GameStatus from "../status";
 import { canvas } from "../Main";
-import GetToBottom from "./GetToBottom";
-import CalcPiles from "./gettobottom/CalcPiles";
 import DrawBlocks from "./DrawBlocks";
-import Rotate from "./Rotate";
-import Move from "./Move";
+import Rotate from "./rotate/Rotate";
+import Move from "./move/Move";
 
 const KeyHandler = (e: any) => {
     GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size] = null; //delete previous block
@@ -17,14 +14,7 @@ const KeyHandler = (e: any) => {
             Move("left");
             break;
         case "ArrowDown":
-            // if((GameStatus.block.positionY + speedSetting.testSpeed) + (CalcPiles()[GameStatus.block.positionX / GameStatus.block.size] * GameStatus.block.size) <= fieldSetting.height - blockSetting.size * 2) { //checkout if current block is getting to bottom of field.
-            //     GameStatus.block.positionY += speedSetting.testSpeed;
-                Move("down");
-            // } else {
-            //     GameStatus.block.positionY += speedSetting.testSpeed;
-            //     Move("down");
-            //     GetToBottom();
-            // }
+            Move("down");
             break;
         case "ArrowUp":
             Rotate();

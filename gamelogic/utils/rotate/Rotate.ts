@@ -1,12 +1,35 @@
-import { speedSetting } from "../setting";
-import GameStatus from "../status";
+import { speedSetting } from "../../setting";
+import GameStatus from "../../status";
 import CanRotateRight from "./rotatechecker/canRotateRight";
+import KickFloor from "./rotatechecker/srs/kickFloor";
+import KickWall from "./rotatechecker/srs/kickWall";
+import SuperRotationSystem from "./rotatechecker/srs/superRotationSystem";
 
 const Rotate = () => {
+    const field = GameStatus.field.field;
+    const bottom = GameStatus.field.field.length - (GameStatus.block.initialY / GameStatus.block.size);
+    const wall = 10;
+    
     switch(GameStatus.block.shape) {
         case "i":
+            console.log(GameStatus.field.flags.twoBlocks)
             switch((GameStatus.block.rotateStatus + 1) % 4) {
                 case 0:
+                    if(KickWall() === true) {
+                        GameStatus.block.rotateStatus = (GameStatus.block.rotateStatus += 1) % 4;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size] = null;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size] = null;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 2][GameStatus.block.positionX / GameStatus.block.size] = null;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size] = null; //delete previous place
+                        
+                        GameStatus.block.positionX += speedSetting.testSpeed; //push agains from wall
+                        GameStatus.block.positionX += speedSetting.testSpeed; //adjust the axis of i mino
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block.id;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 1] = GameStatus.block.id;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 2] = GameStatus.block.id;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 1] = GameStatus.block.id;
+                        return;
+                    }
                     if(CanRotateRight() === true) {
                         console.log(GameStatus.block.rotateStatus);
                         GameStatus.block.rotateStatus = (GameStatus.block.rotateStatus += 1) % 4;
@@ -20,8 +43,7 @@ const Rotate = () => {
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 1] = GameStatus.block.id;
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 2] = GameStatus.block.id;
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 1] = GameStatus.block.id;
-                    } else {
-                        console.log("false cannot rotate right");
+                        return;
                     }
                     break;
                 case 1:
@@ -33,16 +55,29 @@ const Rotate = () => {
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 2] = null;
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 1] = null; //delete previous place
 
-                        GameStatus.block.positionY -= speedSetting.testSpeed;
+                        GameStatus.block.positionY -= speedSetting.testSpeed; //adjust the axis of i miono
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block.id;
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block.id;
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block.id;
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 2][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block.id;
-                    } else {
-                        console.log("false cannot rotate right");
                     }
                     break;
                 case 2:
+                    if(KickWall() === true) {
+                        GameStatus.block.rotateStatus = (GameStatus.block.rotateStatus += 1) % 4;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size] = null;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size] = null;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size] = null;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 2][GameStatus.block.positionX / GameStatus.block.size] = null; //delete previous place
+                        
+                        GameStatus.field.flags.twoBlocks ? GameStatus.block.positionX += speedSetting.testSpeed * 2 : GameStatus.block.positionX += speedSetting.testSpeed //to push against from wall
+                        GameStatus.block.positionX -= speedSetting.testSpeed; //adjust the axis of i mino
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block.id;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 1] = GameStatus.block.id;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 1] = GameStatus.block.id;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 2] = GameStatus.block.id;
+                        return;
+                    }
                     if(CanRotateRight() === true) {
                         console.log(GameStatus.block.rotateStatus);
                         GameStatus.block.rotateStatus = (GameStatus.block.rotateStatus += 1) % 4;
@@ -56,11 +91,12 @@ const Rotate = () => {
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 1] = GameStatus.block.id;
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 1] = GameStatus.block.id;
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 2] = GameStatus.block.id;
-                    } else {
-                        console.log("false cannot rotate right");
                     }
                     break;
                 case 3:
+                    if(KickWall() === true) {
+                        return;
+                    }
                     if(CanRotateRight() === true) {
                         console.log(GameStatus.block.rotateStatus);
                         GameStatus.block.rotateStatus = (GameStatus.block.rotateStatus += 1) % 4;
@@ -69,16 +105,15 @@ const Rotate = () => {
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 1] = null;
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 2] = null; //delete previous place
 
-                        GameStatus.block.positionY += speedSetting.testSpeed;
+                        GameStatus.block.positionY += speedSetting.testSpeed; //adjust the axis of i mino
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block.id;
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block.id;
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 2][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block.id;
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block.id;
-                    } else {
-                        console.log("false cannot rotate right");
                     }
                     break;
             }
+            GameStatus.field.flags.twoBlocks = false;
             break;
         case "o":
             switch(GameStatus.block.rotateStatus % 4) {

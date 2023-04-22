@@ -1,4 +1,4 @@
-import GameStatus from "../../status";
+import GameStatus from "../../../status";
 
 const CanRotateRight = () => {
     const field = GameStatus.field.field;
@@ -11,15 +11,17 @@ const CanRotateRight = () => {
             switch((GameStatus.block.rotateStatus + 1) % 4) {
                 case 0:
                     console.log("turn: right shape: i rs: 0");
-                    if(x + 2 > wall) { return false; }
-                    if(y > bottom) { return false; }
-                    if(field[y][x - 2] === null && field[y][x - 1] === null && field[y][x + 1] === null) { return true; }
+                    // if(x + 2 > wall) { return false; }
+                    // if(y > bottom) { return false; }
+                    // if(field[y][x - 2] === null && field[y][x - 1] === null && field[y][x + 1] === null) { return true; }
+                    return true;
                     break;
                 case 1:
                     console.log("turn: right shape: i rs: 1");
-                    if(x + 1 > wall) { return false; }
-                    if(y + 2 > bottom) { return false; }
-                    if(field[y - 1][x] === null && field[y + 1][x] === null && field[y + 2][x] === null) { return true; }
+                    // if(x + 1 > wall) { return false; }
+                    // if(y + 2 > bottom) { return false; }
+                    // if(field[y - 1][x] === null && field[y + 1][x] === null && field[y + 2][x] === null) { return true; }
+                    return true;
                     break;
                 case 2:
                     console.log("turn: right shape: i rs: 2");

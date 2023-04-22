@@ -1,9 +1,9 @@
-import GameStatus from "../status";
+import GameStatus from "../../status";
 import canMoveDown from "./movechecker/canMoveDown";
 import canMoveLeft from "./movechecker/canMoveLeft";
 import canMoveRight from "./movechecker/canMoveRight";
-import GetToBottom from "./GetToBottom";
-import { speedSetting } from "../setting";
+import GetToBottom from "../GetToBottom";
+import { speedSetting } from "../../setting";
 
 const Move = (direction: string) => {
     switch(direction) {

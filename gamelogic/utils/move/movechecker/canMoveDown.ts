@@ -1,4 +1,4 @@
-import GameStatus from "../../status";
+import GameStatus from "../../../status";
 
 const canMoveDown = () => {
     const field = GameStatus.field.field;

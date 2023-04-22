@@ -5,14 +5,21 @@ class FieldClass {
     height: number;
     widthBlock: number;
     heightBlock: number;
-    field: any[]
+    field: any[];
+    flags: {
+        twoBlocks: boolean,
+    }
     constructor(width: number, height: number) {
         this.width = width,
         this.height = height,
         this.widthBlock = Math.floor(this.width / blockSetting.size);
         this.heightBlock = Math.floor(this.height / blockSetting.size);
         this.field = this.initializeField();
+        this.flags = {
+            twoBlocks: false,
+        }
     }
+      
     returnAll() {
         return {
             width: this.width,
@@ -21,6 +28,9 @@ class FieldClass {
             heightBlock: this.heightBlock,
             field: this.field,
             calcPiles: this.calcPiles,
+            flags: {
+                twoBlocks: this.flags.twoBlocks
+            }
         }
     }
     initializeField(): any {
