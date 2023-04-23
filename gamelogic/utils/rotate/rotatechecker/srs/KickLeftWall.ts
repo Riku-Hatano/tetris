@@ -2,7 +2,6 @@ import GameStatus from "../../../../status";
 import { speedSetting } from "../../../../setting";
 
 const KickLeftWall = () => {
-    const wall = 10;
     switch(GameStatus.block.shape) {
         case "i":
             switch((GameStatus.block.rotateStatus + 1) % 4) {
