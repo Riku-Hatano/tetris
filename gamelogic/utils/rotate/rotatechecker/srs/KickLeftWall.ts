@@ -1,22 +1,19 @@
 import GameStatus from "../../../../status";
 import { speedSetting } from "../../../../setting";
 
-const KickWall = () => {
+const KickLeftWall = () => {
     const wall = 10;
     switch(GameStatus.block.shape) {
         case "i":
             switch((GameStatus.block.rotateStatus + 1) % 4) {
                 case 0:
-                    if(GameStatus.block.positionX / GameStatus.block.size + 1 > 10) { //right side
-                        GameStatus.block.positionX -= speedSetting.testSpeed;
-                        return true;
-                    } else if(GameStatus.block.positionX / GameStatus.block.size - 1 < 0) { //left side
+                    if(GameStatus.block.positionX / GameStatus.block.size - 1 < 0) { //left side
                         return true;
                     } else {
-                        return false;
+                        return null;
                     }
                 case 1:
-                    return false;
+                    return null;
                 case 2:
                     if(GameStatus.block.positionX / GameStatus.block.size + 1 > 10) { //right side
                         GameStatus.block.positionX -= speedSetting.testSpeed;
@@ -27,26 +24,38 @@ const KickWall = () => {
                     } else if(GameStatus.block.positionX / GameStatus.block.size - 2 < 0) {
                         return true;
                     } else {
-                        return false;
+                        return null;
                     }
                 case 3:
-                    return false;
+                    return null;
             }
             break;
         case "t":
             switch(GameStatus.block.rotateStatus) {
                 case 0:
                     console.log("kickwall t 0");
-                    break;
+                    if(GameStatus.block.positionX / GameStatus.block.size - 1 < 0) { //left side
+                        return true;
+                    } else {
+                        return null;
+                    }
                 case 1:
                     console.log("kickwall t 1");
                     break;
                 case 2:
                     console.log("kickwall t 2");
-                    break;
+                    if(GameStatus.block.positionX / GameStatus.block.size - 1 < 0) { //left side
+                        return true;
+                    } else {
+                        return null;
+                    }
                 case 3:
                     console.log("kickwall t 3");
-                    break;
+                    if(GameStatus.block.positionX / GameStatus.block.size - 1 < 0) { //left side
+                        return true;
+                    } else {
+                        return null;
+                    }
             }
             break;
         case "s":
@@ -116,4 +125,4 @@ const KickWall = () => {
     }
 }
 
-export default KickWall;
+export default KickLeftWall;
