@@ -8,7 +8,7 @@ const TetriNames = [
 
 const CreateRect = () => {
     const rand = Math.floor(Math.random() * 7);
-    const newBlock = new BlockClass(blockSetting.size, blockSetting.initialX, blockSetting.initialY, GameStatus.blockCounter++, "l");
+    const newBlock = new BlockClass(blockSetting.size, blockSetting.initialX, blockSetting.initialY, GameStatus.blockCounter++, "s");
     GameStatus.block = newBlock;
     switch(newBlock.shape) {
     // switch(TetriNames[rand]) {
@@ -55,6 +55,7 @@ const CreateRect = () => {
             GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size - 1][GameStatus.block.initialX / GameStatus.block.size + 1] = GameStatus.block.id;
             break;
     }
+    // return 
     return newBlock;
 }
 

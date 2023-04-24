@@ -57,7 +57,7 @@ const canMoveRight = (): boolean => {
                     if(x + 2 < wall && field[y][x + 2] === null && field[y - 1][x + 1] === null) { return true; }
                     break;
                 case 3:
-                    if(x + 1 < wall && field[y - 1][x + 1] === null && field[y][x + 1] === null && field[y + 1][x] === null) { return true; }
+                    if(x + 1 < wall && field[y - 1][x] === null && field[y][x + 1] === null && field[y + 1][x + 1] === null) { return true; }
                     break;
             }
             break;

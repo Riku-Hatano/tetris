@@ -104,7 +104,7 @@ const canMoveDown = () => {
                     }
                 case 3:
                     if(y + 1 > bottom) { return false; }
-                    if(field[y + 2][x - 1] === null && field[y + 1][x] === null) {
+                    if(field[y + 2][x] === null && field[y + 1][x - 1] === null) {
                         return true;
                     } else {
                         return false;

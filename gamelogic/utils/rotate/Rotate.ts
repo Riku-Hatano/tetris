@@ -2,10 +2,9 @@ import { speedSetting } from "../../setting";
 import GameStatus from "../../status";
 import CanRotateRight from "./rotatechecker/canRotateRight";
 import KickLeftWall from "./rotatechecker/srs/KickLeftWall";
+import KickRightWall from "./rotatechecker/srs/KickRightWall";
 import KickFloor from "./rotatechecker/srs/KickFloor";
-
 import SuperRotationSystem from "./rotatechecker/srs/SuperRotationSystem";
-import Game from "../../../pages/game";
 
 const Rotate = () => {
     const field = GameStatus.field.field;
@@ -16,7 +15,7 @@ const Rotate = () => {
         case "i":
         switch((GameStatus.block.rotateStatus + 1) % 4) {
                 case 0:
-                    if(KickLeftWall() !== null) {
+                    if(KickLeftWall() === true) {
                         GameStatus.block.rotateStatus = (GameStatus.block.rotateStatus += 1) % 4;
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size] = null;
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size] = null;
@@ -24,6 +23,21 @@ const Rotate = () => {
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size] = null; //delete previous place
                         
                         GameStatus.block.positionX += speedSetting.testSpeed; //push agains from wall
+                        GameStatus.block.positionX += speedSetting.testSpeed; //adjust the axis of i mino
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block.id;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 1] = GameStatus.block.id;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 2] = GameStatus.block.id;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 1] = GameStatus.block.id;
+                        return;
+                    }
+                    if(KickRightWall() === true) {
+                        GameStatus.block.rotateStatus = (GameStatus.block.rotateStatus += 1) % 4;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size] = null;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size] = null;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 2][GameStatus.block.positionX / GameStatus.block.size] = null;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size] = null; //delete previous place
+
+                        GameStatus.field.flags.twoBlocks ? GameStatus.block.positionX -= speedSetting.testSpeed * 2 : GameStatus.block.positionX -= speedSetting.testSpeed //to push against from wall                        
                         GameStatus.block.positionX += speedSetting.testSpeed; //adjust the axis of i mino
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block.id;
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 1] = GameStatus.block.id;
@@ -79,6 +93,21 @@ const Rotate = () => {
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 2] = GameStatus.block.id;
                         return;
                     }
+                    if(KickRightWall() === true) {
+                        GameStatus.block.rotateStatus = (GameStatus.block.rotateStatus += 1) % 4;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size] = null;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size] = null;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size] = null;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 2][GameStatus.block.positionX / GameStatus.block.size] = null; //delete previous place
+                        
+                        GameStatus.block.positionX -= speedSetting.testSpeed //to push against from wall
+                        GameStatus.block.positionX -= speedSetting.testSpeed; //adjust the axis of i mino
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block.id;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 1] = GameStatus.block.id;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 1] = GameStatus.block.id;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 2] = GameStatus.block.id;
+                        return;
+                    }
                     if(CanRotateRight() === true) {
                         console.log(GameStatus.block.rotateStatus);
                         GameStatus.block.rotateStatus = (GameStatus.block.rotateStatus += 1) % 4;
@@ -95,9 +124,6 @@ const Rotate = () => {
                     }
                     break;
                 case 3:
-                    if(KickLeftWall() === true) {
-                        return;
-                    }
                     if(CanRotateRight() === true) {
                         console.log(GameStatus.block.rotateStatus);
                         GameStatus.block.rotateStatus = (GameStatus.block.rotateStatus += 1) % 4;
@@ -135,6 +161,21 @@ const Rotate = () => {
         case "t":
             switch((GameStatus.block.rotateStatus + 1) % 4) {
                 case 0:
+                    if(KickRightWall() === true) {
+                        GameStatus.block.rotateStatus = (GameStatus.block.rotateStatus += 1) % 4;
+
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size] = null;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 1] = null;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size] = null;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size] = null;
+
+                        GameStatus.block.positionX -= GameStatus.block.size;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block.id;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 1] = GameStatus.block.id;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 1] = GameStatus.block.id;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block.id;
+                        return;
+                    }
                     if(CanRotateRight() === true) {
                         GameStatus.block.rotateStatus = (GameStatus.block.rotateStatus += 1) % 4;
 
@@ -210,14 +251,14 @@ const Rotate = () => {
         case "s":
             switch((GameStatus.block.rotateStatus + 1) % 4) {
                 case 0:
-                    if(KickLeftWall() === true) {
+                    if(KickRightWall() === true) {
                         GameStatus.block.rotateStatus = (GameStatus.block.rotateStatus + 1) % 4;
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size] = null;
-                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size] = null;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size - 1] = null;
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 1] = null;
-                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size - 1] = null; //delete previous place
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size] = null;
     
-                        GameStatus.block.positionX += GameStatus.block.size;
+                        GameStatus.block.positionX -= GameStatus.block.size;
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block.id;
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block.id;
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size + 1] = GameStatus.block.id;
@@ -227,9 +268,9 @@ const Rotate = () => {
                     if(CanRotateRight() === true) {
                         GameStatus.block.rotateStatus = (GameStatus.block.rotateStatus + 1) % 4;
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size] = null;
-                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size] = null;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size - 1] = null;
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 1] = null;
-                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size - 1] = null; //delete previous place
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size] = null;
     
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block.id;
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block.id;
@@ -288,9 +329,9 @@ const Rotate = () => {
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size - 1] = null; //delete previous place
     
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block.id;
-                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block.id;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size - 1] = GameStatus.block.id;
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 1] = GameStatus.block.id;
-                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size - 1] = GameStatus.block.id;
+                        GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block.id;
                     }
                     break;
             }
