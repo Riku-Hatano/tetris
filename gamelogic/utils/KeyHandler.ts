@@ -9,15 +9,19 @@ const KeyHandler = (e: any) => {
     switch(e.key) {
         case "ArrowRight":
             Move("right");
+            GameStatus.field.flags.isPreviousDown = false;
             break;
         case "ArrowLeft":
             Move("left");
+            GameStatus.field.flags.isPreviousDown = false;
             break;
         case "ArrowDown":
             Move("down");
+            GameStatus.field.flags.isPreviousDown = true;
             break;
         case "ArrowUp":
             Rotate();
+            GameStatus.field.flags.isPreviousDown = false;
             break;
         default:
             console.log(e.key);

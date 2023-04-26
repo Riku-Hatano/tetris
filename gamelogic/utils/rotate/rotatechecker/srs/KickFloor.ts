@@ -33,7 +33,7 @@ const KickFloor = () => {
                 case 0:
                     return null;
                 case 1:
-                    if(GameStatus.block.positionY / GameStatus.block.size + 1 > bottom) {
+                    if(GameStatus.block.positionY / GameStatus.block.size > bottom) {
                         return true;
                     } else {
                         return null;

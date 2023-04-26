@@ -16,7 +16,8 @@ interface GS {
         widthBlock: number,
         heightBlock: number,
         flags: {
-            twoBlocks: boolean
+            twoBlocks: boolean,
+            isPreviousDown: boolean,
         },
         field: number[][],
         calcPiles: Function,
@@ -43,6 +44,7 @@ const GameStatus: GS = {
         heightBlock: 0,
         flags: {
             twoBlocks: false,
+            isPreviousDown: false
         },
         field: [[]],
         calcPiles: undefined,

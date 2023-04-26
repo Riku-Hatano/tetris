@@ -64,7 +64,7 @@ const canMoveDown = () => {
                         return false;
                     }
                 case 2:
-                    if(y > bottom) { return false; }
+                    if(y + 1 > bottom) { return false; }
                     if(field[y + 1][x - 1] === null && field[y + 2][x] === null && field[y + 1][x + 1] === null) {
                         return true;
                     } else {

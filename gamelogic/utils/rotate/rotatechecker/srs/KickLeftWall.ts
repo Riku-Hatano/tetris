@@ -14,13 +14,10 @@ const KickLeftWall = () => {
                 case 1:
                     return null;
                 case 2:
-                    if(GameStatus.block.positionX / GameStatus.block.size + 1 > 10) { //right side
-                        GameStatus.block.positionX -= speedSetting.testSpeed;
-                        return true;
-                    } else if(GameStatus.block.positionX / GameStatus.block.size - 1 < 0) { //left side
+                    if(GameStatus.block.positionX / GameStatus.block.size - 1 < 0) {
                         GameStatus.field.flags.twoBlocks = true;
                         return true;
-                    } else if(GameStatus.block.positionX / GameStatus.block.size - 2 < 0) {
+                    } else if(GameStatus.block.positionX / GameStatus.block.size - 2 < 0 && GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 1] === null) {
                         return true;
                     } else {
                         return null;
