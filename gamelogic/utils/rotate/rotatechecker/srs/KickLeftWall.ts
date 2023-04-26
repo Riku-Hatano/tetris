@@ -61,7 +61,8 @@ const KickLeftWall = () => {
                     break;
                 case 2:
                     console.log("kickwall s 2");
-                    if(GameStatus.block.positionX / GameStatus.block.size - 1 < 0 && GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size] === null) {
+                    if(GameStatus.block.positionX / GameStatus.block.size - 1 < 0 && GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 2] === null) {
+                    // if(GameStatus.block.positionX / GameStatus.block.size - 1 < 0 && GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size] === null) {
                         return true;
                     } else {
                         return null;
