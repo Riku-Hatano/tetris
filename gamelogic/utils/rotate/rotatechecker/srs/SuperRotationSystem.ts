@@ -49,6 +49,22 @@ const SuperRotationSystem = () => {
         case "t":
             switch((GameStatus.block.rotateStatus + 1) % 4) {
                 case 0:
+                    console.log(field[y - 1][x]);
+                    console.log(field[y][x + 1]);
+                    console.log(field[y][x - 1]);
+                    if(field[y][x + 1] === null) {
+                        return 0;
+                    } else if(field[y - 1][x - 1] === null && field[y][x - 2] === null) {
+                        return 1;
+                    } else if(field[y + 1][x - 1] === null && field[y + 1][x - 2] === null) {
+                        return 2;
+                    } else if(field[y - 2][x - 1] === null && field[y - 2][x] === null && field[y - 2][x + 1] === null && field[y - 3][x] === null) {
+                        return 3;
+                    } else if(field[y - 2][x - 2] === null && field[y - 2][x - 1] === null && field[y - 2][x] === null && field[y - 3][x - 1] === null) {
+                        return 4;
+                    } else {
+                        return false;
+                    }
                     break;
                 case 1:
                     if(field[y + 1][x] === null) {
@@ -79,10 +95,6 @@ const SuperRotationSystem = () => {
                         return false;
                     }
                 case 3:
-                    // console.log(field[y + 1][x]);
-                    // console.log(field[y + 2][x]);
-                    // console.log(field[y + 3][x]);
-                    // console.log(field[y + 2][x - 1]);
                     if(field[y - 1][x] === null) {
                         return 0;
                     } else if(field[y - 1][x + 1] === null && field[y][x] === null && field[y + 1][x + 1] === null) {
@@ -96,10 +108,8 @@ const SuperRotationSystem = () => {
                     } else {
                         return false;
                     }
-                    break;
             }
             return 0;
-            break;
         case "s":
             break;
         case "z":
