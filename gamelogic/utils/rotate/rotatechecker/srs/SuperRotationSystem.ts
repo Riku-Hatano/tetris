@@ -49,9 +49,6 @@ const SuperRotationSystem = () => {
         case "t":
             switch((GameStatus.block.rotateStatus + 1) % 4) {
                 case 0:
-                    console.log(field[y - 1][x]);
-                    console.log(field[y][x + 1]);
-                    console.log(field[y][x - 1]);
                     if(field[y][x + 1] === null) {
                         return 0;
                     } else if(field[y - 1][x - 1] === null && field[y][x - 2] === null) {
@@ -111,6 +108,73 @@ const SuperRotationSystem = () => {
             }
             return 0;
         case "s":
+            switch((GameStatus.block.rotateStatus + 1) % 4) {
+                case 0:
+                    if(field[y - 1][x] === null && field[y - 1][x + 1] === null) {
+                        console.log(`shape: ${GameStatus.block.shape} rs: ${GameStatus.block.rotateStatus} return: 0`)
+                        return 0;
+                    } else if(field[y - 1][x] === null && field[y][x - 2] === null) {
+                        console.log(`shape: ${GameStatus.block.shape} rs: ${GameStatus.block.rotateStatus} return: 1`)
+                        return 1;
+                    } else if(field[y + 1][x - 2] === null && field[y + 1][x - 1] === null) {
+                        console.log(`shape: ${GameStatus.block.shape} rs: ${GameStatus.block.rotateStatus} return: 2`)
+                        return 2;
+                    } else if(field[y - 2][x - 1] === null && field[y - 3][x] === null && field[y - 2][x] === null && field[y - 3][x + 1] === null) {
+                        console.log(`shape: ${GameStatus.block.shape} rs: ${GameStatus.block.rotateStatus} return: 3`)
+                        return 3;
+                    } else if(field[y - 2][x - 2] === null && field[y - 3][x - 1] === null && field[y - 2][x - 1] === null && field[y - 3][x] === null) {
+                        console.log(`shape: ${GameStatus.block.shape} rs: ${GameStatus.block.rotateStatus}  return: 4`)
+                        return 4;
+                    } else {
+                        return false;
+                    }
+                    break;
+                case 1:
+                    if(field[y][x + 1] === null && field[y + 1][x + 1] === null) {
+                        return 0;
+                    } else if(field[y - 1][x - 1] === null && field[y + 1][x] === null) {
+                        return 1;
+                    } else if(field[y - 1][x - 1] === null && field[y - 2][x - 1] === null) {
+                        return 2;
+                    } else if(field[y + 1][x] === null && field[y + 2][x] === null && field[y + 2][x + 2] === null && field[y + 3][x + 1] === null) {
+                        return 3; //impossible pattern
+                    } else if(field[y + 1][x - 1] === null && field[y + 2][x - 1] === null && field[y + 2][x] === null && field[y + 3][x] === null) {
+                        return 4;
+                    } else {
+                        return false;
+                    }
+                    break;
+                case 2:
+                    if(field[y + 1][x - 1] === null && field[y + 1][x] === null) {
+                        return 0;
+                    } else if(field[y + 1][x] === null && field[y][x + 2] === null) {
+                        return 1;
+                    } else if(field[y + 2][x] === null && field[y + 2][x + 1] === null && field[y + 1][x + 2] === null) {
+                        return 2;
+                    } else if(field[y - 1][x - 1] === null && field[y - 2][x] === null && field[y - 2][x + 1] === null) {
+                        return 3;
+                    } else if(field[y - 1][x + 1] === null && field[y - 2][x + 1] === null && field[y - 2][x + 2] === null) {
+                        return 4;
+                    } else {
+                        return false;
+                    }
+                    break;
+                case 3:
+                    if(field[y - 1][x - 1] === null && field[y][x - 1] === null) {
+                        return 0;
+                    } else if(field[y - 1][x] === null && field[y + 1][x + 1] === null) {
+                        return 1;
+                    } else if(field[y - 2][x] === null && field[y - 1][x] === null && field[y - 1][x + 1] === null) {
+                        return 2;
+                    } else if(field[y + 2][x - 1] === null && field[y + 2][x] === null && field[y + 3][x] === null) {
+                        return 3;
+                    } else if(field[y + 2][x] === null && field[y + 2][x + 1] === null && field[y + 3][x + 1] === null) {
+                        return 4;
+                    } else {
+                        return false;
+                    }
+                    break;
+            }
             break;
         case "z":
             break;
