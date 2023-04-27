@@ -1215,7 +1215,7 @@ const Rotate = () => {
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size - 1] = null;
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 1] = null; //delete previous place
     
-                        GameStatus.block.positionY += speedSetting.testSpeed; //super rotation system
+                        GameStatus.block.positionY -= speedSetting.testSpeed; //super rotation system
                         GameStatus.block.positionX += speedSetting.testSpeed; //super rotation system
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block.id;
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size + 1] = GameStatus.block.id;
@@ -1229,7 +1229,7 @@ const Rotate = () => {
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size - 1] = null;
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 1] = null; //delete previous place
 
-                        GameStatus.block.positionY -= speedSetting.testSpeed * 2; //super rotation system
+                        GameStatus.block.positionY += speedSetting.testSpeed * 2; //super rotation system
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block.id;
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size + 1] = GameStatus.block.id;
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 1] = GameStatus.block.id;
@@ -1242,7 +1242,7 @@ const Rotate = () => {
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size - 1] = null;
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 1] = null; //delete previous place
     
-                        GameStatus.block.positionY -= speedSetting.testSpeed * 2; //super rotation system
+                        GameStatus.block.positionY += speedSetting.testSpeed * 2; //super rotation system
                         GameStatus.block.positionX += speedSetting.testSpeed; //super rotation system
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block.id;
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size + 1] = GameStatus.block.id;
