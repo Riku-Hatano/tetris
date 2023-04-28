@@ -114,6 +114,20 @@ const canMoveDown = () => {
         case "z":
             switch(GameStatus.block.rotateStatus) {
                 case 0:
+                    if(y > bottom) { return false; }
+                    if(field[y][x - 1] === null && field[y + 1][x] === null && field[y + 1][x + 1] === null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                case 1:
+                    if(y + 1 > bottom) { return false; }
+                    if(field[y + 2][x] === null && field[y + 1][x + 1] === null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                case 2:
                     if(y + 1 > bottom) { return false; }
                     if(field[y + 1][x - 1] === null && field[y + 2][x] === null && field[y + 2][x + 1] === null) {
                         console.log("true")
@@ -122,23 +136,9 @@ const canMoveDown = () => {
                         console.log("false")
                         return false;
                     }
-                case 1:
-                    if(y + 1 > bottom) { return false; }
-                    if(field[y + 2][x - 1] === null && field[y + 1][x] === null) {
-                        return true;
-                    } else {
-                        return false;
-                    }
-                case 2:
-                    if(y > bottom) { return false; }
-                    if(field[y][x - 1] === null && field[y + 1][x] === null && field[y + 1][x + 1] === null) {
-                        return true;
-                    } else {
-                        return false;
-                    }
                 case 3:
                     if(y + 1 > bottom) { return false; }
-                    if(field[y + 2][x] === null && field[y + 1][x + 1] === null) {
+                    if(field[y + 2][x - 1] === null && field[y + 1][x] === null) {
                         return true;
                     } else {
                         return false;
