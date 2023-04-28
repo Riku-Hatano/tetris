@@ -64,16 +64,16 @@ const canMoveRight = (): boolean => {
         case "z":
             switch(GameStatus.block.rotateStatus) {
                 case 0:
-                    if(x + 2 < wall && field[y][x + 1] === null && field[y + 1][x + 2] === null) { return true; }
-                    break;
-                case 1:
-                    if(x + 1 < wall && field[y - 1][x + 1] === null && field[y][x + 1] === null && field[y + 1][x] === null) { return true; }
-                    break;
-                case 2:
                     if(x + 2 < wall && field[y - 1][x + 1] === null && field[y][x + 2] === null) { return true; }
                     break;
-                case 3:
+                case 1:
                     if(x + 2 < wall && field[y - 1][x + 2] === null && field[y][x + 2] === null && field[y + 1][x + 1] === null) { return true; }
+                    break;
+                case 2:
+                    if(x + 2 < wall && field[y][x + 1] === null && field[y + 1][x + 2] === null) { return true; }
+                    break;
+                case 3:
+                    if(x + 1 < wall && field[y - 1][x + 1] === null && field[y][x + 1] === null && field[y + 1][x] === null) { return true; }
                     break;
             }
             break;

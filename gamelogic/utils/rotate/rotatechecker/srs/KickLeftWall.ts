@@ -82,7 +82,6 @@ const KickLeftWall = () => {
                     } else {
                         return null;
                     }
-                    break;
                 case 1:
                     console.log("kickwall z 1");
                     break;
@@ -93,7 +92,6 @@ const KickLeftWall = () => {
                     } else {
                         return null;
                     }
-                    break;
                 case 3:
                     console.log("kickwall z 3");
                     break;

@@ -62,15 +62,15 @@ const KickRightWall = () => {
         case "z":
             switch((GameStatus.block.rotateStatus + 1) % 4) {
                 case 0:
-                    return null;
-                case 1:
-                    return null;
-                case 2:
                     if(GameStatus.block.positionX / GameStatus.block.size + 1 >= wall) {
                         return true;
                     } else {
                         return null;
                     }
+                case 1:
+                    return null;
+                case 2:
+                    return null;
                 case 3:
                     return null;
             }

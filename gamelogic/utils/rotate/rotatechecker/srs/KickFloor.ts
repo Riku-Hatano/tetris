@@ -65,15 +65,15 @@ const KickFloor = () => {
                 case 0:
                     return null;
                 case 1:
-                    return null;
-                case 2:
-                    return null;
-                case 3:
                     if(GameStatus.block.positionY / GameStatus.block.size + 1 > bottom) {
                         return true;
                     } else {
                         return null;
                     }
+                case 2:
+                    return null;
+                case 3:
+                    return null;
             }
             break;
         case "j":
