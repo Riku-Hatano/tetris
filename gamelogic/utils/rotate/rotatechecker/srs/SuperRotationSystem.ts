@@ -227,7 +227,6 @@ const SuperRotationSystem = () => {
                         console.log("z case0 return4");
                         return 4;
                     }
-
                 case 2:
                     if(field[y][x - 1] === null && field[y + 1][x + 1] === null) {
                         console.log("z case2 return0")
@@ -267,6 +266,65 @@ const SuperRotationSystem = () => {
             }
             break;
         case "j":
+            switch((GameStatus.block.rotateStatus + 1) % 4) {
+                case 0:
+                    if(field[y - 1][x - 1] === null && field[y][x - 1] === null && field[y][x + 1] === null) {
+                        return 0;
+                    } else if(field[y - 1][x - 2] === null && field[y][x - 2] === null && field[y][x - 1] === null) {
+                        return 1;
+                    } else if(field[y][x - 2] === null && field[y + 1][x - 2] === null) {
+                        return 2;
+                    } else if(field[y - 3][x - 1] === null && field[y - 2][x - 1] === null && field[y - 2][x] === null && field[y - 2][x + 1] === null) {
+                        return 3;
+                    } else if(field[y - 3][x - 2] === null && field[y - 2][x - 2] === null && field[y - 2][x - 1] === null && field[y - 2][x] === null) {
+                        return 4;
+                    } else {
+                        return null;
+                    }
+                case 1:
+                    if(field[y - 1][x] === null && field[y + 1][x] === null && field[y - 1][x + 1] === null) {
+                        return 0;
+                    } else if(field[y + 1][x - 1] === null && field[y - 1][x] === null) {
+                        return 1;
+                    } else if(field[y - 2][x - 1] === null && field[y - 2][x] === null) {
+                        return 2;
+                    } else if(field[y + 3][x] === null && field[y + 2][x] === null && field[y + 1][x] === null && field[y + 1][x + 1] === null) {
+                        return 3;
+                    } else if(field[y + 3][x - 1] === null && field[y + 2][x - 1] === null && field[y + 1][x - 1] === null && field[y + 1][x] === null) {
+                        return 4;
+                    } else {
+                        return null;
+                    }
+                case 2:
+                    if(field[y][x - 1] === null && field[y][x + 1] === null && field[y + 1][x + 1] === null) {
+                        return 0;
+                    } else if(field[y][x + 1] === null && field[y][x + 2] === null && field[y + 1][x + 2] === null) {
+                        return 1;
+                    } else if(field[y + 1][x + 1] === null && field[y + 1][x + 2] === null && field[y + 2][x + 2] === null) {
+                        return 2;
+                    } else if(field[y - 2][x - 1] === null && field[y - 2][x] === null && field[y - 2][x + 1] === null) {
+                        return 3;
+                    } else if(field[y - 2][x] === null && field[y - 2][x + 1] === null && field[y - 2][x + 2] === null && field[y - 1][x + 2] === null) {
+                        return 4;
+                    } else {
+                        return null;
+                    }
+                case 3:
+                    if(field[y - 1][x] === null && field[y + 1][x] === null && field[y + 1][x - 1] === null) {
+                        return 0;
+                    } else if(field[y - 1][x + 1] === null && field[y + 1][x] === null) {
+                        return 1;
+                    } else if(field[y - 2][x + 1] === null && field[y - 1][x + 1] === null) {
+                        return 2;
+                    } else if(field[y + 3][x - 1] === null && field[y + 1][x] === null && field[y + 2][x] === null && field[y + 3][x] === null) {
+                        return 3;
+                    } else if(field[y + 3][x] === null && field[y + 2][x + 1] === null && field[y + 3][x + 1] === null) {
+                        return 4;
+                    } else {
+                        return null;
+                    }
+            }
+
             break;
         case "l":
             break;
