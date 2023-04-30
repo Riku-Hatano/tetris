@@ -13,13 +13,13 @@ const canMoveLeft = () => {
                     if(x - 3 >= 0 && field[y][x - 3] === null) { return true; }
                     break;
                 case 1:
-                    if(x - 1 >= 0 && field[y - 1][x - 1] === null && field[y][x - 1] === null && field[y + 1][x - 1] === null && field[y + 2][x - 1] === null) { return true; }
+                    if(x - 1 >= 0 && field[y - 2][x - 1] === null && field[y - 1][x - 1] === null && field[y][x - 1] === null && field[y + 1][x - 1] === null) { return true; }
                     break;
                 case 2:
                     if(x - 2 >= 0 && field[y][x - 2] === null) { return true; }
                     break;
                 case 3:
-                    if(x - 1 >= 0 && field[y - 2][x - 1] === null && field[y - 1][x - 1] === null && field[y][x - 1] === null && field[y + 1][x - 1] === null) { return true; }
+                    if(x - 1 >= 0 && field[y - 1][x - 1] === null && field[y][x - 1] === null && field[y + 1][x - 1] === null && field[y + 2][x - 1] === null) { return true; }
                     break;
             }
             break;

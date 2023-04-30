@@ -6,7 +6,10 @@ const KickLeftWall = () => {
         case "i":
             switch((GameStatus.block.rotateStatus + 1) % 4) {
                 case 0:
-                    if(GameStatus.block.positionX / GameStatus.block.size - 1 < 0) { //left side
+                    if(GameStatus.block.positionX / GameStatus.block.size - 1 < 0) {
+                        GameStatus.field.flags.twoBlocks = true;
+                        return true;
+                    } else if(GameStatus.block.positionX / GameStatus.block.size - 2 < 0 && GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 1] === null) {
                         return true;
                     } else {
                         return null;
@@ -15,9 +18,6 @@ const KickLeftWall = () => {
                     return null;
                 case 2:
                     if(GameStatus.block.positionX / GameStatus.block.size - 1 < 0) {
-                        GameStatus.field.flags.twoBlocks = true;
-                        return true;
-                    } else if(GameStatus.block.positionX / GameStatus.block.size - 2 < 0 && GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 1] === null) {
                         return true;
                     } else {
                         return null;

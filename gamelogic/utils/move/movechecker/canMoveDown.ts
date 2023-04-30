@@ -17,8 +17,8 @@ const canMoveDown = () => {
                         return false;
                     }
                 case 1:
-                    if(y + 2 > bottom) { return false; } //check tetrimino is the bottom of field
-                    if(field[y + 3][x] === null) {
+                    if(y + 1 > bottom) { return false; } //check tetrimino is the bottom of field
+                    if(field[y + 2][x] === null) {
                         return true;
                     } else {
                         return false;
@@ -31,8 +31,8 @@ const canMoveDown = () => {
                         return false;
                     }
                 case 3:
-                    if(y + 1 > bottom) { return false; } //check tetrimino is the bottom of field
-                    if(field[y + 2][x] === null) {
+                    if(y + 2 > bottom) { return false; } //check tetrimino is the bottom of field
+                    if(field[y + 3][x] === null) {
                         return true;
                     } else {
                         return false;
