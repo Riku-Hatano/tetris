@@ -30,19 +30,21 @@ const SuperRotationSystem = () => {
                         return null;
                     }
                 case 2:
-                    if(field[y][x - 1] === null && field[y][x] === null && field[y][x + 1] === null && field[y][x - 2] === null) { //fundamental point would be move to -1 in X direction because of the adjustment of i mino.
-                        return 0;
-                    } else if(field[y][x - 2] === null && field[y][x - 1] === null && field[y][x] === null && field[y][x - 3] === null) {
-                        return 1;
-                    } else if(field[y][x + 1] === null && field[y][x + 2] === null && field[y][x + 3] === null && field[y][x] === null) {
-                        return 2;
-                    } else if(field[y - 2][x - 2] === null && field[y - 2][x - 2] === null && field[y - 2][x - 1] === null && field[y - 2][x - 4] === null) {
-                        return 3;
-                    } else {
-                        return false;
-                    }
+                    // if(field[y][x - 1] === null && field[y][x] === null && field[y][x + 1] === null && field[y][x - 2] === null) { //fundamental point would be move to -1 in X direction because of the adjustment of i mino.
+                    //     return 0;
+                    // } else if(field[y][x - 2] === null && field[y][x - 1] === null && field[y][x] === null && field[y][x - 3] === null) {
+                    //     return 1;
+                    // } else if(field[y][x + 1] === null && field[y][x + 2] === null && field[y][x + 3] === null && field[y][x] === null) {
+                    //     return 2;
+                    // } else if(field[y - 2][x - 2] === null && field[y - 2][x - 2] === null && field[y - 2][x - 1] === null && field[y - 2][x - 4] === null) {
+                    //     return 3;
+                    // } else {
+                    //     return false;
+                    // }
+                    return 0;
                     break;
                 case 3:
+                    return 0;
                     break;
             }
             break;
