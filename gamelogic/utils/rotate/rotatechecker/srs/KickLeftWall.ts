@@ -49,51 +49,37 @@ const KickLeftWall = () => {
         case "s":
             switch((GameStatus.block.rotateStatus + 1) % 4) {
                 case 0:
-                    console.log("kickwall s 0");
-                    if(GameStatus.block.positionX / GameStatus.block.size - 1 < 0) {
-                        return true;
-                    } else {
-                        return null;
-                    }
                     break;
                 case 1:
-                    console.log("kickwall s 1");
                     break;
                 case 2:
                     console.log("kickwall s 2");
                     if(GameStatus.block.positionX / GameStatus.block.size - 1 < 0 && GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 2] === null) {
-                    // if(GameStatus.block.positionX / GameStatus.block.size - 1 < 0 && GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size] === null) {
                         return true;
                     } else {
                         return null;
                     }
-                    break;
                 case 3:
-                    console.log("kickwall s 3");
                     break;
             }
             break;
         case "z":
             switch((GameStatus.block.rotateStatus + 1) % 4) {
                 case 0:
-                    console.log("kickwall z 0");
                     if(GameStatus.block.positionX / GameStatus.block.size - 1 < 0) {
                         return true;
                     } else {
                         return null;
                     }
                 case 1:
-                    console.log("kickwall z 1");
                     break;
                 case 2:
-                    console.log("kickwall z 2");
-                    if(GameStatus.block.positionX / GameStatus.block.size - 1 < 0) {
+                    if(GameStatus.block.positionX / GameStatus.block.size - 1 < 0 && GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 2] === null) {
                         return true;
                     } else {
                         return null;
                     }
                 case 3:
-                    console.log("kickwall z 3");
                     break;
             }
             break;
@@ -107,7 +93,7 @@ const KickLeftWall = () => {
                     break;
                 case 2:
                     console.log("kickwall j 2");
-                    if(GameStatus.block.positionX / GameStatus.block.size - 1 < 0) {
+                    if(GameStatus.block.positionX / GameStatus.block.size - 1 < 0 && GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 2] === null && GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size + 2] === null) {
                         return true;
                     } else {
                         return null;
@@ -128,7 +114,7 @@ const KickLeftWall = () => {
                     break;
                 case 2:
                     console.log("kickwall l 2");
-                    if(GameStatus.block.positionX / GameStatus.block.size - 1 < 0) {
+                    if(GameStatus.block.positionX / GameStatus.block.size - 1 < 0 && GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 2] === null) {
                         return true;
                     } else {
                         return null;
