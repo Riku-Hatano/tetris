@@ -9,6 +9,7 @@ interface GS {
         isFixed: boolean,
         shape: string,
         rotateStatus: number,
+        color: string,
     }
     field: {
         width: number,
@@ -36,6 +37,7 @@ const GameStatus: GS = {
         isFixed: false,
         shape: "",
         rotateStatus: 0,
+        color: "",
     },
     field: {
         width: 0,

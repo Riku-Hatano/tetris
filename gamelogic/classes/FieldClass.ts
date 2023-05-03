@@ -8,6 +8,7 @@ class FieldClass {
     field: any[];
     flags: {
         twoBlocks: boolean,
+        isPreviousDowdn: boolean,
     }
     constructor(width: number, height: number) {
         this.width = width,
@@ -17,6 +18,7 @@ class FieldClass {
         this.field = this.initializeField();
         this.flags = {
             twoBlocks: false,
+            isPreviousDowdn: false,
         }
     }
       
@@ -29,7 +31,8 @@ class FieldClass {
             field: this.field,
             calcPiles: this.calcPiles,
             flags: {
-                twoBlocks: this.flags.twoBlocks
+                twoBlocks: this.flags.twoBlocks,
+                isPreviousDown: this.flags.isPreviousDowdn,
             }
         }
     }
@@ -51,13 +54,13 @@ class FieldClass {
         [null, null, null, null, null, null, null, null, null, null],
         [null, null, null, null, null, null, null, null, null, null],
         [null, null, null, null, null, null, null, null, null, null],
-        [null, null, "aa", null, null, null, null, null, null, null],
-        [null, null, "aa", null, null, null, null, null, null, null],
-        [null, null, "aa", null, null, null, null, null, null, null],
-        [null, null, "aa", null, null, null, null, "aa", null, null],
-        [null, null, "aa", null, null, null, null, "aa", null, null],
-        [null, null, null, null, null, null, null, "aa", null, null],
-        [null, null, null, null, null, null, null, "aa", null, null],
+        [null, null, null, null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null, null, null, null],
         [null, null, null, null, null, null, null, null, null, null],
         [null, null, null, null, null, null, null, null, null, null],
         [null, null, null, null, null, null, null, null, null, null],
