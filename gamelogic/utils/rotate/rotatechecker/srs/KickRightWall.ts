@@ -7,7 +7,7 @@ const KickRightWall = () => {
         case "i":
             switch((GameStatus.block.rotateStatus + 1) % 4) {
                 case 0:
-                    if(GameStatus.block.positionX / GameStatus.block.size + 1 >= wall) {
+                    if(GameStatus.block.positionX / GameStatus.block.size + 1 >= wall && GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 1] === null && GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.positionY - 2] === null) {
                         return true;
                     } else {
                         return null;
@@ -15,10 +15,10 @@ const KickRightWall = () => {
                 case 1:
                     return null;
                 case 2:
-                    if(GameStatus.block.positionX / GameStatus.block.size + 1 >= wall) {
+                    if(GameStatus.block.positionX / GameStatus.block.size + 1 >= wall && GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size - 1] === null && GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.positionY - 2] === null) {
                         GameStatus.field.flags.twoBlocks = true;
                         return true;
-                    } else if(GameStatus.block.positionX / GameStatus.block.size + 2 >= wall && GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 1] === null) {
+                    } else if(GameStatus.block.positionX / GameStatus.block.size + 2 >= wall && GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size - 1] === null && GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.positionY - 2] === null) {
                         return true;
                     } else {
                         return null;
