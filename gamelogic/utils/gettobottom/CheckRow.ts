@@ -1,9 +1,11 @@
+import react, { SetStateAction } from "react";
 import GameStatus from "../../status";
 import DrawBlocks from "../DrawBlocks";
 
-const CheckRow = () => {
+const CheckRow = (setScore: react.Dispatch<SetStateAction<number>>) => {
     const field = GameStatus.field.field;
     const flags = [];
+    let flagCounter = 0;
     for(let i = 0 ; i < GameStatus.field.field.length ; i++) {
         let flag = true;
         for(let cell of GameStatus.field.field[i]) {
@@ -17,12 +19,15 @@ const CheckRow = () => {
             GameStatus.field.field.unshift([null, null, null, null, null, null, null, null, null, null]);
             console.log(GameStatus.field.field);
             DrawBlocks();
+            flagCounter++;
+            GameStatus.score += 10;
+            setScore(GameStatus.score);
         }
         flags.push(flag);
     }
-    GameStatus.score += 10;
-    console.log(GameStatus);
-    return flags;
+    console.log(flags);
+    console.log(flagCounter)
+    return flagCounter;
 }
 
 export default CheckRow;
