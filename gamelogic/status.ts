@@ -20,10 +20,11 @@ interface GS {
             twoBlocks: boolean,
             isPreviousDown: boolean,
         },
-        field: number[][],
+        field: any[][],
         calcPiles: Function,
     }
     blockCounter: number,
+    score: number,
 }
 
 const GameStatus: GS = {
@@ -51,7 +52,8 @@ const GameStatus: GS = {
         field: [[]],
         calcPiles: undefined,
     },
-    blockCounter: 0
+    blockCounter: 0,
+    score: 0
 }
 
 export default GameStatus
