@@ -1,3 +1,4 @@
+import react, { SetStateAction } from "react";
 import GameStatus from "../../status";
 import canMoveDown from "./movechecker/canMoveDown";
 import canMoveLeft from "./movechecker/canMoveLeft";
@@ -5,7 +6,7 @@ import canMoveRight from "./movechecker/canMoveRight";
 import GetToBottom from "../GetToBottom";
 import { speedSetting } from "../../setting";
 
-const Move = (direction: string) => {
+const Move = (direction: string, setScore: react.Dispatch<SetStateAction<number>>) => {
     switch(direction) {
         case "right":
             switch(GameStatus.block.shape) {
@@ -840,7 +841,7 @@ const Move = (direction: string) => {
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 1] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 2] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 1] = GameStatus.block;
-                                GetToBottom();
+                                GetToBottom(setScore);
                             }
                             break;
                         case 1:
@@ -867,7 +868,7 @@ const Move = (direction: string) => {
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block; 
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 2][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block; 
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block;
-                                GetToBottom();
+                                GetToBottom(setScore);
                             }
                             break;
                         case 2:
@@ -894,7 +895,7 @@ const Move = (direction: string) => {
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 1] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 1] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 2] = GameStatus.block;
-                                GetToBottom();
+                                GetToBottom(setScore);
                             }
                             break;
                         case 3:
@@ -921,7 +922,7 @@ const Move = (direction: string) => {
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 2][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block;
-                                GetToBottom();
+                                GetToBottom(setScore);
                             }
                     }
                     break;
@@ -949,7 +950,7 @@ const Move = (direction: string) => {
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 1] = GameStatus.block;
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block;
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size - 1] = GameStatus.block;
-                        GetToBottom();
+                        GetToBottom(setScore);
                     }
                     break;
                 case "t":
@@ -972,7 +973,7 @@ const Move = (direction: string) => {
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 1] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 1] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block;
-                                GetToBottom();
+                                GetToBottom(setScore);
                             }
                             break;
                         case 1:
@@ -993,7 +994,7 @@ const Move = (direction: string) => {
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 1] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block;
-                                GetToBottom();
+                                GetToBottom(setScore);
                             }
                             break;
                         case 2:
@@ -1014,7 +1015,7 @@ const Move = (direction: string) => {
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 1] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 1] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block;
-                                GetToBottom();
+                                GetToBottom(setScore);
                             }
                             break;
                         case 3:
@@ -1035,7 +1036,7 @@ const Move = (direction: string) => {
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 1] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block;
-                                GetToBottom();
+                                GetToBottom(setScore);
                             }
                             break;
                     }
@@ -1060,7 +1061,7 @@ const Move = (direction: string) => {
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size + 1] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 1] = GameStatus.block;
-                                GetToBottom();
+                                GetToBottom(setScore);
                             }
                             break;
                         case 1:
@@ -1081,7 +1082,7 @@ const Move = (direction: string) => {
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 1] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size + 1] = GameStatus.block;
-                                GetToBottom();
+                                GetToBottom(setScore);
                             }
                             break;
                         case 2:
@@ -1102,7 +1103,7 @@ const Move = (direction: string) => {
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 1] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size - 1] = GameStatus.block;
-                                GetToBottom();
+                                GetToBottom(setScore);
                             }
                             break;
                         case 3:
@@ -1123,7 +1124,7 @@ const Move = (direction: string) => {
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size - 1] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 1] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block;
-                                GetToBottom();
+                                GetToBottom(setScore);
                             }
                             break;
                     }
@@ -1148,7 +1149,7 @@ const Move = (direction: string) => {
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size - 1] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 1] = GameStatus.block;
-                                GetToBottom();
+                                GetToBottom(setScore);
                             }
                             break;
                         case 1:
@@ -1169,7 +1170,7 @@ const Move = (direction: string) => {
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size + 1] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 1] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block;
-                                GetToBottom();
+                                GetToBottom(setScore);
                             }
                             break;
                         case 2:
@@ -1190,7 +1191,7 @@ const Move = (direction: string) => {
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 1] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size + 1] = GameStatus.block;
-                                GetToBottom();
+                                GetToBottom(setScore);
                             }
                             break;
                         case 3:
@@ -1211,7 +1212,7 @@ const Move = (direction: string) => {
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size ][GameStatus.block.positionX / GameStatus.block.size - 1] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size - 1] = GameStatus.block;
-                                GetToBottom();
+                                GetToBottom(setScore);
                             }
                             break;
                     }
@@ -1236,7 +1237,7 @@ const Move = (direction: string) => {
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size - 1] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 1] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 1] = GameStatus.block;
-                                GetToBottom();
+                                GetToBottom(setScore);
                             }
                             break;
                         case 1:
@@ -1257,7 +1258,7 @@ const Move = (direction: string) => {
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size + 1] = GameStatus.block;
-                                GetToBottom();
+                                GetToBottom(setScore);
                             }
                             break;
                         case 2:
@@ -1278,7 +1279,7 @@ const Move = (direction: string) => {
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 1] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 1] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size + 1] = GameStatus.block;
-                                GetToBottom();
+                                GetToBottom(setScore);
                             }
                             break;
                         case 3:
@@ -1299,7 +1300,7 @@ const Move = (direction: string) => {
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size - 1] = GameStatus.block;
-                                GetToBottom();
+                                GetToBottom(setScore);
                             }
                             break;
                     }
@@ -1324,7 +1325,7 @@ const Move = (direction: string) => {
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 1] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 1] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size + 1] = GameStatus.block;
-                                GetToBottom();
+                                GetToBottom(setScore);
                             }
                             break;
                         case 1:
@@ -1345,7 +1346,7 @@ const Move = (direction: string) => {
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size + 1] = GameStatus.block;
-                                GetToBottom();
+                                GetToBottom(setScore);
                             }
                             break;
                         case 2:
@@ -1366,7 +1367,7 @@ const Move = (direction: string) => {
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 1] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size + 1] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size - 1] = GameStatus.block;
-                                GetToBottom();
+                                GetToBottom(setScore);
                             }
                             break;
                         case 3:
@@ -1387,7 +1388,7 @@ const Move = (direction: string) => {
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size + 1][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block;
                                 GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size - 1] = GameStatus.block;
-                                GetToBottom();
+                                GetToBottom(setScore);
                             }
                             break;
                     }

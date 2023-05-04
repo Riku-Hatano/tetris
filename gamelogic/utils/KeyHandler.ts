@@ -10,16 +10,16 @@ const KeyHandler = (e: any, setScore: react.Dispatch<react.SetStateAction<number
     GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size] = null; //delete previous block
     switch(e.key) {
         case "ArrowRight":
-            Move("right");
+            Move("right", setScore);
             GameStatus.field.flags.isPreviousDown = false;
             break;
         case "ArrowLeft":
-            Move("left");
+            Move("left", setScore);
             GameStatus.field.flags.isPreviousDown = false;
             break;
         case "ArrowDown":
             console.log("down")
-            Move("down");
+            Move("down", setScore);
             GameStatus.field.flags.isPreviousDown = true;
             break;
         case "ArrowUp":
