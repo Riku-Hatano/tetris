@@ -14,46 +14,46 @@ const CreateRect = () => {
     // switch(newBlock.shape) {
     switch(TetriNames[rand]) {
         case "i":
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size] = GameStatus.block.id;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size - 1] = GameStatus.block.id;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size - 2] = GameStatus.block.id;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size + 1] = GameStatus.block.id;
+            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size] = GameStatus.block;
+            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size - 1] = GameStatus.block;
+            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size - 2] = GameStatus.block;
+            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size + 1] = GameStatus.block;
             break;
         case "o":
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size] = GameStatus.block.id;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size - 1] = GameStatus.block.id;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size + 1][GameStatus.block.initialX / GameStatus.block.size] = GameStatus.block.id;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size + 1][GameStatus.block.initialX / GameStatus.block.size - 1] = GameStatus.block.id;
+            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size] = GameStatus.block;
+            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size - 1] = GameStatus.block;
+            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size + 1][GameStatus.block.initialX / GameStatus.block.size] = GameStatus.block;
+            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size + 1][GameStatus.block.initialX / GameStatus.block.size - 1] = GameStatus.block;
             break;
         case "t":
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size] = GameStatus.block.id;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size - 1] = GameStatus.block.id;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size + 1] = GameStatus.block.id;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size - 1][GameStatus.block.initialX / GameStatus.block.size] = GameStatus.block.id;
+            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size] = GameStatus.block;
+            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size - 1] = GameStatus.block;
+            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size + 1] = GameStatus.block;
+            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size - 1][GameStatus.block.initialX / GameStatus.block.size] = GameStatus.block;
             break;
         case "s":
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size] = GameStatus.block.id;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size - 1][GameStatus.block.initialX / GameStatus.block.size] = GameStatus.block.id;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size - 1][GameStatus.block.initialX / GameStatus.block.size + 1] = GameStatus.block.id;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size - 1] = GameStatus.block.id;
+            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size] = GameStatus.block;
+            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size - 1][GameStatus.block.initialX / GameStatus.block.size] = GameStatus.block;
+            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size - 1][GameStatus.block.initialX / GameStatus.block.size + 1] = GameStatus.block;
+            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size - 1] = GameStatus.block;
             break;
         case "z":
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size] = GameStatus.block.id;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size - 1][GameStatus.block.initialX / GameStatus.block.size - 1] = GameStatus.block.id;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size - 1][GameStatus.block.initialX / GameStatus.block.size] = GameStatus.block.id;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size + 1] = GameStatus.block.id;
+            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size] = GameStatus.block;
+            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size - 1][GameStatus.block.initialX / GameStatus.block.size - 1] = GameStatus.block;
+            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size - 1][GameStatus.block.initialX / GameStatus.block.size] = GameStatus.block;
+            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size + 1] = GameStatus.block;
             break;
         case "j":
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size] = GameStatus.block.id;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size - 1] = GameStatus.block.id;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size + 1] = GameStatus.block.id;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size - 1][GameStatus.block.initialX / GameStatus.block.size - 1] = GameStatus.block.id;
+            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size] = GameStatus.block;
+            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size - 1] = GameStatus.block;
+            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size + 1] = GameStatus.block;
+            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size - 1][GameStatus.block.initialX / GameStatus.block.size - 1] = GameStatus.block;
             break;
         case "l":
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size] = GameStatus.block.id;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size + 1] = GameStatus.block.id;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size - 1] = GameStatus.block.id;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size - 1][GameStatus.block.initialX / GameStatus.block.size + 1] = GameStatus.block.id;
+            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size] = GameStatus.block;
+            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size + 1] = GameStatus.block;
+            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size - 1] = GameStatus.block;
+            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size - 1][GameStatus.block.initialX / GameStatus.block.size + 1] = GameStatus.block;
             break;
     }
     return newBlock;

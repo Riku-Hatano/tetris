@@ -20,6 +20,8 @@ const CheckRow = () => {
         }
         flags.push(flag);
     }
+    GameStatus.score += 10;
+    console.log(GameStatus);
     return flags;
 }
 

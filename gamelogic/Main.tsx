@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { blockSetting, fieldSetting, speedSetting } from "./setting";
 import FieldClass from "./classes/FieldClass";
 import GameStatus from "./status";
@@ -14,7 +14,8 @@ const Main = () => {
     GameStatus.field = field.returnAll();
     const block = CreateRect();
     GameStatus.block = block.returnAll();
-    
+
+    const [score, setScore] = useState(0);
     useEffect(() => {
         const tetris = ref.current;
         const ctx: CanvasRenderingContext2D = tetris.getContext("2d");
@@ -25,7 +26,16 @@ const Main = () => {
     }, []);
     return (
         <>
-            <canvas id="tetris" width={fieldSetting.width} height={fieldSetting.height} ref={ref} style={{backgroundColor: "gainsboro"}}></canvas>
+            <section style={{display: "flex"}}>
+                <canvas id="tetris" width={fieldSetting.width} height={fieldSetting.height} ref={ref} style={{backgroundColor: "black"}}></canvas>
+                <article style={{backgroundColor: "gainsboro", width: "100px", height: "200px", display: "flex", flexDirection: "column"}}>
+                    <div style={{height: "50px"}}></div>
+                    <div style={{height: "50px", display: "flex"}}>
+                        <h3 style={{width: "100%", textAlign: "center"}}>score</h3>
+                        <p>{score}</p>
+                    </div>
+                </article>
+            </section>
         </>
     )
 }

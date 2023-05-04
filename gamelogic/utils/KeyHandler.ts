@@ -27,7 +27,7 @@ const KeyHandler = (e: any) => {
             console.log(e.key);
             break;
     }
-    GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block.id; //renew the current block. 
+    GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block; //renew the current block. 
     canvas.clearRect(0, 0, GameStatus.field.width, GameStatus.field.height);
     DrawBlocks(); //draw all of tetrimino exept for current one
 }
