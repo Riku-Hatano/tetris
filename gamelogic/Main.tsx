@@ -17,12 +17,15 @@ const Main = () => {
 
     const [score, setScore] = useState(0);
     useEffect(() => {
+        console.log("useEffect");
         const tetris = ref.current;
         const ctx: CanvasRenderingContext2D = tetris.getContext("2d");
         canvas = ctx; //to export the refference of canvas created at this file.
         ctx.fillRect(block.positionX, block.positionY, block.size, block.size);
         DrawBlocks();
-        document.addEventListener("keydown", KeyHandler);
+        
+        document.addEventListener("keydown", (e)=>{KeyHandler(e, setScore)});
+        
     }, []);
     return (
         <>
@@ -38,6 +41,10 @@ const Main = () => {
             </section>
         </>
     )
+}
+
+export const ScoreChanger = () => {
+
 }
 
 export { canvas }

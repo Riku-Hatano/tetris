@@ -7,7 +7,6 @@ const GetToBottom = () => {
     CalcPiles();
     CheckRow();
     CreateRect();
-    console.log(GameStatus.field.field)
 }
 
 export default GetToBottom;

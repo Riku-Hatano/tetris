@@ -1,10 +1,12 @@
+import react from "react";
 import GameStatus from "../status";
 import { canvas } from "../Main";
 import DrawBlocks from "./DrawBlocks";
 import Rotate from "./rotate/Rotate";
 import Move from "./move/Move";
 
-const KeyHandler = (e: any) => {
+// const KeyHandler = (e: any) => {
+const KeyHandler = (e: any, setScore: react.Dispatch<react.SetStateAction<number>>) => {
     GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size] = null; //delete previous block
     switch(e.key) {
         case "ArrowRight":
@@ -16,6 +18,7 @@ const KeyHandler = (e: any) => {
             GameStatus.field.flags.isPreviousDown = false;
             break;
         case "ArrowDown":
+            console.log("down")
             Move("down");
             GameStatus.field.flags.isPreviousDown = true;
             break;
