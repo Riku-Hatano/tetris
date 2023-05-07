@@ -28,6 +28,9 @@ const SuperRotationSystem = () => {
                         return null;
                     }
                 case 1:
+                    if(y + 3 > 20) {
+                        return null;
+                    }
                     if(field[y - 1][x] === null && field[y + 1][x] === null && field[y + 2][x] === null) {
                         console.log("i case0 return0");
                         return 0;
@@ -66,6 +69,9 @@ const SuperRotationSystem = () => {
                         return null;
                     }
                 case 3:
+                    if(y + 3 > 20) {
+                        return null;
+                    }
                     if(field[y - 2][x] === null && field[y - 1][x] === null && field[y + 1][x] === null) {
                         console.log("i case3 return0");
                         return 0;
@@ -104,6 +110,10 @@ const SuperRotationSystem = () => {
                     }
                     break;
                 case 1:
+                    if(y + 1 >= 20) {
+                        console.log("failed to kick floor")
+                        return null;
+                    }
                     if(field[y + 1][x] === null) {
                         return 0;
                     } else if(field[y - 1][x - 1] === null && field[y][x] === null && field[y + 1][x - 1] === null) {
@@ -135,12 +145,19 @@ const SuperRotationSystem = () => {
                     if(field[y - 1][x] === null) {
                         return 0;
                     } else if(field[y - 1][x + 1] === null && field[y][x] === null && field[y + 1][x + 1] === null) {
+                        console.log("return1")
                         return 1;
+                    } else if (y === 18 && field[y - 1][x] !== null) {
+                        console.log("failed to rotate because of above block");
+                        return null;
                     } else if(field[y - 1][x] === null && field[y - 2][x + 1] === null && field[y - 1][x + 1] === null && field[y][x + 1] === null) {
+                        console.log("return12")
                         return 2;
                     } else if(field[y + 2][x] === null && field[y + 3][x] === null && field[y + 2][x - 1] === null) {
+                        console.log("return3")
                         return 3;
                     } else if(field[y + 2][x] === null && field[y + 1][x + 1] === null && field[y + 2][x + 1] === null && field[y + 3][x + 1] === null) {
+                        console.log("return4")
                         return 4;
                     } else {
                         return false;
@@ -170,6 +187,9 @@ const SuperRotationSystem = () => {
                     }
                     break;
                 case 1:
+                    if(y >= 19) {
+                        return false;
+                    }
                     if(field[y][x + 1] === null && field[y + 1][x + 1] === null) {
                         console.log(`shape: ${GameStatus.block.shape} rs: ${GameStatus.block.rotateStatus} return: 0`)
                         return 0;
@@ -219,6 +239,9 @@ const SuperRotationSystem = () => {
                     } else if(field[y - 2][x] === null && field[y - 1][x] === null && field[y - 1][x + 1] === null) {
                         console.log(`shape: ${GameStatus.block.shape} rs: ${GameStatus.block.rotateStatus} return: 2`)
                         return 2;
+                    } else if(y === 18 && field[y - 1][x - 1] !== null) {
+                        console.log("failed to rotate because of exception handler");
+                        return null;
                     } else if(field[y + 2][x - 1] === null && field[y + 2][x] === null && field[y + 3][x] === null) {
                         console.log(`shape: ${GameStatus.block.shape} rs: ${GameStatus.block.rotateStatus} return: 3`)
                         return 3;
@@ -251,6 +274,9 @@ const SuperRotationSystem = () => {
                         return 4;
                     }
                 case 1:
+                    if(y >= 19) {
+                        return false;
+                    }
                     if(field[y - 1][x + 1] === null && field[y + 1][x] === null) {
                         console.log("z case0 return0");
                         return 0;
@@ -296,6 +322,9 @@ const SuperRotationSystem = () => {
                     } else if(field[y - 1][x] === null && field[y - 2][x + 1] === null && field[y - 1][x + 1] === null) {
                         console.log("z case2 return 2");
                         return 2;
+                    } else if(y === 18 && field[y - 1][x + 1] !== null) {
+                        console.log("z caseException cannot rotate");
+                        return null;
                     } else if(field[y + 2][x - 1] === null && field[y + 3][x - 1] === null && field[y + 2][x] === null) {
                         console.log("z case2 return 3");
                         return 3;

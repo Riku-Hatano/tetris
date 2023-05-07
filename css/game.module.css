@@ -1,0 +1,42 @@
+.gameContainer {
+    display: flex;
+}
+
+.tetris {
+    background-color: black;
+}
+
+.scoreBoard {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    height: 200px;
+    background-color: gainsboro;
+}
+
+.nextBlockContainer {
+    height: 180px;
+    background-color: gray;
+}
+
+.nextBlockContainer > h4 {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+}
+
+.nextBlockContainer > .nextBlock {
+    /* height(200px) - h4(40px) - .score(20px) */
+}
+
+.score {
+    height: 20px;
+    background-color: gainsboro;
+}
+
+.score > p {
+    margin: 0;
+    text-align: center;
+}

@@ -1,5 +1,4 @@
 import GameStatus from "../../../../status";
-import { speedSetting } from "../../../../setting";
 
 const KickFloor = () => {
     const bottom = GameStatus.field.field.length - (GameStatus.block.initialY / GameStatus.block.size);
@@ -9,7 +8,7 @@ const KickFloor = () => {
                 case 0:
                     return null;
                 case 1:
-                    if(GameStatus.block.positionY / GameStatus.block.size + 1 > bottom) {
+                    if(GameStatus.block.positionY / GameStatus.block.size + 1 > bottom && GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size] === null && GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 2][GameStatus.block.positionX / GameStatus.block.size] === null) {
                         return true;
                     } else {
                         return null;
@@ -17,10 +16,10 @@ const KickFloor = () => {
                 case 2:
                     return null;
                 case 3:
-                    if(GameStatus.block.positionY / GameStatus.block.size + 1 > bottom) {
+                    if(GameStatus.block.positionY / GameStatus.block.size + 1 > bottom  && GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size] === null && GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 2][GameStatus.block.positionX / GameStatus.block.size] === null) {
                         GameStatus.field.flags.twoBlocks = true;
                         return true;
-                    } else if(GameStatus.block.positionY / GameStatus.block.size + 2 > bottom) {
+                    } else if(GameStatus.block.positionY / GameStatus.block.size + 2 > bottom  && GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size] === null && GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 2][GameStatus.block.positionX / GameStatus.block.size] === null) {
                         return true;
                     } else {
                         return null;
@@ -33,7 +32,9 @@ const KickFloor = () => {
                 case 0:
                     return null;
                 case 1:
-                    if(GameStatus.block.positionY / GameStatus.block.size > bottom) {
+                    if(GameStatus.block.positionY / GameStatus.block.size > bottom && GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 2][GameStatus.block.positionX / GameStatus.block.size] === null) {
+                    // if(GameStatus.block.positionY / GameStatus.block.size > bottom) {
+                        console.log(GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 1][GameStatus.block.positionX / GameStatus.block.size])
                         return true;
                     } else {
                         return null;
@@ -49,7 +50,7 @@ const KickFloor = () => {
                 case 0:
                     return null;
                 case 1:
-                    if(GameStatus.block.positionY / GameStatus.block.size + 1 > bottom) {
+                    if(GameStatus.block.positionY / GameStatus.block.size + 1 > bottom && GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 2][GameStatus.block.positionX / GameStatus.block.size] === null) {
                         return true;
                     } else {
                         return null;
@@ -65,7 +66,8 @@ const KickFloor = () => {
                 case 0:
                     return null;
                 case 1:
-                    if(GameStatus.block.positionY / GameStatus.block.size + 1 > bottom) {
+                    if(GameStatus.block.positionY / GameStatus.block.size + 1 > bottom && GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 2][GameStatus.block.positionX / GameStatus.block.size + 1] === null) {
+                        console.log(GameStatus.block.positionY / GameStatus.block.size);
                         return true;
                     } else {
                         return null;
@@ -81,7 +83,7 @@ const KickFloor = () => {
                 case 0:
                     return null;
                 case 1:
-                    if(GameStatus.block.positionY / GameStatus.block.size + 1 > bottom) {
+                    if(GameStatus.block.positionY / GameStatus.block.size + 1 > bottom && GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 2][GameStatus.block.positionX / GameStatus.block.size] === null && GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size - 2][GameStatus.block.positionX / GameStatus.block.size + 1] === null) {
                         return true;
                     } else {
                         return null;

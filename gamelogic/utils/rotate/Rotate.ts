@@ -104,7 +104,8 @@ const Rotate = () => {
     
                         GameStatus.block.positionX / GameStatus.block.size + 2 >= wall ? console.log("cannot adjust axis") : GameStatus.block.positionX += speedSetting.testSpeed;
                         GameStatus.block.positionY -= speedSetting.testSpeed; //super rotation system
-                        GameStatus.block.positionX -= speedSetting.testSpeed * 2; //super rotation system
+                        // GameStatus.block.positionX -= speedSetting.testSpeed * 2; //super rotation system
+                        GameStatus.block.positionX -= speedSetting.testSpeed; //super rotation system
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block;
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 1] = GameStatus.block;
                         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size - 2] = GameStatus.block;

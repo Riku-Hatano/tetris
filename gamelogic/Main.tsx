@@ -5,8 +5,11 @@ import GameStatus from "./status";
 import KeyHandler from "./utils/KeyHandler";
 import CreateRect from "./utils/gettobottom/CreateRect";
 import DrawBlocks from "./utils/DrawBlocks";
+import DrawNextBlocks from "./drawNextBlocks/DrawNextBlocks";
+import styles from "../css/game.module.css";
 
 let canvas: any; //initialization to export
+let nextBlocks: any;
 
 const field = new FieldClass(fieldSetting.width, fieldSetting.height); //these four lines are also for initialization. If these are inside of useEffect, CreateRect is called twice and see bug.
 GameStatus.field = field.returnAll();
@@ -15,6 +18,7 @@ GameStatus.block = block.returnAll();
 
 const Main = () => {
     const ref = useRef<HTMLCanvasElement>(null);
+    const blockRef = useRef<HTMLCanvasElement>(null);
     const field = new FieldClass(fieldSetting.width, fieldSetting.height);
 
     const [score, setScore] = useState(0); //this setScore will go through KeyHandler.ts -> Move.ts -> GetToBottom.ts -> CheckRow.ts and then finaly used.
@@ -27,6 +31,11 @@ const Main = () => {
         canvas = ctx; //to export the refference of canvas created at this file.
         ctx.fillRect(block.positionX, block.positionY, block.size, block.size); //create Tetris field.
         DrawBlocks(); //Draw first block depending on GameStatus.field.firld
+
+        const nextBlock = blockRef.current;
+        const blockCtx: CanvasRenderingContext2D = nextBlock.getContext("2d");
+        nextBlocks = blockCtx;
+        DrawNextBlocks();
         
         document.addEventListener("keydown", handleKeyDown);
         return () => {
@@ -36,12 +45,14 @@ const Main = () => {
 
     return (
         <>
-            <section style={{display: "flex"}}>
-                <canvas id="tetris" width={fieldSetting.width} height={fieldSetting.height} ref={ref} style={{backgroundColor: "black"}}></canvas>
-                <article style={{backgroundColor: "gainsboro", width: "100px", height: "200px", display: "flex", flexDirection: "column"}}>
-                    <div style={{height: "50px"}}></div>
-                    <div style={{height: "50px", display: "flex"}}>
-                        <h3 style={{width: "100%", textAlign: "center"}}>score</h3>
+            <section className={styles.gameContainer}>
+                <canvas id="tetris" className={styles.tetris} width={fieldSetting.width} height={fieldSetting.height} ref={ref}></canvas>
+                <article className={styles.scoreBoard}>
+                    <div className={styles.nextBlockContainer}>
+                        <h4>next blocks</h4>
+                        <canvas id="nextBlock" ref={blockRef} className={styles.nextBlock}></canvas>
+                    </div>
+                    <div className={styles.score}>
                         <p>{score}</p>
                     </div>
                 </article>
@@ -50,9 +61,5 @@ const Main = () => {
     )
 }
 
-export const ScoreChanger = () => {
-
-}
-
-export { canvas }
+export { canvas, nextBlocks }
 export default Main;

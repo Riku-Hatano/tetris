@@ -25,6 +25,7 @@ interface GS {
     }
     blockCounter: number,
     score: number,
+    nextBlock: string[],
 }
 
 const GameStatus: GS = {
@@ -53,7 +54,8 @@ const GameStatus: GS = {
         calcPiles: undefined,
     },
     blockCounter: 0,
-    score: 0
+    score: 0,
+    nextBlock: []
 }
 
 export default GameStatus

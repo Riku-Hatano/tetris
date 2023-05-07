@@ -1,18 +1,36 @@
 import GameStatus from "../../status";
 import BlockClass from "../../classes/BlockClass";
+import DrawNextBlocks from "../../drawNextBlocks/DrawNextBlocks";
 import { blockSetting } from "../../setting";
 
 const TetriNames = [
     "i", "o", "t", "s", "z", "j", "l"
 ]
 
+for(let i = 0 ; i < 3 ; i++) { //this function is for test.
+    GameStatus.nextBlock.push("j");
+}
+
+// for(let i = 0 ; i < 3 ; i++) { //Only first time, select four tetriminoes and show three of them at nextBlock, which is right side of Tetris game.
+//     const rand = Math.floor(Math.random() * 7);
+//     GameStatus.nextBlock.push(TetriNames[rand]);
+// }
+
 const CreateRect = () => {
-    const rand = Math.floor(Math.random() * 7);
-    const newBlock = new BlockClass(blockSetting.size, blockSetting.initialX, blockSetting.initialY, GameStatus.blockCounter++, TetriNames[rand]);
+    const newBlock = new BlockClass(blockSetting.size, blockSetting.initialX, blockSetting.initialY, GameStatus.blockCounter++, GameStatus.nextBlock[0]);
     newBlock.setColor();
     GameStatus.block = newBlock;
-    // switch(newBlock.shape) {
-    switch(TetriNames[rand]) {
+    GameStatus.nextBlock.shift();
+    GameStatus.nextBlock.push("j"); //this lines are for test.
+
+    // const newBlock = new BlockClass(blockSetting.size, blockSetting.initialX, blockSetting.initialY, GameStatus.blockCounter++, GameStatus.nextBlock[0]);
+    // newBlock.setColor();
+    // GameStatus.block = newBlock;
+    // GameStatus.nextBlock.shift();
+    // const rand = Math.floor(Math.random() * 7);
+    // GameStatus.nextBlock.push(TetriNames[rand]);
+    DrawNextBlocks();
+        switch(GameStatus.block.shape) {
         case "i":
             GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size] = GameStatus.block;
             GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size - 1] = GameStatus.block;

@@ -35,6 +35,7 @@ class BlockClass {
             color: this.color,
         }
     }
+    
     setColor() {
         switch(this.shape) {
             case "i":
