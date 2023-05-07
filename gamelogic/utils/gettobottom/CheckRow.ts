@@ -3,10 +3,10 @@ import GameStatus from "../../status";
 import DrawBlocks from "../DrawBlocks";
 
 const CheckRow = (setScore: react.Dispatch<SetStateAction<number>>) => {
-    const field = GameStatus.field.field;
+    const field = 20
     const flags = [];
     let flagCounter = 0;
-    for(let i = 0 ; i < GameStatus.field.field.length ; i++) {
+    for(let i = 0 ; i < field ; i++) {
         let flag = true;
         for(let cell of GameStatus.field.field[i]) {
             if(cell === null) {

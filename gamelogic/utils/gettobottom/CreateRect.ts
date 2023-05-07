@@ -8,7 +8,7 @@ const TetriNames = [
 ]
 
 for(let i = 0 ; i < 3 ; i++) { //this function is for test.
-    GameStatus.nextBlock.push("j");
+    GameStatus.nextBlock.push("z");
 }
 
 // for(let i = 0 ; i < 3 ; i++) { //Only first time, select four tetriminoes and show three of them at nextBlock, which is right side of Tetris game.
@@ -21,7 +21,7 @@ const CreateRect = () => {
     newBlock.setColor();
     GameStatus.block = newBlock;
     GameStatus.nextBlock.shift();
-    GameStatus.nextBlock.push("j"); //this lines are for test.
+    GameStatus.nextBlock.push("z"); //this lines are for test.
 
     // const newBlock = new BlockClass(blockSetting.size, blockSetting.initialX, blockSetting.initialY, GameStatus.blockCounter++, GameStatus.nextBlock[0]);
     // newBlock.setColor();
