@@ -17,7 +17,6 @@ const field = new FieldClass(fieldSetting.width, fieldSetting.height); //these f
 GameStatus.field = field.returnAll();
 const block = CreateRect();
 GameStatus.block = block.returnAll();
-DropBlock();
 
 const Main = () => {
     const ref = useRef<HTMLCanvasElement>(null);
@@ -40,6 +39,8 @@ const Main = () => {
         nextBlocks = blockCtx;
         DrawNextBlocks();
         
+        DropBlock();
+
         document.addEventListener("keydown", handleKeyDown);
         return () => {
             document.removeEventListener("keydown", handleKeyDown); //to avoid for KeyHandler to be implemented multiple times because of component-mounting.
