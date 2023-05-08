@@ -1,10 +1,10 @@
 import { useRef, useEffect, useState, useLayoutEffect } from "react";
-import { blockSetting, fieldSetting, speedSetting } from "./setting";
+import { fieldSetting } from "./setting";
 import FieldClass from "./classes/FieldClass";
 import GameStatus from "./status";
 import KeyHandler from "./utils/KeyHandler";
 import CreateRect from "./utils/gettobottom/CreateRect";
-import DrawBlocks from "./utils/DrawBlocks";
+import DrawBlocks from "./utils/drawblocks/DrawBlocks";
 import DrawNextBlocks from "./utils/drawNextBlocks/DrawNextBlocks";
 import styles from "../css/game.module.css";
 import GameOverModal from "./utils/gameover/GameOverModal";
@@ -21,7 +21,6 @@ GameStatus.block = block.returnAll();
 const Main = () => {
     const ref = useRef<HTMLCanvasElement>(null);
     const blockRef = useRef<HTMLCanvasElement>(null);
-    const field = new FieldClass(fieldSetting.width, fieldSetting.height);
 
     const [score, setScore] = useState(0); //this setScore will go through KeyHandler.ts -> Move.ts -> GetToBottom.ts -> CheckRow.ts and then finaly used.
     const handleKeyDown = (e: any) => {
@@ -39,7 +38,7 @@ const Main = () => {
         nextBlocks = blockCtx;
         DrawNextBlocks();
         
-        DropBlock();
+        DropBlock(setScore);
 
         document.addEventListener("keydown", handleKeyDown);
         return () => {

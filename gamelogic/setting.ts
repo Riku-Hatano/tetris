@@ -7,7 +7,6 @@ export const blockSetting = {
 export const fieldSetting = {
     width: 100,
     height: 200,
-    status: new Array(),
 }
 
 export const speedSetting = {

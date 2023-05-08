@@ -1,7 +1,7 @@
 import react from "react";
 import GameStatus from "../status";
 import { canvas } from "../Main";
-import DrawBlocks from "./DrawBlocks";
+import DrawBlocks from "./drawblocks/DrawBlocks";
 import Rotate from "./rotate/Rotate";
 import Move from "./move/Move";
 
