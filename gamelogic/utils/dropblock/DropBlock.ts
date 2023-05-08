@@ -3,7 +3,7 @@ import DrawBlocks from "../DrawBlocks";
 import Move from "../move/Move";
 import { canvas } from "../../Main";
 
-let isRan = false;
+let dropBlockInterval: NodeJS.Timer = null;
 const DropBlock = () => {
     const drop = () => {
         Move("down");
@@ -12,10 +12,10 @@ const DropBlock = () => {
         canvas.clearRect(0, 0, GameStatus.field.width, GameStatus.field.height);
         DrawBlocks();
     }
-    if(!isRan) {
-        isRan = true;
-        setInterval(drop, 1000);
+    if(dropBlockInterval === null) {
+        dropBlockInterval = setInterval(drop, 1000);
     }
 }
 
+export { dropBlockInterval }
 export default DropBlock;

@@ -1,5 +1,8 @@
+import { dropBlockInterval } from "../dropblock/DropBlock";
+
 const GameOver = () => {
-    console.log("game over");
+    clearInterval(dropBlockInterval);
+    alert("gameover");
 }
 
 export default GameOver;
