@@ -5,8 +5,10 @@ import GameStatus from "./status";
 import KeyHandler from "./utils/KeyHandler";
 import CreateRect from "./utils/gettobottom/CreateRect";
 import DrawBlocks from "./utils/DrawBlocks";
-import DrawNextBlocks from "./drawNextBlocks/DrawNextBlocks";
+import DrawNextBlocks from "./utils/drawNextBlocks/DrawNextBlocks";
 import styles from "../css/game.module.css";
+import GameOverModal from "./utils/gameover/GameOverModal";
+import DropBlock from "./utils/dropblock/DropBlock";
 
 let canvas: any; //initialization to export
 let nextBlocks: any;
@@ -15,6 +17,7 @@ const field = new FieldClass(fieldSetting.width, fieldSetting.height); //these f
 GameStatus.field = field.returnAll();
 const block = CreateRect();
 GameStatus.block = block.returnAll();
+DropBlock();
 
 const Main = () => {
     const ref = useRef<HTMLCanvasElement>(null);
@@ -56,6 +59,7 @@ const Main = () => {
                         <p>{score}</p>
                     </div>
                 </article>
+                <GameOverModal score={score}></GameOverModal>
             </section>
         </>
     )

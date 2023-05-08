@@ -6,7 +6,7 @@ import canMoveRight from "./movechecker/canMoveRight";
 import GetToBottom from "../GetToBottom";
 import { speedSetting } from "../../setting";
 
-const Move = (direction: string, setScore: react.Dispatch<SetStateAction<number>>) => {
+const Move = (direction: string, setScore: react.Dispatch<SetStateAction<number>> = null) => {
     switch(direction) {
         case "right":
             switch(GameStatus.block.shape) {

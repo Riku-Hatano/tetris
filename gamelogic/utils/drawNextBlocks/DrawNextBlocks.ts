@@ -1,7 +1,7 @@
 import next from "next/types";
-import Game from "../../pages/game";
-import { nextBlocks } from "../Main";
-import GameStatus from "../status";
+import Game from "../../../pages/game";
+import { nextBlocks } from "../../Main";
+import GameStatus from "../../status";
 
 const DrawNextBlocks = () => {
     let x = 20;

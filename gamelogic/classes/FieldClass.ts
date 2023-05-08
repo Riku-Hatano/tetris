@@ -65,7 +65,7 @@ class FieldClass {
         [null, null, null, null, null, null, null, null, null, null],
         [null, null, null, "aa", "aa", "aa", "aa", null, null, null],
         [null, null, null, null, null, null, null, null, null, null],
-        [null, null, null, "aa", "aa", "aa", "aa", null, null, null],
+        [null, null, null, null, null, null, null, null, null, null],
         [null, null, null, null, null, null, null, null, null, null],
         ["gr", "gr", "gr", "gr", "gr", "gr", "gr", "gr", "gr", "gr"],
         ["gr", "gr", "gr", "gr", "gr", "gr", "gr", "gr", "gr", "gr"],
