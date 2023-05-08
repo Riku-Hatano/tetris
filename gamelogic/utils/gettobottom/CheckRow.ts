@@ -17,7 +17,6 @@ const CheckRow = (setScore: react.Dispatch<SetStateAction<number>>) => {
         if(flag === true) {
             GameStatus.field.field.splice(i, 1);
             GameStatus.field.field.unshift([null, null, null, null, null, null, null, null, null, null]);
-            console.log(GameStatus.field.field);
             DrawBlocks();
             flagCounter++;
             GameStatus.score += 10;

@@ -1,5 +1,4 @@
 import GameStatus from "../../../status";
-import { speedSetting } from "../../../setting";
 
 const canMoveLeft = () => {
     const field = GameStatus.field.field;
