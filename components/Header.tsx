@@ -2,7 +2,8 @@ import Link from "next/link";
 import CheckLogUser from "../utils/CheckLogUser";
 
 const Header = () => {
-    const logUser = CheckLogUser()
+    const logUser = CheckLogUser();
+    console.log(logUser);
     return (
         <>
             <ul>

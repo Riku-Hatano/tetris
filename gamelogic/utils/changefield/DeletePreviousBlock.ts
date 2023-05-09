@@ -102,13 +102,13 @@ const DeletePrevouisBlock = () => {
                     field[y][x] = null;
                     field[y - 1][x] = null;
                     field[y - 1][x - 1] = null;
-                    field[y][x + 1] = GameStatus.block
+                    field[y][x + 1] = null;
                 break;
                 case 1:
-                        field[y][x] = null;
-                        field[y - 1][x + 1] = null;
-                        field[y][x + 1] = null;
-                        field[y + 1][x] = null;
+                    field[y][x] = null;
+                    field[y - 1][x + 1] = null;
+                    field[y][x + 1] = null;
+                    field[y + 1][x] = null;
                     break;
                 case 2:
                     field[y][x] = null;
@@ -181,6 +181,7 @@ const DeletePrevouisBlock = () => {
             }
             break;
     }
+    GameStatus.field.field = field;
 }
 
 export default DeletePrevouisBlock;

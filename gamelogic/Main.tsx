@@ -38,7 +38,7 @@ const Main = () => {
         nextBlocks = blockCtx;
         DrawNextBlocks();
         
-        DropBlock(setScore);
+        // DropBlock(setScore);
 
         document.addEventListener("keydown", handleKeyDown);
         return () => {
