@@ -9,7 +9,8 @@ const ChangeField = (movePixelX: number, movePixelY: number, isRotate: boolean =
     let x = GameStatus.block.positionX / GameStatus.block.size;
     let y = GameStatus.block.positionY / GameStatus.block.size;
     const rs = isRotate ? (GameStatus.block.rotateStatus + 1) % 4 : GameStatus.block.rotateStatus;
-    console.log(rs);
+    console.log(x);
+    console.log(y)
 
     switch(GameStatus.block.shape) {
         case "i":

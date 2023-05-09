@@ -1,4 +1,4 @@
-import { blockSetting } from "../setting";
+import { Setting } from "../setting";
 
 class FieldClass {
     width: number;
@@ -13,8 +13,8 @@ class FieldClass {
     constructor(width: number, height: number) {
         this.width = width,
         this.height = height,
-        this.widthBlock = Math.floor(this.width / blockSetting.size);
-        this.heightBlock = Math.floor(this.height / blockSetting.size);
+        this.widthBlock = Math.floor(this.width / Setting.block.size);
+        this.heightBlock = Math.floor(this.height / Setting.block.size);
         this.field = this.initializeField();
         this.flags = {
             twoBlocks: false,

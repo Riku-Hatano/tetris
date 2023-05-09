@@ -1,39 +1,35 @@
 import GameStatus from "../../status";
 import BlockClass from "../../classes/BlockClass";
 import DrawNextBlocks from "../drawNextBlocks/DrawNextBlocks";
-import { blockSetting } from "../../setting";
+import { Setting } from "../../setting";
 import GameOver from "../gameover/GameOver";
 
-const TetriNames = [
-    "i", "o", "t", "s", "z", "j", "l"
-]
-
-for(let i = 0 ; i < 3 ; i++) { //this function is for test.
-    GameStatus.nextBlock.push("l");
-}
-
-// for(let i = 0 ; i < 3 ; i++) { //Only first time, select four tetriminoes and show three of them at nextBlock, which is right side of Tetris game.
-//     const rand = Math.floor(Math.random() * 7);
-//     GameStatus.nextBlock.push(TetriNames[rand]);
+// for(let i = 0 ; i < 3 ; i++) { //this function is for test.
+//     GameStatus.nextBlock.push("l");
 // }
 
+for(let i = 0 ; i < 3 ; i++) { //Only first time, select four tetriminoes and show three of them at nextBlock, which is right side of Tetris game.
+    const rand = Math.floor(Math.random() * 7);
+    GameStatus.nextBlock.push(Setting.tetriNames[rand]);
+}
+
 const CreateRect = () => {
-    if(GameStatus.field.field[blockSetting.initialY / blockSetting.size][blockSetting.initialX / blockSetting.size] !== null) {
+    if(GameStatus.field.field[Setting.block.initialY / Setting.block.size][Setting.block.initialX / Setting.block.size] !== null) {
         GameOver();
         return;
     }
-    const newBlock = new BlockClass(blockSetting.size, blockSetting.initialX, blockSetting.initialY, GameStatus.blockCounter++, GameStatus.nextBlock[0]);
-    newBlock.setColor();
-    GameStatus.block = newBlock;
-    GameStatus.nextBlock.shift();
-    GameStatus.nextBlock.push("l"); //this lines are for test.
-
-    // const newBlock = new BlockClass(blockSetting.size, blockSetting.initialX, blockSetting.initialY, GameStatus.blockCounter++, GameStatus.nextBlock[0]);
+    // const newBlock = new BlockClass(Setting.block.size, Setting.block.initialX, Setting.block.initialY, GameStatus.blockCounter++, GameStatus.nextBlock[0]);
     // newBlock.setColor();
     // GameStatus.block = newBlock;
     // GameStatus.nextBlock.shift();
-    // const rand = Math.floor(Math.random() * 7);
-    // GameStatus.nextBlock.push(TetriNames[rand]);
+    // GameStatus.nextBlock.push("l"); //this lines are for test.
+
+    const newBlock = new BlockClass(Setting.block.size, Setting.block.initialX, Setting.block.initialY, GameStatus.blockCounter++, GameStatus.nextBlock[0]);
+    newBlock.setColor();
+    GameStatus.block = newBlock;
+    GameStatus.nextBlock.shift();
+    const rand = Math.floor(Math.random() * 7);
+    GameStatus.nextBlock.push(Setting.tetriNames[rand]);
     DrawNextBlocks();
         switch(GameStatus.block.shape) {
         case "i":

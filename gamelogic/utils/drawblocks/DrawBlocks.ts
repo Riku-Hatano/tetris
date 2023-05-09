@@ -1,4 +1,5 @@
 import GameStatus from "../../status";
+import { Setting } from "../../setting";
 import OneBlock from "./OneBlock";
 
 //This function defines which part should be drawn depending on array of field(GameStatus.field.field).
@@ -7,7 +8,7 @@ const DrawBlocks = () => {
     for(let i = 0 ; i < field.length ; i++) {
         for(let j = 0 ; j < field[i].length ; j++) {
             if(field[i][j] !== null) {
-                OneBlock(j * GameStatus.block.size, i * GameStatus.block.size, GameStatus.block.size, GameStatus.block.size, GameStatus.field.field[i][j].color);
+                OneBlock(j * Setting.block.size, i * Setting.block.size, Setting.block.size, Setting.block.size, GameStatus.field.field[i][j].color);
             }
         }
     }

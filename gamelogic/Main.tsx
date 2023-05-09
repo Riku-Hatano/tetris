@@ -1,5 +1,5 @@
-import { useRef, useEffect, useState, useLayoutEffect } from "react";
-import { fieldSetting } from "./setting";
+import { useRef, useEffect, useState } from "react";
+import { Setting } from "./setting";
 import FieldClass from "./classes/FieldClass";
 import GameStatus from "./status";
 import KeyHandler from "./utils/KeyHandler";
@@ -13,7 +13,7 @@ import DropBlock from "./utils/dropblock/DropBlock";
 let canvas: any; //initialization to export
 let nextBlocks: any;
 
-const field = new FieldClass(fieldSetting.width, fieldSetting.height); //these four lines are also for initialization. If these are inside of useEffect, CreateRect is called twice and see bug.
+const field = new FieldClass(Setting.field.width, Setting.field.height); //these four lines are also for initialization. If these are inside of useEffect, CreateRect is called twice and see bug.
 GameStatus.field = field.returnAll();
 const block = CreateRect();
 GameStatus.block = block.returnAll();
@@ -38,7 +38,7 @@ const Main = () => {
         nextBlocks = blockCtx;
         DrawNextBlocks();
         
-        // DropBlock(setScore);
+        DropBlock(setScore);
 
         document.addEventListener("keydown", handleKeyDown);
         return () => {
@@ -49,7 +49,7 @@ const Main = () => {
     return (
         <>
             <section className={styles.gameContainer}>
-                <canvas id="tetris" className={styles.tetris} width={fieldSetting.width} height={fieldSetting.height} ref={ref}></canvas>
+                <canvas id="tetris" className={styles.tetris} width={Setting.field.width} height={Setting.field.height} ref={ref}></canvas>
                 <article className={styles.scoreBoard}>
                     <div className={styles.nextBlockContainer}>
                         <h4>next blocks</h4>
