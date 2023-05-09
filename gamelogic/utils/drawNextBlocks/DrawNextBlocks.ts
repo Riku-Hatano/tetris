@@ -1,12 +1,10 @@
-import next from "next/types";
-import Game from "../../../pages/game";
 import { nextBlocks } from "../../Main";
 import GameStatus from "../../status";
 
+//This function is used at right side to show next three blocks.
 const DrawNextBlocks = () => {
     let x = 20;
     let y = 20;
-
     if(nextBlocks !== undefined) {
         nextBlocks.clearRect(10, 10, 50, 100);
         nextBlocks.fillStyle = "black";
@@ -95,7 +93,7 @@ const DrawNextBlocks = () => {
                     nextBlocks.fill();
                     break;
             }
-            y += 30;
+            y += 30; //Not to overwrite same place, move to down.
         }
     }
 }

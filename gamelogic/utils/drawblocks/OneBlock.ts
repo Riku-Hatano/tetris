@@ -1,9 +1,10 @@
-import { canvas } from "../Main";
-import GameStatus from "../status";
+import { canvas } from "../../Main";
 
+//This function is only called by DrawBlocks.ts.
+//Depending on the pixels given by DrawBlocks.ts, this function draws only one block. It means that this function will be called multiple times　when DrawBlocks.ts called once.
 const OneBlock = (x: number, y: number, width: number, height: number, color: string) => {
     if(color === undefined) {
-        canvas.fillStyle = "gray";
+        canvas.fillStyle = "gray"; //To draw test blocks. In production environment, color === undefined shouldn't happen.
     } else {
         canvas.fillStyle = color;
     }
