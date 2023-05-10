@@ -1,5 +1,6 @@
 .gameContainer {
     display: flex;
+    position: relative;
 }
 
 .tetris {
@@ -38,4 +39,8 @@
 .nextBlock {
     width: 400px;
     height: 200px;
+}
+
+.hide {
+    display: none;
 }

@@ -7,11 +7,14 @@ import CreateRect from "./utils/gettobottom/CreateRect";
 import DrawBlocks from "./utils/drawblocks/DrawBlocks";
 import DrawNextBlocks from "./utils/drawNextBlocks/DrawNextBlocks";
 import styles from "../css/game.module.css";
-import GameOverModal from "./utils/gameover/GameOverModal";
+import GameOverModal from "../modals/GameOverModal";
 import DropBlock from "./utils/dropblock/DropBlock";
+import GameStartModal from "../modals/GameStartModal";
 
 let canvas: any; //initialization to export
 let nextBlocks: any;
+let gameOverModal: any;
+let gameStartModal: any;
 
 const field = new FieldClass(Setting.field.width, Setting.field.height); //these four lines are also for initialization. If these are inside of useEffect, CreateRect is called twice and see bug.
 GameStatus.field = field.returnAll();
@@ -21,6 +24,8 @@ GameStatus.block = block.returnAll();
 const Main = () => {
     const ref = useRef<HTMLCanvasElement>(null);
     const blockRef = useRef<HTMLCanvasElement>(null);
+    const gameOverModalRef = useRef<HTMLDivElement>(null);
+    const gameStartModalRef = useRef<HTMLDivElement>(null);
 
     const [score, setScore] = useState(0); //this setScore will go through KeyHandler.ts -> Move.ts -> GetToBottom.ts -> CheckRow.ts and then finaly used.
     const handleKeyDown = (e: any) => {
@@ -41,6 +46,9 @@ const Main = () => {
         DropBlock(setScore);
 
         document.addEventListener("keydown", handleKeyDown);
+
+        gameOverModal = gameOverModalRef;
+        gameStartModal = gameStartModalRef;
         return () => {
             document.removeEventListener("keydown", handleKeyDown); //to avoid for KeyHandler to be implemented multiple times because of component-mounting.
           };        
@@ -50,7 +58,7 @@ const Main = () => {
         <>
             <section className={styles.gameContainer}>
                 <div className={styles.left} style={{width: Setting.block.size * 7}}>
-                        <p>{score}</p>
+                    <p>{score}</p>
                 </div>
                 <canvas id="tetris" className={styles.tetris} width={Setting.field.width} height={Setting.field.height} ref={ref}></canvas>
                 <div className={styles.right} style={{width: Setting.block.size * 7}}>
@@ -59,11 +67,16 @@ const Main = () => {
                         <canvas id="nextBlock" ref={blockRef} className={styles.nextBlock}></canvas>
                     </div>
                 </div>
-                <GameOverModal score={score}></GameOverModal>
+                <div ref={gameOverModalRef} className={styles.hide}>
+                    <GameOverModal score={score}></GameOverModal>
+                </div>
+                <div ref={gameStartModalRef} style={{display: "none"}}>
+                    <GameStartModal></GameStartModal>
+                </div>
             </section>
         </>
     )
 }
 
-export { canvas, nextBlocks }
+export { canvas, nextBlocks, gameOverModal, gameStartModal }
 export default Main;

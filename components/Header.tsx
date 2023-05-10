@@ -3,7 +3,6 @@ import CheckLogUser from "../utils/CheckLogUser";
 
 const Header = () => {
     const logUser = CheckLogUser();
-    console.log(logUser);
     return (
         <>
             <ul>
