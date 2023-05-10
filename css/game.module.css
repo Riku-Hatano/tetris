@@ -6,37 +6,36 @@
     background-color: black;
 }
 
-.scoreBoard {
+.left {
+    background-color: gray;
     display: flex;
     flex-direction: column;
-    width: 100px;
-    height: 200px;
+    justify-content: flex-end;
+}
+.left > p {
+    margin: 0;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
     background-color: gainsboro;
+    text-align: center;
 }
 
-.nextBlockContainer {
-    height: 180px;
+.right {
     background-color: gray;
 }
-
-.nextBlockContainer > h4 {
+.right > .nextBlockContainer {
+    background-color: gainsboro;
+    height: 70%;
+    width: 100%;
+}
+.right > .nextBlockContainer > h4 {
     margin: 0;
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 40px;
+    justify-content: center;
 }
 
-.nextBlockContainer > .nextBlock {
-    /* height(200px) - h4(40px) - .score(20px) */
-}
-
-.score {
-    height: 20px;
-    background-color: gainsboro;
-}
-
-.score > p {
-    margin: 0;
-    text-align: center;
+.nextBlock {
+    width: 400px;
+    height: 200px;
 }

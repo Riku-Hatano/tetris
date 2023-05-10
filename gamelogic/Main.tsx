@@ -49,16 +49,16 @@ const Main = () => {
     return (
         <>
             <section className={styles.gameContainer}>
+                <div className={styles.left} style={{width: Setting.block.size * 7}}>
+                        <p>{score}</p>
+                </div>
                 <canvas id="tetris" className={styles.tetris} width={Setting.field.width} height={Setting.field.height} ref={ref}></canvas>
-                <article className={styles.scoreBoard}>
+                <div className={styles.right} style={{width: Setting.block.size * 7}}>
                     <div className={styles.nextBlockContainer}>
-                        <h4>next blocks</h4>
+                        <h4 style={{height: Setting.block.size * 2}}>next blocks</h4>
                         <canvas id="nextBlock" ref={blockRef} className={styles.nextBlock}></canvas>
                     </div>
-                    <div className={styles.score}>
-                        <p>{score}</p>
-                    </div>
-                </article>
+                </div>
                 <GameOverModal score={score}></GameOverModal>
             </section>
         </>

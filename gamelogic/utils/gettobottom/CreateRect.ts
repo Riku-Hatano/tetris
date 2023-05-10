@@ -9,7 +9,7 @@ import GameOver from "../gameover/GameOver";
 // }
 
 for(let i = 0 ; i < 3 ; i++) { //Only first time, select four tetriminoes and show three of them at nextBlock, which is right side of Tetris game.
-    const rand = Math.floor(Math.random() * 7);
+    const rand = Math.floor(Math.random() * Setting.tetriNames.length);
     GameStatus.nextBlock.push(Setting.tetriNames[rand]);
 }
 
@@ -28,7 +28,7 @@ const CreateRect = () => {
     newBlock.setColor();
     GameStatus.block = newBlock;
     GameStatus.nextBlock.shift();
-    const rand = Math.floor(Math.random() * 7);
+    const rand = Math.floor(Math.random() * Setting.tetriNames.length);
     GameStatus.nextBlock.push(Setting.tetriNames[rand]);
     DrawNextBlocks();
         switch(GameStatus.block.shape) {
