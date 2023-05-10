@@ -10,44 +10,23 @@ const Header = () => {
 
     useEffect(() => { //This useEffect will run in the first rendering, which means just after web page is refreshed.
         if(sessionStorage.getItem("logUser") !== null) {
-            // console.log(sessionStorage.getItem("logUser"));
             setLogUser(JSON.parse(sessionStorage.getItem("logUser"))[0].name);
-            console.log(logUser);
         } else {
-            console.log("no logged in user");
+            setLogUser(null);
         }
     }, []);
     useEffect(() => { //This useEffect will run after second rendering. Only with the useEffecth which doesn't contain the pathname as the watching variable.
         if(sessionStorage.getItem("logUser") !== null) {
-            // console.log(sessionStorage.getItem("logUser"));
             setLogUser(JSON.parse(sessionStorage.getItem("logUser"))[0].name);
-            console.log(logUser);
         } else {
-            console.log("no logged in user");
+            setLogUser(null);
         }
     }, [router.pathname]);
-    // const [path, setPath] = useState("");
-    // const router = useRouter();
-    // let logUser = null;
-
-    // useEffect(() => { //This useEffect will run in the first rendering, which means just after web page is refreshed.
-    //     if(sessionStorage.getItem("logUser") !== null) {
-    //         // console.log(sessionStorage.getItem("logUser"));
-    //         logUser = JSON.parse(sessionStorage.getItem("logUser"))[0].name;
-    //         console.log(logUser);
-    //     } else {
-    //         console.log("no logged in user");
-    //     }
-    // }, []);
-    // useEffect(() => { //This useEffect will run after second rendering. Only with the useEffecth which doesn't contain the pathname as the watching variable.
-    //     if(sessionStorage.getItem("logUser") !== null) {
-    //         // console.log(sessionStorage.getItem("logUser"));
-    //         logUser = JSON.parse(sessionStorage.getItem("logUser"))[0].name;
-    //         console.log(logUser);
-    //     } else {
-    //         console.log("no logged in user");
-    //     }
-    // }, [router.pathname]);
+   
+    const logout = () => {
+        sessionStorage.clear();
+        router.push("/");
+    }
     return (
         <>
             <ul>
@@ -56,7 +35,7 @@ const Header = () => {
                 { logUser ? null : <li><Link href="/login">login</Link></li> }
                 { logUser ? null : <li><Link href="/register">register</Link></li> }
                 { logUser ? <li><Link href="/user">user</Link></li> : null }
-                { logUser ? null : <li><Link href="/user">user for null</Link></li>}
+                { logUser ? <li><Link href="/logout" onClick={logout}>logout</Link></li> : null }
             </ul>
         </>
     )
