@@ -1,5 +1,4 @@
 import GameStatus from "../../../status";
-import { speedSetting } from "../../../setting";
 
 
 const canMoveRight = (): boolean => {
