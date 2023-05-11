@@ -2,14 +2,15 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
 const CheckLogUser = (): null | string => {
-    const router = useRouter();
     const [path, setPath] = useState("");
+    const router = useRouter();
     let logUser;
 
     useEffect(() => { //This useEffect will run in the first rendering, which means just after web page is refreshed.
         if(sessionStorage.getItem("logUser") !== null) {
             // console.log(sessionStorage.getItem("logUser"));
             logUser = JSON.parse(sessionStorage.getItem("logUser"))[0].name;
+            console.log(logUser);
         } else {
             console.log("no logged in user");
         }
@@ -18,11 +19,11 @@ const CheckLogUser = (): null | string => {
         if(sessionStorage.getItem("logUser") !== null) {
             // console.log(sessionStorage.getItem("logUser"));
             logUser = JSON.parse(sessionStorage.getItem("logUser"))[0].name;
+            console.log(logUser);
         } else {
             console.log("no logged in user");
         }
     }, [router.pathname]);
-    
     return logUser;
 }
 
