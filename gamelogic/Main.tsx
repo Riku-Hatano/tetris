@@ -15,6 +15,7 @@ let canvas: any; //initialization to export
 let nextBlocks: any;
 let gameOverModal: any;
 let gameStartModal: any;
+let handleKeyDown: any;
 
 const field = new FieldClass(Setting.field.width, Setting.field.height); //these four lines are also for initialization. If these are inside of useEffect, CreateRect is called twice and see bug.
 GameStatus.field = field.returnAll();
@@ -28,7 +29,7 @@ const Main = () => {
     const gameStartModalRef = useRef<HTMLDivElement>(null);
 
     const [score, setScore] = useState(0); //this setScore will go through KeyHandler.ts -> Move.ts -> GetToBottom.ts -> CheckRow.ts and then finaly used.
-    const handleKeyDown = (e: any) => {
+    handleKeyDown = (e: any) => {
         KeyHandler(e, setScore)
     }
     useEffect(() => {
@@ -78,5 +79,5 @@ const Main = () => {
     )
 }
 
-export { canvas, nextBlocks, gameOverModal, gameStartModal }
+export { canvas, nextBlocks, gameOverModal, gameStartModal, handleKeyDown }
 export default Main;

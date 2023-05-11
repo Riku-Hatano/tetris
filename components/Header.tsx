@@ -25,7 +25,6 @@ const Header = () => {
    
     const logout = () => {
         sessionStorage.clear();
-        router.push("/");
     }
     return (
         <>
@@ -35,7 +34,7 @@ const Header = () => {
                 { logUser ? null : <li><Link href="/login">login</Link></li> }
                 { logUser ? null : <li><Link href="/register">register</Link></li> }
                 { logUser ? <li><Link href="/user">user</Link></li> : null }
-                { logUser ? <li><Link href="/logout" onClick={logout}>logout</Link></li> : null }
+                { logUser ? <li><Link href="/" onClick={logout}>logout</Link></li> : null }
             </ul>
         </>
     )
