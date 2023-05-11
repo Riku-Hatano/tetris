@@ -11,13 +11,9 @@ const User = () => {
     const [scores, setScores] = useState(null);
     useEffect(() => {
         reqBody.uid = JSON.parse(sessionStorage.getItem("logUser"))[0].uid
-        axios.create().post(`${axiosconfig.baseURL}api/score`, reqBody).then(
+        axios.create().post(`${axiosconfig.baseURL}api/lib/services/score`, reqBody).then(
             (res) => {
                 setScores(res.data.message);
-                console.log(scores);
-                console.log(res.data.message);
-                console.log(res.data.message[0]);
-                console.log(scores);
             },
             (rej) => {
                 console.log(rej);
@@ -48,20 +44,6 @@ const User = () => {
                                 </tr>
                                )
                             })
-                            // scores.forEach((data: any, idx: number) => {
-                            //     const tds: any = [];
-                            //     for(let datum in data) {
-                            //         const td = React.createElement(
-                            //             "td",
-                            //             {
-                            //                 textContent: datum,
-                            //                 key: `${datum}:${idx}`
-                            //             }
-                            //         )
-                            //         tds.push(td);
-                            //     }
-                            //     React.createElement("tr", {}, tds);
-                            // })
                         }
                     </tbody>
                 </table>

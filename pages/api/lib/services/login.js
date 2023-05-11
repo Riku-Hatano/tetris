@@ -1,4 +1,4 @@
-import { dbconnect } from "./lib/database/dbconnect";
+import { dbconnect } from "../database/dbconnect";
 
 const login = (req, res) => {
     switch(req.method) {

@@ -10,6 +10,7 @@ const GameOver = () => {
     document.removeEventListener("keydown", handleKeyDown);
     clearInterval(dropBlockInterval);
     gameOverModal.current.classList.remove(container.hide);
+    GameStatus.isOver = true;
     const currentDate = new Date();
     const year = currentDate.getFullYear();
     const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Zero-padding for months
@@ -28,7 +29,7 @@ const GameOver = () => {
     }
     sessionStorage.getItem("logUser") ? scoreData.uid = JSON.parse(sessionStorage.getItem("logUser"))[0].uid : false;
     
-    axios.create().post(`${axiosconfig.baseURL}api/score`, scoreData).then(
+    axios.create().post(`${axiosconfig.baseURL}api/lib/services/score`, scoreData).then(
         (res) => {
             console.log(res);
         },
