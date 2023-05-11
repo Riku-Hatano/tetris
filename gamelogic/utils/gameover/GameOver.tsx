@@ -23,7 +23,8 @@ const GameOver = () => {
         score: GameStatus.score,
         playdate: formattedDate,
         gamemode: "normal",
-        uid: 0
+        uid: 0,
+        purpose: "send"
     }
     sessionStorage.getItem("logUser") ? scoreData.uid = JSON.parse(sessionStorage.getItem("logUser"))[0].uid : false;
     
