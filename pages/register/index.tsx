@@ -1,6 +1,7 @@
 import { ChangeEvent, SyntheticEvent } from "react";
 import { useState } from "react";
 import axios from "axios";
+import { axiosconfig } from "../api/lib/axios/axiosconfig";
 
 const initialVal = {
     name: "",
@@ -18,7 +19,7 @@ const Register = () => {
     }
     const register = (e: SyntheticEvent<HTMLFormElement>): void => {
         e.preventDefault();
-        axios.create().post("http://localhost:3000/api/register", inputVal).then(
+        axios.create().post(`${axiosconfig.baseURL}api/lib/services/register`, inputVal).then(
             (res) => {
                 console.log(res.data.message);
             },
@@ -29,7 +30,7 @@ const Register = () => {
         setInputVal(initialVal);
     }
     const getUsers = () => {
-        axios.create().get("http://localhost:3000/api/register").then(
+        axios.create().get(`${axiosconfig.baseURL}api/lib/services/register`).then(
             (res) => {
                 console.log(res.data.message);
             },

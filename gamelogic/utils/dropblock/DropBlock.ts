@@ -18,9 +18,7 @@ const DropBlock = (setScore: react.Dispatch<SetStateAction<number>>) => {
         canvas.clearRect(0, 0, GameStatus.field.width, GameStatus.field.height);
         DrawBlocks();
     }
-    if(dropBlockInterval === null) {
-        dropBlockInterval = setInterval(drop, 1000);
-    }
+    dropBlockInterval = setInterval(drop, 1000);
 }
 
 export { dropBlockInterval } //This will be imported in "../GameOver.ts" and "../../Main.tsx"

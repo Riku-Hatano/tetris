@@ -26,6 +26,7 @@ interface GS {
     blockCounter: number,
     score: number,
     nextBlock: string[],
+    isOver: boolean,
 }
 
 //GameStatus is called at many place. To change the GameStatus and DrawBlocks, what we see will be chanbged.
@@ -56,7 +57,8 @@ const GameStatus: GS = {
     },
     blockCounter: 0, //Works same way as id.
     score: 0,
-    nextBlock: [] //This will contain next three blocks which is chosen from i, o, t, s, z, j, or l.
+    nextBlock: [], //This will contain next three blocks which is chosen from i, o, t, s, z, j, or l.
+    isOver: false,
 }
 
 export default GameStatus

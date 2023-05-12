@@ -1,4 +1,4 @@
-import { dbconnect } from "./lib/database/dbconnect";
+import { dbconnect } from "../database/dbconnect";
 
 const register = (req, res) => {
     switch(req.method) {
@@ -15,7 +15,7 @@ const register = (req, res) => {
             });
             // res.status(200).json({ message: req.body});
             break;
-        default: 
+        default:
             res.status(400).json({ message: "bad request!!"});
     }
 }
