@@ -1,107 +1,229 @@
+import next from "next/types";
 import { nextBlocks } from "../../Main";
 import { Setting } from "../../setting";
 import GameStatus from "../../status";
 
 //This function is used at right side to show next three blocks.
 const DrawNextBlocks = () => {
-    // let x = 20;
-    // let y = 20;
     let x = Setting.block.size * 1.75;
-    let y = Setting.block.size
+    let y = Setting.block.size;
+    let size = Setting.block.size;
     if(nextBlocks !== undefined) {
-        nextBlocks.clearRect(10, 10, 85, 140);
+        // nextBlocks.clearRect(size / 2, size / 2, 85, 140);
+        nextBlocks.clearRect(size / 2, size / 2, size * 4.25, size * 7);
         nextBlocks.fillStyle = "black";
-        nextBlocks.fillRect(10, 10, 85, 140);
-        // nextBlocks.clearRect(0, 0, 1000, 2000);
-        // nextBlocks.fillStyle = "black";
-        // nextBlocks.fillRect(0, 0, 1000, 2000);
+        nextBlocks.fillRect(size / 2, size / 2, size * 4.25, size * 7);
 
         for(let i = 0 ; i < 3 ; i++) {
             switch(GameStatus.nextBlock[i]) {
                 case "i":
                     nextBlocks.fillStyle = "#00ffff";
-                    nextBlocks.fillRect(x - 5, y, 40, 10);
+                    // nextBlocks.fillRect(x - 5, y, 40, size / 2);
+                    nextBlocks.fillRect(x - size / 4, y, size * 2, size / 2);
                     // nextBlocks.fillRect(x - Setting.block.size / 2, y, Setting.block.size * 4, Setting.block.size);
+
+                    nextBlocks.beginPath();
+                    nextBlocks.moveTo(x / 1.75 + size / 2, y);
+                    nextBlocks.lineTo(x * 2, y);
+                    nextBlocks.lineTo(x * 2, y + size / 2);
+                    nextBlocks.lineTo(x / 1.75 + size / 2, y + size / 2);
+                    nextBlocks.lineTo(x / 1.75 + size / 2, y);
+                    nextBlocks.moveTo(x / 1.75 + size / 2 + size / 2, y);
+                    nextBlocks.lineTo(x / 1.75 + size / 2 + size / 2, y + size / 2);
+                    nextBlocks.moveTo(x / 1.75 + size / 2 + size, y);
+                    nextBlocks.lineTo(x / 1.75 + size / 2 + size, y + size / 2);
+                    nextBlocks.moveTo(x / 1.75 + size / 2 + size * 1.5, y);
+                    nextBlocks.lineTo(x / 1.75 + size / 2 + size * 1.5, y + size / 2);
+                    nextBlocks.strokeStyle = "white";
+                    nextBlocks.lineWidth = Setting.block.size / 14;
+                    nextBlocks.stroke();
                     break;
                 case "o":
                     nextBlocks.fillStyle = "#ffff00";
-                    nextBlocks.fillRect(x + 5, y, 20, 20);
+                    // nextBlocks.fillRect(x + 5, y, size, size);
+                    nextBlocks.fillRect(x + size / 4, y, size, size);
                     // nextBlocks.fillRect(x + Setting.block.size / 2, y, Setting.block.size * 2, Setting.block.size * 2);
+                    nextBlocks.moveTo(x + size / 4, y);
+                    nextBlocks.lineTo(x + size / 4, y + size);
+                    nextBlocks.lineTo(x + size + size / 4, y + size);
+                    nextBlocks.lineTo(x + size + size / 4, y);
+                    nextBlocks.lineTo(x + size / 4, y);
+                    nextBlocks.moveTo(x + size / 4, y + size / 2);
+                    nextBlocks.lineTo(x + size + size / 4, y + size / 2);
+                    nextBlocks.moveTo(x + size * 0.75, y);
+                    nextBlocks.lineTo(x + size * 0.75, y + size);
+                    nextBlocks.strokeStyle = "white";
+                    nextBlocks.lineWidth = Setting.block.size / 14;
+                    nextBlocks.stroke();
                     break;
                 case "t":
                     nextBlocks.beginPath();
-                    nextBlocks.moveTo(x + 10, y + 10);
-                    nextBlocks.lineTo(x + 10, y);
-                    nextBlocks.lineTo(x + 20, y);
-                    nextBlocks.lineTo(x + 20, y + 10);
-                    nextBlocks.lineTo(x + 30, y + 10);
-                    nextBlocks.lineTo(x + 30, y + 20);
-                    nextBlocks.lineTo(x, y + 20);
-                    nextBlocks.lineTo(x, y + 10);
-                    nextBlocks.lineTo(x + 10, y + 10);
+                    nextBlocks.moveTo(x + size / 2, y + size / 2);
+                    nextBlocks.lineTo(x + size / 2, y);
+                    nextBlocks.lineTo(x + size, y);
+                    nextBlocks.lineTo(x + size, y + size / 2);
+                    nextBlocks.lineTo(x + size * 1.5, y + size / 2);
+                    nextBlocks.lineTo(x + size * 1.5, y + size);
+                    nextBlocks.lineTo(x, y + size);
+                    nextBlocks.lineTo(x, y + size / 2);
+                    nextBlocks.lineTo(x + size / 2, y + size / 2);
                     nextBlocks.closePath();
                     nextBlocks.fillStyle = "#800080";
                     nextBlocks.fill();
-                    break;
-                case "z":
+
                     nextBlocks.beginPath();
-                    nextBlocks.moveTo(x + 10, y + 10);
-                    nextBlocks.lineTo(x, y + 10);
-                    nextBlocks.lineTo(x, y);
-                    nextBlocks.lineTo(x + 20, y);
-                    nextBlocks.lineTo(x + 20, y + 10);
-                    nextBlocks.lineTo(x + 30, y + 10);
-                    nextBlocks.lineTo(x + 30, y + 20);
-                    nextBlocks.lineTo(x + 10, y + 20);
-                    nextBlocks.lineTo(x + 10, y + 10);
-                    nextBlocks.closePath();
-                    nextBlocks.fillStyle = "#ff0000";
-                    nextBlocks.fill();
+                    nextBlocks.moveTo(x + size / 2, y + size / 2);
+                    nextBlocks.lineTo(x + size / 2, y);
+                    nextBlocks.lineTo(x + size, y);
+                    nextBlocks.lineTo(x + size, y + size / 2);
+                    nextBlocks.lineTo(x + size * 1.5, y + size / 2);
+                    nextBlocks.lineTo(x + size * 1.5, y + size);
+                    nextBlocks.lineTo(x, y + size);
+                    nextBlocks.lineTo(x, y + size / 2);
+                    nextBlocks.lineTo(x + size / 2, y + size / 2);
+                    nextBlocks.moveTo(x + size / 2, y + size / 2);
+                    nextBlocks.lineTo(x + size, y + size / 2);
+                    nextBlocks.moveTo(x + size / 2, y + size / 2);
+                    nextBlocks.lineTo(x + size / 2, y + size);
+                    nextBlocks.moveTo(x + size, y + size / 2);
+                    nextBlocks.lineTo(x + size, y + size);
+                    nextBlocks.strokeStyle = "white";
+                    nextBlocks.lineWidth = Setting.block.size / 14;
+                    nextBlocks.stroke();
                     break;
                 case "s":
                     nextBlocks.beginPath();
-                    nextBlocks.moveTo(x + 10, y + 10);
-                    nextBlocks.lineTo(x + 10, y);
-                    nextBlocks.lineTo(x + 30, y);
-                    nextBlocks.lineTo(x + 30, y + 10);
-                    nextBlocks.lineTo(x + 20, y + 10);
-                    nextBlocks.lineTo(x + 20, y + 20);
-                    nextBlocks.lineTo(x, y + 20);
-                    nextBlocks.lineTo(x, y + 10);
-                    nextBlocks.lineTo(x + 10, y + 10);
+                    nextBlocks.moveTo(x + size / 2, y + size / 2);
+                    nextBlocks.lineTo(x + size / 2, y);
+                    nextBlocks.lineTo(x + size * 1.5, y);
+                    nextBlocks.lineTo(x + size * 1.5, y + size / 2);
+                    nextBlocks.lineTo(x + size, y + size / 2);
+                    nextBlocks.lineTo(x + size, y + size);
+                    nextBlocks.lineTo(x, y + size);
+                    nextBlocks.lineTo(x, y + size / 2);
+                    nextBlocks.lineTo(x + size / 2, y + size / 2);
                     nextBlocks.closePath();
                     nextBlocks.fillStyle = "#00ff00";
                     nextBlocks.fill();
+
+                    nextBlocks.beginPath();
+                    nextBlocks.moveTo(x + size / 2, y + size / 2);
+                    nextBlocks.lineTo(x + size / 2, y);
+                    nextBlocks.lineTo(x + size * 1.5, y);
+                    nextBlocks.lineTo(x + size * 1.5, y + size / 2);
+                    nextBlocks.lineTo(x + size, y + size / 2);
+                    nextBlocks.lineTo(x + size, y + size);
+                    nextBlocks.lineTo(x, y + size);
+                    nextBlocks.lineTo(x, y + size / 2);
+                    nextBlocks.lineTo(x + size / 2, y + size / 2);
+                    nextBlocks.moveTo(x + size, y);
+                    nextBlocks.lineTo(x + size, y + size / 2);
+                    nextBlocks.lineTo(x + size / 2, y + size / 2);
+                    nextBlocks.lineTo(x + size / 2, y + size);
+                    nextBlocks.strokeStyle = "white";
+                    nextBlocks.lineWidth = Setting.block.size / 14;
+                    nextBlocks.stroke();
+                    break;
+                case "z":
+                    nextBlocks.beginPath();
+                    nextBlocks.moveTo(x + size / 2, y + size / 2);
+                    nextBlocks.lineTo(x, y + size / 2);
+                    nextBlocks.lineTo(x, y);
+                    nextBlocks.lineTo(x + size, y);
+                    nextBlocks.lineTo(x + size, y + size / 2);
+                    nextBlocks.lineTo(x + size * 1.5, y + size / 2);
+                    nextBlocks.lineTo(x + size * 1.5, y + size);
+                    nextBlocks.lineTo(x + size / 2, y + size);
+                    nextBlocks.lineTo(x + size / 2, y + size / 2);
+                    nextBlocks.closePath();
+                    nextBlocks.fillStyle = "#ff0000";
+                    nextBlocks.fill();
+
+                    nextBlocks.beginPath();
+                    nextBlocks.moveTo(x + size / 2, y + size / 2);
+                    nextBlocks.lineTo(x, y + size / 2);
+                    nextBlocks.lineTo(x, y);
+                    nextBlocks.lineTo(x + size, y);
+                    nextBlocks.lineTo(x + size, y + size / 2);
+                    nextBlocks.lineTo(x + size * 1.5, y + size / 2);
+                    nextBlocks.lineTo(x + size * 1.5, y + size);
+                    nextBlocks.lineTo(x + size / 2, y + size);
+                    nextBlocks.lineTo(x + size / 2, y + size / 2);
+
+                    nextBlocks.moveTo(x + size / 2, y);
+                    nextBlocks.lineTo(x + size / 2, y + size / 2);
+                    nextBlocks.lineTo(x + size, y + size / 2);
+                    nextBlocks.lineTo(x + size, y + size);
+                    nextBlocks.strokeStyle = "white";
+                    nextBlocks.lineWidth = Setting.block.size / 14;
+                    nextBlocks.stroke();
                     break;
                 case "j":
                     nextBlocks.beginPath();
-                    nextBlocks.moveTo(x + 10, y + 10);
-                    nextBlocks.lineTo(x + 30, y + 10);
-                    nextBlocks.lineTo(x + 30, y + 20);
-                    nextBlocks.lineTo(x, y + 20);
+                    nextBlocks.moveTo(x + size / 2, y + size / 2);
+                    nextBlocks.lineTo(x + size * 1.5, y + size / 2);
+                    nextBlocks.lineTo(x + size * 1.5, y + size);
+                    nextBlocks.lineTo(x, y + size);
                     nextBlocks.lineTo(x, y);
-                    nextBlocks.lineTo(x + 10, y);
-                    nextBlocks.lineTo(x + 10, y + 10);
+                    nextBlocks.lineTo(x + size / 2, y);
+                    nextBlocks.lineTo(x + size / 2, y + size / 2);
                     nextBlocks.closePath();
                     nextBlocks.fillStyle = "#0000ff";
                     nextBlocks.fill();
+
+                    nextBlocks.beginPath();
+                    nextBlocks.moveTo(x + size / 2, y + size / 2);
+                    nextBlocks.lineTo(x + size * 1.5, y + size / 2);
+                    nextBlocks.lineTo(x + size * 1.5, y + size);
+                    nextBlocks.lineTo(x, y + size);
+                    nextBlocks.lineTo(x, y);
+                    nextBlocks.lineTo(x + size / 2, y);
+                    nextBlocks.lineTo(x + size / 2, y + size / 2);
+                    nextBlocks.moveTo(x, y + size / 2);
+                    nextBlocks.lineTo(x + size / 2, y + size / 2);
+                    nextBlocks.lineTo(x + size / 2, y + size);
+                    nextBlocks.moveTo(x + size, y + size / 2);
+                    nextBlocks.lineTo(x + size, y + size);
+                    nextBlocks.strokeStyle = "white";
+                    nextBlocks.lineWidth = Setting.block.size / 14;
+                    nextBlocks.stroke();
                     break;
                 case "l":
                     nextBlocks.beginPath();
-                    nextBlocks.moveTo(x + 10, y + 10);
-                    nextBlocks.lineTo(x + 20, y + 10);
-                    nextBlocks.lineTo(x + 20, y);
-                    nextBlocks.lineTo(x + 30, y);
-                    nextBlocks.lineTo(x + 30, y + 20);
-                    nextBlocks.lineTo(x, y + 20);
-                    nextBlocks.lineTo(x, y + 10);
-                    nextBlocks.lineTo(x + 10, y + 10);
+                    nextBlocks.moveTo(x + size / 2, y + size / 2);
+                    nextBlocks.lineTo(x + size, y + size / 2);
+                    nextBlocks.lineTo(x + size, y);
+                    nextBlocks.lineTo(x + size * 1.5, y);
+                    nextBlocks.lineTo(x + size * 1.5, y + size);
+                    nextBlocks.lineTo(x, y + size);
+                    nextBlocks.lineTo(x, y + size / 2);
+                    nextBlocks.lineTo(x + size / 2, y + size / 2);
                     nextBlocks.closePath();
                     nextBlocks.fillStyle = "#ff7f00";
                     nextBlocks.fill();
+
+                    nextBlocks.beginPath();
+                    nextBlocks.moveTo(x + size / 2, y + size / 2);
+                    nextBlocks.lineTo(x + size, y + size / 2);
+                    nextBlocks.lineTo(x + size, y);
+                    nextBlocks.lineTo(x + size * 1.5, y);
+                    nextBlocks.lineTo(x + size * 1.5, y + size);
+                    nextBlocks.lineTo(x, y + size);
+                    nextBlocks.lineTo(x, y + size / 2);
+                    nextBlocks.lineTo(x + size / 2, y + size / 2);
+
+                    nextBlocks.moveTo(x + size / 2, y + size / 2);
+                    nextBlocks.lineTo(x + size / 2, y + size);
+                    nextBlocks.moveTo(x + size * 1.5, y + size / 2);
+                    nextBlocks.lineTo(x + size, y + size / 2);
+                    nextBlocks.lineTo(x + size, y + size);
+
+                    nextBlocks.strokeStyle = "white";
+                    nextBlocks.lineWidth = Setting.block.size / 14;
+                    nextBlocks.stroke();
                     break;
             }
-            // y += 30; //Not to overwrite same place, move to down.
+            // y += size * 1.5; //Not to overwrite same place, move to down.
             y += Setting.block.size * 2;
         }
     }

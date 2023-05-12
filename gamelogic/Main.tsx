@@ -35,7 +35,7 @@ const Main = () => {
 
     const keyPress = (e: any) => {
         // KeyHandler(e, setScore);
-        console.log("keypress")
+        console.log("keypress");
         console.log(e.key);
         console.log(e);
     }
@@ -55,7 +55,7 @@ const Main = () => {
         nextBlocks = blockCtx;
         DrawNextBlocks();
         
-        DropBlock(setScore);
+        // DropBlock(setScore);
         
         document.addEventListener("keydown", handleKeyDown);
         // element.addEventListener("keydown", handleKeyDown);
