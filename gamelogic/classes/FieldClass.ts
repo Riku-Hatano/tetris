@@ -9,6 +9,7 @@ class FieldClass {
     flags: {
         twoBlocks: boolean,
         isPreviousDowdn: boolean,
+        isScored: boolean,
     }
     constructor(width: number, height: number) {
         this.width = width,
@@ -19,6 +20,7 @@ class FieldClass {
         this.flags = {
             twoBlocks: false,
             isPreviousDowdn: false,
+            isScored: false,
         }
     }
       
@@ -33,6 +35,7 @@ class FieldClass {
             flags: {
                 twoBlocks: this.flags.twoBlocks,
                 isPreviousDown: this.flags.isPreviousDowdn,
+                isScored: this.flags.isScored,
             }
         }
     }
@@ -54,6 +57,7 @@ class FieldClass {
         [null, null, null, null, null, null, null, null, null, null],
         [null, null, null, null, null, null, null, null, null, null],
         [null, null, null, null, null, null, null, null, null, null],
+        [null, null, null, null, "aa", null, null, null, null, null],
         [null, null, null, null, null, null, null, null, null, null],
         [null, null, null, null, null, null, null, null, null, null],
         [null, null, null, null, null, null, null, null, null, null],
@@ -65,8 +69,7 @@ class FieldClass {
         [null, null, null, null, null, null, null, null, null, null],
         [null, null, null, null, null, null, null, null, null, null],
         [null, null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null, null],
+        ["aa", "aa", "aa", "aa", "aa", "aa", "aa", "aa", "aa", null],
         ["gr", "gr", "gr", "gr", "gr", "gr", "gr", "gr", "gr", "gr"],
         ["gr", "gr", "gr", "gr", "gr", "gr", "gr", "gr", "gr", "gr"],
         ["gr", "gr", "gr", "gr", "gr", "gr", "gr", "gr", "gr", "gr"],

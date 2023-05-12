@@ -10,7 +10,6 @@ import styles from "../css/game.module.css";
 import GameOverModal from "../modals/GameOverModal";
 import DropBlock, { dropBlockInterval } from "./utils/dropblock/DropBlock";
 import GameStartModal from "../modals/GameStartModal";
-import GameOver from "./utils/gameover/GameOver";
 
 let canvas: any; //initialization to export
 let nextBlocks: any;
@@ -25,24 +24,26 @@ GameStatus.block = block.returnAll();
 GameStatus.isOver = false;
 
 const Main = () => {
-    console.log(GameStatus.field.field);
-    console.log(GameStatus.field.field[Setting.block.initialY / Setting.block.size][Setting.block.initialX / Setting.block.size])
+    // console.log(GameStatus.field.field);
+    // console.log(GameStatus.field.field[Setting.block.initialY / Setting.block.size][Setting.block.initialX / Setting.block.size])
     const ref = useRef<HTMLCanvasElement>(null);
     const blockRef = useRef<HTMLCanvasElement>(null);
     const gameOverModalRef = useRef<HTMLDivElement>(null);
     const gameStartModalRef = useRef<HTMLDivElement>(null);
-
+    // const element = ref.current;
     const [score, setScore] = useState(0); //this setScore will go through KeyHandler.ts -> Move.ts -> GetToBottom.ts -> CheckRow.ts and then finaly used.
-    handleKeyDown = (e: any) => {
-        KeyHandler(e, setScore)
-    }
 
     const keyPress = (e: any) => {
+        // KeyHandler(e, setScore);
         console.log("keypress")
         console.log(e.key);
         console.log(e);
     }
+
     useEffect(() => {
+        handleKeyDown = (e: any) => {
+            KeyHandler(e, setScore)
+        }
         const tetris = ref.current;
         const ctx: CanvasRenderingContext2D = tetris.getContext("2d");
         canvas = ctx; //to export the refference of canvas created at this file.
@@ -57,23 +58,28 @@ const Main = () => {
         DropBlock(setScore);
         
         document.addEventListener("keydown", handleKeyDown);
-        
+        // element.addEventListener("keydown", handleKeyDown);
+
+        // GameStatus.field.flags.isScored ? document.removeEventListener("keydown", handleKeyDown) : null;
         gameOverModal = gameOverModalRef;
         gameStartModal = gameStartModalRef;
         if(GameStatus.isOver === true) {
             document.removeEventListener("keydown", handleKeyDown);
+            // element.removeEventListener("keydown", handleKeyDown);
             clearInterval(dropBlockInterval);
             gameOverModal.current.classList.remove(styles.hide);
         }
         return () => {
             document.removeEventListener("keydown", handleKeyDown); //to avoid for KeyHandler to be implemented multiple times because of component-mounting.
+            // element.removeEventListener("keydown", handleKeyDown); //to avoid for KeyHandler to be implemented multiple times because of component-mounting.
             clearInterval(dropBlockInterval);
           };        
     }, []);
 
     return (
         <>
-            <section className={styles.gameContainer} tabIndex={0} onKeyDown={keyPress}>
+            <section className={styles.gameContainer}>
+            {/* <section className={styles.gameContainer} tabIndex={0} onKeyDown={keyPress}> */}
                 <div className={styles.left} style={{width: Setting.block.size * 7}}>
                     <p>{score}</p>
                 </div>
