@@ -22,12 +22,10 @@ const field = new FieldClass(Setting.field.width, Setting.field.height); //these
 GameStatus.field = field.returnAll();
 const block = CreateRect();
 GameStatus.block = block.returnAll();
+GameStatus.isOver = false;
 
 const Main = () => {
     console.log(GameStatus.field.field);
-    // if(GameStatus.field.field[Setting.block.initialY / Setting.block.size][Setting.block.initialX / Setting.block.size] !== null) {
-    //     GameOver();
-    // }
     console.log(GameStatus.field.field[Setting.block.initialY / Setting.block.size][Setting.block.initialX / Setting.block.size])
     const ref = useRef<HTMLCanvasElement>(null);
     const blockRef = useRef<HTMLCanvasElement>(null);
@@ -40,6 +38,7 @@ const Main = () => {
     }
 
     const keyPress = (e: any) => {
+        console.log("keypress")
         console.log(e.key);
         console.log(e);
     }
