@@ -24,8 +24,6 @@ GameStatus.block = block.returnAll();
 GameStatus.isOver = false;
 
 const Main = () => {
-    // console.log(GameStatus.field.field);
-    // console.log(GameStatus.field.field[Setting.block.initialY / Setting.block.size][Setting.block.initialX / Setting.block.size])
     const ref = useRef<HTMLCanvasElement>(null);
     const blockRef = useRef<HTMLCanvasElement>(null);
     const gameOverModalRef = useRef<HTMLDivElement>(null);
@@ -33,12 +31,12 @@ const Main = () => {
     // const element = ref.current;
     const [score, setScore] = useState(0); //this setScore will go through KeyHandler.ts -> Move.ts -> GetToBottom.ts -> CheckRow.ts and then finaly used.
 
-    const keyPress = (e: any) => {
-        // KeyHandler(e, setScore);
-        console.log("keypress");
-        console.log(e.key);
-        console.log(e);
-    }
+    // const keyPress = (e: any) => {
+    //     // KeyHandler(e, setScore);
+    //     console.log("keypress");
+    //     console.log(e.key);
+    //     console.log(e);
+    // }
 
     useEffect(() => {
         handleKeyDown = (e: any) => {
@@ -55,7 +53,7 @@ const Main = () => {
         nextBlocks = blockCtx;
         DrawNextBlocks();
         
-        // DropBlock(setScore);
+        DropBlock(setScore);
         
         document.addEventListener("keydown", handleKeyDown);
         // element.addEventListener("keydown", handleKeyDown);
@@ -63,7 +61,7 @@ const Main = () => {
         // GameStatus.field.flags.isScored ? document.removeEventListener("keydown", handleKeyDown) : null;
         gameOverModal = gameOverModalRef;
         gameStartModal = gameStartModalRef;
-        if(GameStatus.isOver === true) {
+        if(GameStatus.isOver === true) { //This is for disabling for user to play game anymore after game is over and go back to /game and start again.
             document.removeEventListener("keydown", handleKeyDown);
             // element.removeEventListener("keydown", handleKeyDown);
             clearInterval(dropBlockInterval);
