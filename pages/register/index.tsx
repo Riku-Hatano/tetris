@@ -47,7 +47,7 @@ const Register = () => {
                 <input type="date" placeholder="date" name="regdate" value={inputVal.regdate} onChange={inputChange} required />
                 <button type="submit">register</button>
             </form>
-            <button onClick={getUsers}>check database user</button>
+            <button onClick={getUsers}>check users in database</button>
         </>
     )
 }

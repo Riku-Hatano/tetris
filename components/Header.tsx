@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-// import CheckLogUser from "../utils/CheckLogUser";
 
 const Header = () => {
     const [path, setPath] = useState("");
