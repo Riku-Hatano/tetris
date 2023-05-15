@@ -3,13 +3,12 @@ import { nextBlocks } from "../../Main";
 import { Setting } from "../../setting";
 import GameStatus from "../../status";
 
-//This function is used at right side to show next three blocks.
+//This function is used at right side to show next three blocks.　//この関数は右側の次に落ちてくるブロックを表示するための関数です。
 const DrawNextBlocks = () => {
     let x = Setting.block.size * 1.75;
     let y = Setting.block.size;
     let size = Setting.block.size;
     if(nextBlocks !== undefined) {
-        // nextBlocks.clearRect(size / 2, size / 2, 85, 140);
         nextBlocks.clearRect(size / 2, size / 2, size * 4.25, size * 7);
         nextBlocks.fillStyle = "black";
         nextBlocks.fillRect(size / 2, size / 2, size * 4.25, size * 7);
@@ -18,9 +17,7 @@ const DrawNextBlocks = () => {
             switch(GameStatus.nextBlock[i]) {
                 case "i":
                     nextBlocks.fillStyle = "#00ffff";
-                    // nextBlocks.fillRect(x - 5, y, 40, size / 2);
                     nextBlocks.fillRect(x - size / 4, y, size * 2, size / 2);
-                    // nextBlocks.fillRect(x - Setting.block.size / 2, y, Setting.block.size * 4, Setting.block.size);
 
                     nextBlocks.beginPath();
                     nextBlocks.moveTo(x / 1.75 + size / 2, y);
@@ -40,9 +37,7 @@ const DrawNextBlocks = () => {
                     break;
                 case "o":
                     nextBlocks.fillStyle = "#ffff00";
-                    // nextBlocks.fillRect(x + 5, y, size, size);
                     nextBlocks.fillRect(x + size / 4, y, size, size);
-                    // nextBlocks.fillRect(x + Setting.block.size / 2, y, Setting.block.size * 2, Setting.block.size * 2);
                     nextBlocks.moveTo(x + size / 4, y);
                     nextBlocks.lineTo(x + size / 4, y + size);
                     nextBlocks.lineTo(x + size + size / 4, y + size);
@@ -223,7 +218,6 @@ const DrawNextBlocks = () => {
                     nextBlocks.stroke();
                     break;
             }
-            // y += size * 1.5; //Not to overwrite same place, move to down.
             y += Setting.block.size * 2;
         }
     }

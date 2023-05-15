@@ -2,7 +2,8 @@ import GameStatus from "../../status";
 import { Setting } from "../../setting";
 import OneBlock from "./OneBlock";
 
-//This function defines which part should be drawn depending on array of field(GameStatus.field.field).
+//This function defines which part should be drawn depending on array of field(GameStatus.field.field).　//GameStatus.field.fieldに応じてどこにブロックを描画するかを決める関数です。
+
 const DrawBlocks = () => {
     const field = GameStatus.field.field;
     for(let i = 0 ; i < field.length ; i++) {
