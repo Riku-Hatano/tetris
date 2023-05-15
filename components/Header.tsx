@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 
 const Header = () => {
-    const [path, setPath] = useState("");
     const router = useRouter();
     const [logUser, setLogUser] = useState(null);
 
@@ -25,6 +24,7 @@ const Header = () => {
     const logout = () => {
         sessionStorage.clear();
     }
+    
     return (
         <>
             <ul>

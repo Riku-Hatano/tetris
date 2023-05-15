@@ -4,17 +4,22 @@ import DrawNextBlocks from "../drawNextBlocks/DrawNextBlocks";
 import { Setting } from "../../setting";
 import GameOver from "../gameover/GameOver";
 
-for(let i = 0 ; i < 3 ; i++) { //this function is for test.
-    GameStatus.nextBlock.push("l");
-}
-
-// for(let i = 0 ; i < 3 ; i++) { //Only first time, select four tetriminoes and show three of them at nextBlock, which is right side of Tetris game.
-//     const rand = Math.floor(Math.random() * Setting.tetriNames.length);
-//     GameStatus.nextBlock.push(Setting.tetriNames[rand]);
+// for(let i = 0 ; i < 3 ; i++) { //this function is for test.
+//     GameStatus.nextBlock.push("l");
 // }
 
+for(let i = 0 ; i < 3 ; i++) { //Only first time, select four tetriminoes and show three of them at nextBlock, which is right side of Tetris game.
+    const rand = Math.floor(Math.random() * Setting.tetriNames.length);
+    GameStatus.nextBlock.push(Setting.tetriNames[rand]);
+}
+
 const CreateRect = () => {
-    if(GameStatus.field.field[Setting.block.initialY / Setting.block.size][Setting.block.initialX / Setting.block.size] !== null) {
+    const field = GameStatus.field.field;
+    const size = Setting.block.size
+    const x = Setting.block.initialX / Setting.block.size;
+    const y = Setting.block.initialY / Setting.block.size;
+
+    if(field[y][x] !== null) {
         GameOver();
         return;
     }
@@ -33,46 +38,46 @@ const CreateRect = () => {
     DrawNextBlocks();
         switch(GameStatus.block.shape) {
         case "i":
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size] = GameStatus.block;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size - 1] = GameStatus.block;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size - 2] = GameStatus.block;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size + 1] = GameStatus.block;
+            field[y][x] = GameStatus.block;
+            field[y][x - 1] = GameStatus.block;
+            field[y][x - 2] = GameStatus.block;
+            field[y][x + 1] = GameStatus.block;
             break;
         case "o":
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size] = GameStatus.block;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size - 1] = GameStatus.block;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size + 1][GameStatus.block.initialX / GameStatus.block.size] = GameStatus.block;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size + 1][GameStatus.block.initialX / GameStatus.block.size - 1] = GameStatus.block;
+            field[y][x] = GameStatus.block;
+            field[y][x - 1] = GameStatus.block;
+            field[y + 1][x] = GameStatus.block;
+            field[y + 1][x - 1] = GameStatus.block;
             break;
         case "t":
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size] = GameStatus.block;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size - 1] = GameStatus.block;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size + 1] = GameStatus.block;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size - 1][GameStatus.block.initialX / GameStatus.block.size] = GameStatus.block;
+            field[y][x] = GameStatus.block;
+            field[y][x - 1] = GameStatus.block;
+            field[y][x + 1] = GameStatus.block;
+            field[y - 1][x] = GameStatus.block;
             break;
         case "s":
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size] = GameStatus.block;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size - 1][GameStatus.block.initialX / GameStatus.block.size] = GameStatus.block;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size - 1][GameStatus.block.initialX / GameStatus.block.size + 1] = GameStatus.block;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size - 1] = GameStatus.block;
+            field[y][x] = GameStatus.block;
+            field[y - 1][x] = GameStatus.block;
+            field[y - 1][x + 1] = GameStatus.block;
+            field[y][x - 1] = GameStatus.block;
             break;
         case "z":
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size] = GameStatus.block;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size - 1][GameStatus.block.initialX / GameStatus.block.size - 1] = GameStatus.block;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size - 1][GameStatus.block.initialX / GameStatus.block.size] = GameStatus.block;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size + 1] = GameStatus.block;
+            field[y][x] = GameStatus.block;
+            field[y - 1][x - 1] = GameStatus.block;
+            field[y - 1][x] = GameStatus.block;
+            field[y][x + 1] = GameStatus.block;
             break;
         case "j":
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size] = GameStatus.block;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size - 1] = GameStatus.block;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size + 1] = GameStatus.block;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size - 1][GameStatus.block.initialX / GameStatus.block.size - 1] = GameStatus.block;
+            field[y][x] = GameStatus.block;
+            field[y][x - 1] = GameStatus.block;
+            field[y][x + 1] = GameStatus.block;
+            field[y - 1][x - 1] = GameStatus.block;
             break;
         case "l":
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size] = GameStatus.block;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size + 1] = GameStatus.block;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size][GameStatus.block.initialX / GameStatus.block.size - 1] = GameStatus.block;
-            GameStatus.field.field[GameStatus.block.initialY / GameStatus.block.size - 1][GameStatus.block.initialX / GameStatus.block.size + 1] = GameStatus.block;
+            field[y][x] = GameStatus.block;
+            field[y][x + 1] = GameStatus.block;
+            field[y][x - 1] = GameStatus.block;
+            field[y - 1][x + 1] = GameStatus.block;
             break;
     }
     return newBlock;
