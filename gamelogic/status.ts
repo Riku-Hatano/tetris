@@ -22,7 +22,6 @@ interface GS {
             isScored: boolean,
         },
         field: any[][],
-        calcPiles: Function,
     }
     blockCounter: number,
     score: number,
@@ -56,7 +55,6 @@ const GameStatus: GS = {
             isScored: false,
         },
         field: [[]], //Define field of Tetris. This is initialize initializeField method in "./classes/FielsClass.ts"
-        calcPiles: undefined, //This is not used.
     },
     blockCounter: 0, //Works same way as id.
     score: 0,

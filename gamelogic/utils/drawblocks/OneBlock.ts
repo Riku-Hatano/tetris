@@ -1,8 +1,8 @@
 import { tetrisFieldCanvas } from "../../Main";
 import { Setting } from "../../setting";
 
-//This function is only called by DrawBlocks.ts.
-//Depending on the pixels given by DrawBlocks.ts, this function draws only one block. It means that this function will be called multiple times　when DrawBlocks.ts called once.
+//This function is only called by DrawBlocks.ts.　//この関数はDrawBlock.tsからしか呼ばれません。
+//All of arguments which has number type are given pixel. //数値型は全てpixcel数として受け取ります。
 const OneBlock = (x: number, y: number, width: number, height: number, color: string) => {
     if(color === undefined) {
         tetrisFieldCanvas.fillStyle = "gray"; //To draw test blocks. In production environment, color === undefined shouldn't happen.

@@ -7,12 +7,8 @@ import { Setting } from "../../setting";
 
 let dropBlockInterval: NodeJS.Timer = null;
 
-//Function drop should only be called once at first time, but because of useEffect, called twice in Main.tsx.
-//To avoid this, initialize variable outside of function first, and then depending on that variable, decide call it or not.
 const DropBlock = (setScore: react.Dispatch<SetStateAction<number>>) => {
     const drop = () => {
-        //This drop function works exactly same way as when we put on keydown.
-        //Works same way as case "ArrowDown" in KeyHandler function in "../KeyHandler.ts"
         Move("down", setScore);
         GameStatus.field.flags.isPreviousDown = true;
         GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block; //renew the current block. 

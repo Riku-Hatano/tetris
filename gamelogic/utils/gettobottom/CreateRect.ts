@@ -15,7 +15,6 @@ for(let i = 0 ; i < 3 ; i++) { //Only first time, select four tetriminoes and sh
 
 const CreateRect = () => {
     const field = GameStatus.field.field;
-    const size = Setting.block.size
     const x = Setting.block.initialX / Setting.block.size;
     const y = Setting.block.initialY / Setting.block.size;
 
@@ -37,48 +36,49 @@ const CreateRect = () => {
     GameStatus.nextBlock.push(Setting.tetriNames[rand]);
     DrawNextBlocks();
         switch(GameStatus.block.shape) {
-        case "i":
-            field[y][x] = GameStatus.block;
-            field[y][x - 1] = GameStatus.block;
-            field[y][x - 2] = GameStatus.block;
-            field[y][x + 1] = GameStatus.block;
-            break;
-        case "o":
-            field[y][x] = GameStatus.block;
-            field[y][x - 1] = GameStatus.block;
-            field[y + 1][x] = GameStatus.block;
-            field[y + 1][x - 1] = GameStatus.block;
-            break;
-        case "t":
-            field[y][x] = GameStatus.block;
-            field[y][x - 1] = GameStatus.block;
-            field[y][x + 1] = GameStatus.block;
-            field[y - 1][x] = GameStatus.block;
-            break;
-        case "s":
-            field[y][x] = GameStatus.block;
-            field[y - 1][x] = GameStatus.block;
-            field[y - 1][x + 1] = GameStatus.block;
-            field[y][x - 1] = GameStatus.block;
-            break;
-        case "z":
-            field[y][x] = GameStatus.block;
-            field[y - 1][x - 1] = GameStatus.block;
-            field[y - 1][x] = GameStatus.block;
-            field[y][x + 1] = GameStatus.block;
-            break;
-        case "j":
-            field[y][x] = GameStatus.block;
-            field[y][x - 1] = GameStatus.block;
-            field[y][x + 1] = GameStatus.block;
-            field[y - 1][x - 1] = GameStatus.block;
-            break;
-        case "l":
-            field[y][x] = GameStatus.block;
-            field[y][x + 1] = GameStatus.block;
-            field[y][x - 1] = GameStatus.block;
-            field[y - 1][x + 1] = GameStatus.block;
-            break;
+            case "i":
+                field[y][x] = GameStatus.block;
+                field[y][x - 1] = GameStatus.block;
+                field[y][x - 2] = GameStatus.block;
+                field[y][x + 1] = GameStatus.block;
+                break;
+            case "o":
+                field[y][x] = GameStatus.block;
+                field[y][x - 1] = GameStatus.block;
+                field[y + 1][x] = GameStatus.block;
+                field[y + 1][x - 1] = GameStatus.block;
+                break;
+            case "t":
+                field[y][x] = GameStatus.block;
+                field[y][x - 1] = GameStatus.block;
+                field[y][x + 1] = GameStatus.block;
+                field[y - 1][x] = GameStatus.block;
+                break;
+            case "s":
+                field[y][x] = GameStatus.block;
+                field[y - 1][x] = GameStatus.block;
+                field[y - 1][x + 1] = GameStatus.block;
+                field[y][x - 1] = GameStatus.block;
+                break;
+            case "z":
+                field[y][x] = GameStatus.block;
+                field[y - 1][x - 1] = GameStatus.block;
+                field[y - 1][x] = GameStatus.block;
+                field[y][x + 1] = GameStatus.block;
+                break;
+            case "j":
+                field[y][x] = GameStatus.block;
+                field[y][x - 1] = GameStatus.block;
+                field[y][x + 1] = GameStatus.block;
+                field[y - 1][x - 1] = GameStatus.block;
+                break;
+            case "l":
+                field[y][x] = GameStatus.block;
+                field[y][x + 1] = GameStatus.block;
+                field[y][x - 1] = GameStatus.block;
+                field[y - 1][x + 1] = GameStatus.block;
+                break;
+
     }
     return newBlock;
 }

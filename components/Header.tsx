@@ -6,14 +6,14 @@ const Header = () => {
     const router = useRouter();
     const [logUser, setLogUser] = useState(null);
 
-    useEffect(() => { //This useEffect will run in the first rendering, which means just after web page is refreshed.
+    useEffect(() => { //This useEffect will be caused by SSR. //サーバーサイドレンダリング時のためのuseEffect
         if(sessionStorage.getItem("logUser") !== null) {
             setLogUser(JSON.parse(sessionStorage.getItem("logUser"))[0].name);
         } else {
             setLogUser(null);
         }
     }, []);
-    useEffect(() => { //This useEffect will run after second rendering. Only with the useEffecth which doesn't contain the pathname as the watching variable.
+    useEffect(() => { //This useEffect will be caused by change by CSR when user move to another page. //ユーザーがサイト内のページ遷移したときのためのuseEffect
         if(sessionStorage.getItem("logUser") !== null) {
             setLogUser(JSON.parse(sessionStorage.getItem("logUser"))[0].name);
         } else {
