@@ -1,14 +1,15 @@
 import GameStatus from "../../status";
 import DeletePrevouisBlock from "./DeletePreviousBlock";
 
-const ChangeField = (movePixelX: number, movePixelY: number, isRotate: boolean = false, doDelete: boolean = true) => {
+//This function is called in Move.ts in "/gamelogic/utils/move/Move.ts" and Rotate.ts in "/gamelogic/utils/rotate/Rotate.ts".
+const ChangeField = (movePixelX: number, movePixelY: number, doRotate: boolean = false, doDelete: boolean = true) => {
     doDelete ? DeletePrevouisBlock() : console.log("dont delete previous block");
     GameStatus.block.positionX += movePixelX;
     GameStatus.block.positionY += movePixelY;
     const field = GameStatus.field.field;
     let x = GameStatus.block.positionX / GameStatus.block.size;
     let y = GameStatus.block.positionY / GameStatus.block.size;
-    const rs = isRotate ? (GameStatus.block.rotateStatus + 1) % 4 : GameStatus.block.rotateStatus;
+    const rs = doRotate ? (GameStatus.block.rotateStatus + 1) % 4 : GameStatus.block.rotateStatus;
 
     switch(GameStatus.block.shape) {
         case "i":
@@ -186,7 +187,7 @@ const ChangeField = (movePixelX: number, movePixelY: number, isRotate: boolean =
             }
             break;
     }
-    isRotate ? GameStatus.block.rotateStatus = (GameStatus.block.rotateStatus + 1) % 4 : false;
+    doRotate ? GameStatus.block.rotateStatus = (GameStatus.block.rotateStatus + 1) % 4 : false;
     GameStatus.field.field = field;
 }
 
