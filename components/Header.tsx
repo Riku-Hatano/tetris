@@ -24,6 +24,7 @@ const Header = () => {
     const logout = () => {
         sessionStorage.clear();
     }
+    
     return (
         <>
             <ul>

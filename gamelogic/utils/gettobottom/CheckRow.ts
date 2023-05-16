@@ -1,5 +1,6 @@
 import react, { SetStateAction } from "react";
 import GameStatus from "../../status";
+import { Setting } from "../../setting";
 import DrawBlocks from "../drawblocks/DrawBlocks";
 
 const CheckRow = (setScore: react.Dispatch<SetStateAction<number>>) => {

@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
 const CheckLogUser = (): null | string => {
-    const [path, setPath] = useState("");
     const router = useRouter();
     let logUser;
 
