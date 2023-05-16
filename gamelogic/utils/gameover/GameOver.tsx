@@ -11,14 +11,15 @@ const GameOver = () => {
     clearInterval(dropBlockInterval);
     gameOverModal.current.classList.remove(container.hide);
     GameStatus.isOver = true;
+
     const currentDate = new Date();
     const year = currentDate.getFullYear();
-    const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Zero-padding for months
-    const day = String(currentDate.getDate()).padStart(2, '0'); // Zero-padding for days
-    const hours = String(currentDate.getHours()).padStart(2, '0'); // Zero-padding for hours
-    const minutes = String(currentDate.getMinutes()).padStart(2, '0'); // Zero-padding for minutes
-    const seconds = String(currentDate.getSeconds()).padStart(2, '0'); // Zero-padding for seconds
-    const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`; //Chat GPT code above.
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+    const day = String(currentDate.getDate()).padStart(2, '0');
+    const hours = String(currentDate.getHours()).padStart(2, '0');
+    const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+    const seconds = String(currentDate.getSeconds()).padStart(2, '0');
+    const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
     const scoreData = {
         score: GameStatus.score,

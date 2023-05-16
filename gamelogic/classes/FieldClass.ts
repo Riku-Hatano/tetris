@@ -24,7 +24,7 @@ class FieldClass {
         }
     }
       
-    returnAll() {
+    returnAll() { //This initializes GameStatus.field in "../status.ts" //GameStatus.fieldを初期化するためのメソッド。
         return {
             width: this.width,
             height: this.height,

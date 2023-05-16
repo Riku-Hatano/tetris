@@ -1,6 +1,7 @@
 import GameStatus from "../../status";
 import DeletePrevouisBlock from "./DeletePreviousBlock";
 
+//This function is called in Move.ts in "/gamelogic/utils/move/Move.ts" and Rotate.ts in "/gamelogic/utils/rotate/Rotate.ts".
 const ChangeField = (movePixelX: number, movePixelY: number, doRotate: boolean = false, doDelete: boolean = true) => {
     doDelete ? DeletePrevouisBlock() : console.log("dont delete previous block");
     GameStatus.block.positionX += movePixelX;

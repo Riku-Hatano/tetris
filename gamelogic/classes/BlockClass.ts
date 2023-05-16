@@ -21,7 +21,7 @@ class BlockClass {
         this.rotateStatus = 0,
         this.color = ""
     }
-    returnAll() {
+    returnAll() { //This initializes GameStatus.block in "../status.ts" //GameStatusを初期化するためのメソッド。
         return {
             size: this.size,
             initialX: this.initialX,

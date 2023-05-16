@@ -3,7 +3,7 @@ import { nextBlocks } from "../../Main";
 import { Setting } from "../../setting";
 import GameStatus from "../../status";
 
-//This function is used at right side to show next three blocks.　//この関数は右側の次に落ちてくるブロックを表示するための関数です。
+//This function is used at right side to show next three blocks.　//この関数は右側のモーダルにある、次に落ちてくるブロックを表示するための関数です。
 const DrawNextBlocks = () => {
     let x = Setting.block.size * 1.75;
     let y = Setting.block.size;
