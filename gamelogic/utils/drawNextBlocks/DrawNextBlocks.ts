@@ -8,16 +8,16 @@ const DrawNextBlocks = () => {
     let x = Setting.block.size * 1.75;
     let y = Setting.block.size;
     let size = Setting.block.size;
-    if(nextBlocks !== undefined) {
-        nextBlocks.clearRect(size / 2, size / 2, size * 4.25, size * 7);
-        nextBlocks.fillStyle = "black";
-        nextBlocks.fillRect(size / 2, size / 2, size * 4.25, size * 7);
+    if(nextBlocksCanvas !== undefined) {
+        nextBlocksCanvas.clearRect(size / 2, size / 2, size * 4.25, size * 7);
+        nextBlocksCanvas.fillStyle = "black";
+        nextBlocksCanvas.fillRect(size / 2, size / 2, size * 4.25, size * 7);
 
         for(let i = 0 ; i < 3 ; i++) {
             switch(GameStatus.nextBlock[i]) {
                 case "i":
-                    nextBlocks.fillStyle = "#00ffff";
-                    nextBlocks.fillRect(x - size / 4, y, size * 2, size / 2);
+                    nextBlocksCanvas.fillStyle = "#00ffff";
+                    nextBlocksCanvas.fillRect(x - size / 4, y, size * 2, size / 2);
 
                     nextBlocksCanvas.beginPath();
                     nextBlocksCanvas.moveTo(x / 1.75 + size / 2, y);
@@ -36,20 +36,20 @@ const DrawNextBlocks = () => {
                     nextBlocksCanvas.stroke();
                     break;
                 case "o":
-                    nextBlocks.fillStyle = "#ffff00";
-                    nextBlocks.fillRect(x + size / 4, y, size, size);
-                    nextBlocks.moveTo(x + size / 4, y);
-                    nextBlocks.lineTo(x + size / 4, y + size);
-                    nextBlocks.lineTo(x + size + size / 4, y + size);
-                    nextBlocks.lineTo(x + size + size / 4, y);
-                    nextBlocks.lineTo(x + size / 4, y);
-                    nextBlocks.moveTo(x + size / 4, y + size / 2);
-                    nextBlocks.lineTo(x + size + size / 4, y + size / 2);
-                    nextBlocks.moveTo(x + size * 0.75, y);
-                    nextBlocks.lineTo(x + size * 0.75, y + size);
-                    nextBlocks.strokeStyle = "white";
-                    nextBlocks.lineWidth = Setting.block.size / 14;
-                    nextBlocks.stroke();
+                    nextBlocksCanvas.fillStyle = "#ffff00";
+                    nextBlocksCanvas.fillRect(x + size / 4, y, size, size);
+                    nextBlocksCanvas.moveTo(x + size / 4, y);
+                    nextBlocksCanvas.lineTo(x + size / 4, y + size);
+                    nextBlocksCanvas.lineTo(x + size + size / 4, y + size);
+                    nextBlocksCanvas.lineTo(x + size + size / 4, y);
+                    nextBlocksCanvas.lineTo(x + size / 4, y);
+                    nextBlocksCanvas.moveTo(x + size / 4, y + size / 2);
+                    nextBlocksCanvas.lineTo(x + size + size / 4, y + size / 2);
+                    nextBlocksCanvas.moveTo(x + size * 0.75, y);
+                    nextBlocksCanvas.lineTo(x + size * 0.75, y + size);
+                    nextBlocksCanvas.strokeStyle = "white";
+                    nextBlocksCanvas.lineWidth = Setting.block.size / 14;
+                    nextBlocksCanvas.stroke();
                     break;
                 case "t":
                     nextBlocksCanvas.beginPath();
