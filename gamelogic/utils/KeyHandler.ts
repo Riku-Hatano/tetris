@@ -24,6 +24,9 @@ const KeyHandler = (e: any, setScore: react.Dispatch<react.SetStateAction<number
             Rotate();
             GameStatus.field.flags.isPreviousDown = false;
             break;
+        case "w":
+            console.log("w was click");
+            break;
         default:
             console.log(e.key);
             break;
