@@ -4,14 +4,14 @@ import DrawNextBlocks from "../drawNextBlocks/DrawNextBlocks";
 import { Setting } from "../../setting";
 import GameOver from "../gameover/GameOver";
 
-// for(let i = 0 ; i < 3 ; i++) { //this function is for test.
-//     GameStatus.nextBlock.push("l");
-// }
-
-for(let i = 0 ; i < 3 ; i++) { //Only first time, select four tetriminoes and show three of them at nextBlock, which is right side of Tetris game.
-    const rand = Math.floor(Math.random() * Setting.tetriNames.length);
-    GameStatus.nextBlock.push(Setting.tetriNames[rand]);
+for(let i = 0 ; i < 3 ; i++) { //this function is for test.
+    GameStatus.nextBlock.push("z");
 }
+
+// for(let i = 0 ; i < 3 ; i++) { //Only first time, select four tetriminoes and show three of them at nextBlock, which is right side of Tetris game.
+//     const rand = Math.floor(Math.random() * Setting.tetriNames.length);
+//     GameStatus.nextBlock.push(Setting.tetriNames[rand]);
+// }
 
 const CreateRect = () => {
     const field = GameStatus.field.field;

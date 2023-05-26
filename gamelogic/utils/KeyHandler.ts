@@ -3,6 +3,7 @@ import GameStatus from "../status";
 import { tetrisFieldCanvas } from "../Main";
 import DrawBlocks from "./drawblocks/DrawBlocks";
 import Rotate from "./rotate/Rotate";
+import RotateLeft from "./rotate/RotateLeft";
 import Move from "./move/Move";
 
 const KeyHandler = (e: any, setScore: react.Dispatch<react.SetStateAction<number>>) => {
@@ -24,8 +25,9 @@ const KeyHandler = (e: any, setScore: react.Dispatch<react.SetStateAction<number
             Rotate();
             GameStatus.field.flags.isPreviousDown = false;
             break;
-        case "w":
-            console.log("w was click");
+        case "z":
+            RotateLeft();
+            GameStatus.field.flags.isPreviousDown = false;
             break;
         default:
             console.log(e.key);
