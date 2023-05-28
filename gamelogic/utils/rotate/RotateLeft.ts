@@ -3,7 +3,7 @@ import { Setting } from "../../setting";
 import KickLeftWall from "./rotatechecker/srs/KickLeftWall";
 import KickRightWall from "./rotatechecker/srs/KickRightWall";
 import KickFloor from "./rotatechecker/srs/KickFloor";
-import SuperRotationSystem from "./rotatechecker/srs/SuperRotationSystem";
+import SuperRotationSystemLeft from "./rotatechecker/srs/SuperRotationSystemLeft";
 import ChangeField from "../changefield/ChangeField";
 
 const RotateLeft = () => {
@@ -16,18 +16,81 @@ const RotateLeft = () => {
         case "i":
             switch((GameStatus.block.rotateStatus + 3) % 4) {
                 case 0:
-                    x + 2 >= wall ? ChangeField(0, 0, true, true, false) : ChangeField(bs, 0, true, true, false);
+                    if(KickLeftWall(false)) {
+                        GameStatus.field.flags.twoBlocks ? ChangeField(bs * 2, -bs, true, true, false) : ChangeField(bs, -bs, true, true, false)
+                    } else if(KickRightWall()) {
+                        GameStatus.field.flags.twoBlocks ? ChangeField(-bs * 2, -bs, true, true, false) : ChangeField(-bs, -bs, true, true, false);
+                    } else if(SuperRotationSystemLeft() === 0) {
+                        x + 2 >= wall ? ChangeField(0, 0, true, true, false) : ChangeField(0, -bs, true, true, false);
+                    } else if(SuperRotationSystemLeft() === 1) {
+                        x >= wall ? ChangeField(-bs * 2, 0, true, true, false) : ChangeField(-bs * 2, -bs, true, true, false); //exception!
+                    } else if(SuperRotationSystemLeft() === 2) {
+                        x + 2 >= wall ? ChangeField(bs, 0, true, true, false) : ChangeField(bs, -bs, true, true, false);
+                    } else if(SuperRotationSystemLeft() === 3) {
+                        x + 2 >= wall ? ChangeField(bs, bs * 2, true, true, false) : ChangeField(bs, bs, true, true, false);
+                    } else if(SuperRotationSystemLeft() === 4) {
+                        x + 2 >= wall ? ChangeField(-bs, -bs, true, true, false) : ChangeField(-bs, -bs * 2, true, true, false);
+                    } else {
+                        console.log(false);
+                    }
                     break;
                 case 1:
-                    ChangeField(0, bs, true, true, false);
+                    if(KickFloor()) {
+                        ChangeField(0, -bs, true, true, false);
+                    } else if(SuperRotationSystemLeft() === 0) {
+                        ChangeField(bs, 0, true, true, false);
+                    } else if(SuperRotationSystemLeft() === 1) {
+                        ChangeField(-bs, 0, true, true, false);
+                    } else if(SuperRotationSystemLeft() === 2) {
+                        ChangeField(bs * 2, 0, true, true, false);
+                    } else if(SuperRotationSystemLeft() === 3) {
+                        ChangeField(-bs, bs, true, true, false);
+                    } else if(SuperRotationSystemLeft() === 4) {
+                        ChangeField(bs * 2, -bs * 2, true, true, false);
+                    } else {
+                        console.log(false);
+                    }
                     break;
                 case 2:
-                    x + 3 > 0 ? ChangeField(-bs, 0, true, true, false) : ChangeField(0, 0, true, true, false);
+                    if(KickLeftWall(false)) {
+                        console.log("kick left wall case2")
+                        ChangeField(bs, bs, true, true, false);
+                    } else if(KickRightWall()) {
+                        GameStatus.field.flags.twoBlocks ? ChangeField(-bs * 2, bs, true, true, false) : ChangeField(-bs, bs, true, true, false);
+                    } else if(SuperRotationSystemLeft() === 0) {
+                        // x - 1 > 0 ? ChangeField(-bs, 0, true, true, false) : ChangeField(0, bs, true, true, false);
+                        ChangeField(0, bs, true, true, false);
+                    } else if(SuperRotationSystemLeft() === 1) {
+                        ChangeField(-bs, bs, true, true, false);
+                    } else if(SuperRotationSystemLeft() === 2) {
+                        ChangeField(bs * 2, bs, true, true, false);
+                    } else if(SuperRotationSystemLeft() === 3) {
+                        ChangeField(-bs, -bs, true, true, false);
+                    } else if(SuperRotationSystemLeft() === 4) {
+                        ChangeField(bs * 2, bs * 2, true, true, false);
+                    } else {
+                        console.log(false);
+                    }
                     break;
                 case 3:
-                    ChangeField(0, -bs, true, true, false);
+                    if(KickFloor()) {
+                        GameStatus.field.flags.twoBlocks ? ChangeField(0, -bs * 2, true, true, false) : ChangeField(0, -bs, true, true, false);
+                    } else if(SuperRotationSystemLeft() === 0) {
+                        ChangeField(-bs, 0, true, true, false);
+                    } else if(SuperRotationSystemLeft() === 1) {
+                        ChangeField(bs, 0, true, true, false);
+                    } else if(SuperRotationSystemLeft() === 2) {
+                        ChangeField(-bs * 2, 0, true, true, false);
+                    } else if(SuperRotationSystemLeft() === 3) {
+                        ChangeField(bs, -bs, true, true, false);
+                    } else if(SuperRotationSystemLeft() === 4) {
+                        ChangeField(-bs * 2, bs * 2, true, true, false);
+                    } else {
+                        console.log(false);
+                    }
                     break;
             }
+            GameStatus.field.flags.twoBlocks = false;
             break;
         case "o":
             console.log("o mino doesn't rotate");

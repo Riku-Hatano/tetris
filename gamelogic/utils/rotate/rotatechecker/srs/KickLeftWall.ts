@@ -1,13 +1,14 @@
 import GameStatus from "../../../../status";
 
-const KickLeftWall = () => {
+const KickLeftWall = (rotationRight: boolean = true) => {
     const field = GameStatus.field.field;
     const x = GameStatus.block.positionX / GameStatus.block.size;
     const y = GameStatus.block.positionY / GameStatus.block.size;
+    const rs = rotationRight ? (GameStatus.block.rotateStatus + 1) % 4 : (GameStatus.block.rotateStatus + 3) % 4;
 
     switch(GameStatus.block.shape) {
         case "i":
-            switch((GameStatus.block.rotateStatus + 1) % 4) {
+            switch(rs) {
                 case 0:
                     if(x - 1 < 0 && field[y][x + 1] === null && field[y][x + 2] === null && field[y][x + 3] === null) {
                         GameStatus.field.flags.twoBlocks = true;
@@ -20,7 +21,11 @@ const KickLeftWall = () => {
                 case 1:
                     return false;
                 case 2:
-                    x - 1 < 0 && field[y][x + 1] === null && field[y][x + 2] === null && field[y][x + 3] === null ? true : false;
+                    if(x - 1 < 0 && field[y][x + 1] === null && field[y][x + 2] === null && field[y][x + 3] === null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
                 case 3:
                     return false;
             }

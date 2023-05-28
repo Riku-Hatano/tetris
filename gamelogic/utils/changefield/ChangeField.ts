@@ -19,28 +19,56 @@ const ChangeField = (movePixelX: number, movePixelY: number, doRotate: boolean =
         case "i":
             switch(rs) {
                 case 0:
-                    field[y][x] = GameStatus.block;
-                    field[y][x - 1] = GameStatus.block;
-                    field[y][x - 2] = GameStatus.block;
-                    field[y][x + 1] = GameStatus.block;
+                    // if(rotationRight) {
+                        field[y][x] = GameStatus.block;
+                        field[y][x - 1] = GameStatus.block;
+                        field[y][x - 2] = GameStatus.block;
+                        field[y][x + 1] = GameStatus.block;
+                    // } else {
+                    //     field[y][x] = GameStatus.block;
+                    //     field[y][x - 1] = GameStatus.block;
+                    //     field[y][x + 1] = GameStatus.block;
+                    //     field[y][x + 2] = GameStatus.block;
+                    // }
                     break;
                 case 1:
-                    field[y][x] = GameStatus.block;
-                    field[y - 1][x] = GameStatus.block; 
-                    field[y - 2][x] = GameStatus.block; 
-                    field[y + 1][x] = GameStatus.block;
+                    // if(rotationRight) {
+                        field[y][x] = GameStatus.block;
+                        field[y - 1][x] = GameStatus.block; 
+                        field[y - 2][x] = GameStatus.block; 
+                        field[y + 1][x] = GameStatus.block;
+                    // } else {
+                    //     field[y][x] = GameStatus.block;
+                    //     field[y - 1][x] = GameStatus.block;
+                    //     field[y + 1][x] = GameStatus.block;
+                    //     field[y + 2][x] = GameStatus.block;
+                    // }
                     break;
                 case 2:
-                    field[y][x] = GameStatus.block;
-                    field[y][x - 1] = GameStatus.block;
-                    field[y][x + 1] = GameStatus.block;
-                    field[y][x + 2] = GameStatus.block;
+                    // if(rotationRight) {
+                        field[y][x] = GameStatus.block;
+                        field[y][x - 1] = GameStatus.block;
+                        field[y][x + 1] = GameStatus.block;
+                        field[y][x + 2] = GameStatus.block;
+                    // } else {
+                    //     field[y][x] = GameStatus.block;
+                    //     field[y][x - 1] = GameStatus.block;
+                    //     field[y][x - 2] = GameStatus.block;
+                    //     field[y][x + 1] = GameStatus.block;
+                    // }
                     break;
                 case 3:
-                    field[y][x] = GameStatus.block;
-                    field[y - 1][x] = GameStatus.block;
-                    field[y + 1][x] = GameStatus.block;
-                    field[y + 2][x] = GameStatus.block;
+                    // if(rotationRight) {
+                        field[y][x] = GameStatus.block;
+                        field[y - 1][x] = GameStatus.block;
+                        field[y + 1][x] = GameStatus.block;
+                        field[y + 2][x] = GameStatus.block;
+                    // } else {
+                    //     field[y][x] = GameStatus.block;
+                    //     field[y - 1][x] = GameStatus.block;
+                    //     field[y - 2][x] = GameStatus.block;
+                    //     field[y + 1][x] = GameStatus.block;
+                    // }
                     break;
             }
             break;
