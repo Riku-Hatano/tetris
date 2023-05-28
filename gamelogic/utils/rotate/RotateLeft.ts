@@ -18,73 +18,82 @@ const RotateLeft = () => {
                 case 0:
                     if(KickLeftWall(false)) {
                         GameStatus.field.flags.twoBlocks ? ChangeField(bs * 2, -bs, true, true, false) : ChangeField(bs, -bs, true, true, false)
-                    } else if(KickRightWall()) {
+                    } else if(KickRightWall(false)) {
                         GameStatus.field.flags.twoBlocks ? ChangeField(-bs * 2, -bs, true, true, false) : ChangeField(-bs, -bs, true, true, false);
                     } else if(SuperRotationSystemLeft() === 0) {
-                        x + 2 >= wall ? ChangeField(0, 0, true, true, false) : ChangeField(0, -bs, true, true, false);
+                        console.log(`srs case: ${SuperRotationSystemLeft()}`)
+                        x + 2 >= wall ? ChangeField(0, -bs, true, true, false) : ChangeField(0, -bs, true, true, false);
                     } else if(SuperRotationSystemLeft() === 1) {
-                        x >= wall ? ChangeField(-bs * 2, 0, true, true, false) : ChangeField(-bs * 2, -bs, true, true, false); //exception!
+                        console.log(`srs case: ${SuperRotationSystemLeft()}`)
+                        x >= wall ? ChangeField(bs * 2, 0, true, true, false) : ChangeField(bs * 2, -bs, true, true, false);
                     } else if(SuperRotationSystemLeft() === 2) {
-                        x + 2 >= wall ? ChangeField(bs, 0, true, true, false) : ChangeField(bs, -bs, true, true, false);
+                        console.log(`srs case: ${SuperRotationSystemLeft()}`)
+                        x + 2 >= wall ? ChangeField(-bs, 0, true, true, false) : ChangeField(-bs, -bs, true, true, false);
                     } else if(SuperRotationSystemLeft() === 3) {
-                        x + 2 >= wall ? ChangeField(bs, bs * 2, true, true, false) : ChangeField(bs, bs, true, true, false);
+                        console.log(`srs case: ${SuperRotationSystemLeft()}`)
+                        x + 2 >= wall ? ChangeField(bs * 2, -bs * 2, true, true, false) : ChangeField(bs * 2, -bs * 2, true, true, false);
                     } else if(SuperRotationSystemLeft() === 4) {
-                        x + 2 >= wall ? ChangeField(-bs, -bs, true, true, false) : ChangeField(-bs, -bs * 2, true, true, false);
+                        console.log(`srs case: ${SuperRotationSystemLeft()}`)
+                        x + 2 >= wall ? ChangeField(-bs, bs, true, true, false) : ChangeField(-bs, bs * 2, true, true, false);
                     } else {
                         console.log(false);
                     }
                     break;
                 case 1:
-                    if(KickFloor()) {
+                    if(KickFloor(false)) {
                         ChangeField(0, -bs, true, true, false);
                     } else if(SuperRotationSystemLeft() === 0) {
                         ChangeField(bs, 0, true, true, false);
                     } else if(SuperRotationSystemLeft() === 1) {
-                        ChangeField(-bs, 0, true, true, false);
-                    } else if(SuperRotationSystemLeft() === 2) {
                         ChangeField(bs * 2, 0, true, true, false);
+                    } else if(SuperRotationSystemLeft() === 2) {
+                        ChangeField(-bs, 0, true, true, false);
                     } else if(SuperRotationSystemLeft() === 3) {
-                        ChangeField(-bs, bs, true, true, false);
+                        ChangeField(bs * 2, bs * 2, true, true, false);
                     } else if(SuperRotationSystemLeft() === 4) {
-                        ChangeField(bs * 2, -bs * 2, true, true, false);
+                        ChangeField(-bs, -bs, true, true, false);
                     } else {
                         console.log(false);
                     }
                     break;
                 case 2:
                     if(KickLeftWall(false)) {
-                        console.log("kick left wall case2")
                         ChangeField(bs, bs, true, true, false);
-                    } else if(KickRightWall()) {
+                    } else if(KickRightWall(false)) {
                         GameStatus.field.flags.twoBlocks ? ChangeField(-bs * 2, bs, true, true, false) : ChangeField(-bs, bs, true, true, false);
                     } else if(SuperRotationSystemLeft() === 0) {
                         // x - 1 > 0 ? ChangeField(-bs, 0, true, true, false) : ChangeField(0, bs, true, true, false);
                         ChangeField(0, bs, true, true, false);
                     } else if(SuperRotationSystemLeft() === 1) {
-                        ChangeField(-bs, bs, true, true, false);
+                        ChangeField(bs, bs, true, true, false);
                     } else if(SuperRotationSystemLeft() === 2) {
-                        ChangeField(bs * 2, bs, true, true, false);
+                        ChangeField(-bs * 2, bs, true, true, false);
                     } else if(SuperRotationSystemLeft() === 3) {
-                        ChangeField(-bs, -bs, true, true, false);
+                        ChangeField(-bs * 2, bs * 2, true, true, false);
                     } else if(SuperRotationSystemLeft() === 4) {
-                        ChangeField(bs * 2, bs * 2, true, true, false);
+                        ChangeField(bs, -bs, true, true, false);
                     } else {
                         console.log(false);
                     }
                     break;
                 case 3:
-                    if(KickFloor()) {
+                    if(KickFloor(false)) {
                         GameStatus.field.flags.twoBlocks ? ChangeField(0, -bs * 2, true, true, false) : ChangeField(0, -bs, true, true, false);
                     } else if(SuperRotationSystemLeft() === 0) {
+                        console.log(`srs: ${SuperRotationSystemLeft()}`);
                         ChangeField(-bs, 0, true, true, false);
                     } else if(SuperRotationSystemLeft() === 1) {
-                        ChangeField(bs, 0, true, true, false);
-                    } else if(SuperRotationSystemLeft() === 2) {
+                        console.log(`srs: ${SuperRotationSystemLeft()}`);
                         ChangeField(-bs * 2, 0, true, true, false);
+                    } else if(SuperRotationSystemLeft() === 2) {
+                        console.log(`srs: ${SuperRotationSystemLeft()}`);
+                        ChangeField(bs, 0, true, true, false);
                     } else if(SuperRotationSystemLeft() === 3) {
-                        ChangeField(bs, -bs, true, true, false);
+                        console.log(`srs: ${SuperRotationSystemLeft()}`);
+                        ChangeField(-bs * 2, -bs * 2, true, true, false);
                     } else if(SuperRotationSystemLeft() === 4) {
-                        ChangeField(-bs * 2, bs * 2, true, true, false);
+                        console.log(`srs: ${SuperRotationSystemLeft()}`);
+                        ChangeField(bs, bs, true, true, false);
                     } else {
                         console.log(false);
                     }

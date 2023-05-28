@@ -1,3 +1,4 @@
+import { RouteMatcher } from "next/dist/server/future/route-matchers/route-matcher";
 import GameStatus from "../../../../status";
 
 const KickRightWall = (rotationRight: boolean = true) => {
@@ -11,21 +12,40 @@ const KickRightWall = (rotationRight: boolean = true) => {
         case "i":
             switch(rs) {
                 case 0:
-                    if(x + 1 >= wall && field[y][x - 1] === null && field[y + 1][x - 2] === null) {
-                        return true;
+                    if(rotationRight) {
+                        if(x + 1 >= wall && field[y][x - 1] === null && field[y][x - 2] === null) {
+                            return true;
+                        } else {
+                            return false;
+                        }
                     } else {
-                        return false;
+                        if(x + 1 >= wall && field[y - 1][x - 1] === null && field[y - 1][x - 2] === null) {
+                            return true;
+                        } else {
+                            return false;
+                        }
                     }
                 case 1:
                     return false;
                 case 2:
-                    if(x + 1 >= wall && field[y + 1][x - 1] === null && field[y + 1][x - 2] === null) {
-                        GameStatus.field.flags.twoBlocks = true;
-                        return true;
-                    } else if(x + 2 >= wall && field[y + 1][x - 1] === null && field[y + 1][x - 2] === null) {
-                        return true;
+                    if(rotationRight) {
+                        if(x + 1 >= wall && field[y][x - 1] === null && field[y][x - 2] === null) {
+                            GameStatus.field.flags.twoBlocks = true;
+                            return true;
+                        } else if(x + 2 >= wall && field[y][x - 1] === null && field[y][x - 2] === null) {
+                            return true;
+                        } else {
+                            return false;
+                        }
                     } else {
-                        return false;
+                        if(x + 1 >= wall && field[y + 1][x - 1] === null && field[y + 1][x - 2] === null) {
+                            GameStatus.field.flags.twoBlocks = true;
+                            return true;
+                        } else if(x + 2 >= wall && field[y + 1][x - 1] === null && field[y + 1][x - 2] === null) {
+                            return true;
+                        } else {
+                            return false;
+                        }
                     }
                 case 3:
                     return false;
