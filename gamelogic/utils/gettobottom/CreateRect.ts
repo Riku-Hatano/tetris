@@ -5,7 +5,7 @@ import { Setting } from "../../setting";
 import GameOver from "../gameover/GameOver";
 
 for(let i = 0 ; i < 3 ; i++) { //this function is for test.
-    GameStatus.nextBlock.push("s");
+    GameStatus.nextBlock.push("z");
 }
 
 // for(let i = 0 ; i < 3 ; i++) { //Only first time, select four tetriminoes and show three of them at nextBlock, which is right side of Tetris game.
