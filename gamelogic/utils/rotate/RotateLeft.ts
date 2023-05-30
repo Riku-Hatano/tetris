@@ -183,16 +183,22 @@ const RotateLeft = () => {
             switch((GameStatus.block.rotateStatus + 3) % 4) {
                 case 0:
                     if(KickLeftWall(false)) {
+                        console.log("kick left wall");
                         ChangeField(bs, 0, true, true, false);
                     } else if(SuperRotationSystemLeft() === 0) {
+                        console.log(`srs: ${SuperRotationSystemLeft()}`);
                         ChangeField(0, 0, true, true, false);
                     } else if(SuperRotationSystemLeft() === 1) {
+                        console.log(`srs: ${SuperRotationSystemLeft()}`);
                         ChangeField(bs, 0, true, true, false);
                     } else if(SuperRotationSystemLeft() === 2) {
+                        console.log(`srs: ${SuperRotationSystemLeft()}`);
                         ChangeField(bs, bs, true, true, false);
                     } else if(SuperRotationSystemLeft() === 3) {
+                        console.log(`srs: ${SuperRotationSystemLeft()}`);
                         ChangeField(0, -bs * 2, true, true, false);
                     } else if(SuperRotationSystemLeft() === 4) {
+                        console.log(`srs: ${SuperRotationSystemLeft()}`);
                         ChangeField(bs, -bs * 2, true, true, false);
                     } else {
                         console.log(false);

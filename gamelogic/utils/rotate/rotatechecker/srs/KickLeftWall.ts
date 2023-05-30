@@ -68,7 +68,7 @@ const KickLeftWall = (rotationRight: boolean = true) => {
         case "s":
             switch(rs) {
                 case 0:
-                    if(x - 1 < 0 && field[y][x + 2] === null) {
+                    if(x - 1 < 0 && field[y - 1][x + 1] === null && field[y - 1][x + 2] === null) {
                         return true;
                     } else {
                         return false;
