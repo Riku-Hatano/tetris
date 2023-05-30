@@ -50,9 +50,14 @@ const KickLeftWall = (rotationRight: boolean = true) => {
             }
             break;
         case "t":
-            switch((GameStatus.block.rotateStatus + 1) % 4) {
+            switch(rs) {
                 case 0:
-                    return false;
+                    if(x - 1 < 0 && field[y][x + 2] === null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                    break;
                 case 1:
                     return false;
                 case 2:

@@ -52,13 +52,13 @@ const KickRightWall = (rotationRight: boolean = true) => {
             }
             break;
         case "t":
-            switch((GameStatus.block.rotateStatus + 1) % 4) {
+            switch(rs) {
                 case 0:
                     x + 1 >= wall && field[y][x - 2] === null ? true : false;
                 case 1:
                     return false;
                 case 2:
-                    return false;
+                    x + 1 >= wall && field[y][x - 2] === null ? true : false;
                 case 3:
                     return false;
             }

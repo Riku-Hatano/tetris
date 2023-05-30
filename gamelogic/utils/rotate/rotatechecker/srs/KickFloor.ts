@@ -32,7 +32,7 @@ const KickFloor = (rotationRight: boolean = true) => {
             }
             break;
         case "t":
-            switch((GameStatus.block.rotateStatus + 1) % 4) {
+            switch(rs) {
                 case 0:
                     return false;
                 case 1:
@@ -40,7 +40,11 @@ const KickFloor = (rotationRight: boolean = true) => {
                 case 2:
                     return false;
                 case 3:
-                    return false;
+                    if(y > bottom && field[y - 2][x] === null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
             }
             break;
         case "s":
