@@ -64,19 +64,23 @@ const KickRightWall = (rotationRight: boolean = true) => {
             }
             break;
         case "s":
-            switch((GameStatus.block.rotateStatus + 1) % 4) {
+            switch(rs) {
                 case 0:
                     x + 1 >= wall && field[y][x - 2] === null ? true : false;
                 case 1:
                     return false;
                 case 2:
-                    return false;
+                    if(x + 1 >= wall && field[y][x - 2] === null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
                 case 3:
                     return false;
             }
             break;
         case "z":
-            switch((GameStatus.block.rotateStatus + 1) % 4) {
+            switch(rs) {
                 case 0:
                     x + 1 >= wall && field[y][x - 2] === null ? true : false;
                 case 1:
@@ -88,7 +92,7 @@ const KickRightWall = (rotationRight: boolean = true) => {
             }
             break;
         case "j":
-            switch((GameStatus.block.rotateStatus + 1) % 4) {
+            switch(rs) {
                 case 0:
                     x + 1 >= wall && field[y][x - 2] === null && field[y - 1][x - 2] === null ? true : false;
                 case 1:
@@ -100,7 +104,7 @@ const KickRightWall = (rotationRight: boolean = true) => {
             }
             break;
         case "l":
-            switch((GameStatus.block.rotateStatus + 1) % 4) {
+            switch(rs) {
                 case 0:
                     x + 1 >= wall && field[y][x - 2] === null ? true : false;
                 case 1:
