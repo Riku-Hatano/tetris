@@ -1,18 +1,23 @@
 import GameStatus from "../../../../status";
 
-const KickFloor = () => {
+const KickFloor = (rotationRight: boolean = true) => {
     const field = GameStatus.field.field;
     const bottom = field.length - (GameStatus.block.initialY / GameStatus.block.size);
     const x = GameStatus.block.positionX / GameStatus.block.size;
     const y = GameStatus.block.positionY / GameStatus.block.size;
+    const rs = rotationRight ? (GameStatus.block.rotateStatus + 1) % 4 : (GameStatus.block.rotateStatus + 3) % 4;
    
     switch(GameStatus.block.shape) {
         case "i":
-            switch((GameStatus.block.rotateStatus + 1) % 4) {
+            switch(rs) {
                 case 0:
                     return false;
                 case 1:
-                    y + 1 > bottom && field[y - 1][x] === null && field[y - 2][x] === null ? true : false;
+                    if(y + 1 > bottom && field[y - 1][x] === null && field[y - 2][x] === null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
                 case 2:
                     return false;
                 case 3:
@@ -27,7 +32,7 @@ const KickFloor = () => {
             }
             break;
         case "t":
-            switch((GameStatus.block.rotateStatus + 1) % 4) {
+            switch(rs) {
                 case 0:
                     return false;
                 case 1:
@@ -35,7 +40,11 @@ const KickFloor = () => {
                 case 2:
                     return false;
                 case 3:
-                    return false;
+                    if(y > bottom && field[y - 2][x] === null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
             }
             break;
         case "s":
