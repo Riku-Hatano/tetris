@@ -57,7 +57,7 @@ class FieldClass {
         [null, null, null, null, null, null, null, null, null, null],
         [null, null, "wa", null, null, null, null, "wa", null, null],
         [null, null, "wa", null, null, null, null, "wa", null, null],
-        [null, null, "wa", null, null, "wa", "wa", "wa", null, null],
+        [null, null, "wa", null, null, null, null, "wa", null, null],
         [null, null, "wa", null, null, null, null, "wa", null, null],
         [null, null, null, null, null, null, null, null, null, null],
         [null, null, null, null, null, null, null, null, null, null],

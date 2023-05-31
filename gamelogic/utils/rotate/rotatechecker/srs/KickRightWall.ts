@@ -102,7 +102,11 @@ const KickRightWall = (rotationRight: boolean = true) => {
                 case 1:
                     return false;
                 case 2:
-                    return false;
+                    if(x + 1 >= wall && field[y][x - 1] === null && field[y][x - 2] === null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
                 case 3:
                     return false;
             }
