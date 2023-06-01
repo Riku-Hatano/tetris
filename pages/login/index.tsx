@@ -32,7 +32,7 @@ const Login = () => {
         //         console.log(rej);
         //     }
         // )
-        axios.create().post(`https://typinggame-riku-hatano.vercel.app/api/lib/pseudoServices/pseudoLogin`, inputVal).then(
+        axios.create().post(`https://tetris-riku-hatano.vercel.app/api/lib/pseudoServices/pseudoLogin`, inputVal).then(
             (res) => {
                 if(res.data.message != null) {
                     router.push("/user");
