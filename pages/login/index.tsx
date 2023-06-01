@@ -32,7 +32,7 @@ const Login = () => {
         //         console.log(rej);
         //     }
         // )
-        axios.create().post("../api/lib/pseudoServices/pseudoLogin.js", inputVal).then(
+        axios.create().post(`${axiosconfig.baseURL}api/lib/pseudoServices/pseudoLogin`, inputVal).then(
             (res) => {
                 if(res.data.message != null) {
                     router.push("/user");
