@@ -52,7 +52,7 @@ const Main = () => {
         nextBlocksCanvas = nextBlock.getContext("2d");
         DrawNextBlocks();
         
-        // DropBlock(setScore); //Run setInterval
+        DropBlock(setScore); //Run setInterval
         
         document.addEventListener("keydown", handleKeyDown);
         // element.addEventListener("keydown", handleKeyDown);
