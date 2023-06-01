@@ -19,17 +19,28 @@ const Login = () => {
     }
     const login = (e: SyntheticEvent<HTMLFormElement>): void => {
         e.preventDefault();
-        axios.create().post(`${axiosconfig.baseURL}api/lib/services/login`, inputVal).then(
+        // axios.create().post(`${axiosconfig.baseURL}api/lib/services/login`, inputVal).then(
+        //     (res) => {
+        //         if(res.data.message !== null) {
+        //             router.push("/user");
+        //             sessionStorage.setItem("logUser", JSON.stringify(res.data.message));
+        //         } else {
+        //             alert("no user");
+        //         }
+        //     },
+        //     (rej) => {
+        //         console.log(rej);
+        //     }
+        // )
+        axios.create().post(`${axiosconfig.baseURL}api/lib/pseudoServices/pseudoLogin`, inputVal).then(
             (res) => {
-                if(res.data.message !== null) {
+                if(res.data.message != null) {
                     router.push("/user");
+                    const dummyArr = [JSON.stringify(res.data.message)]
                     sessionStorage.setItem("logUser", JSON.stringify(res.data.message));
                 } else {
                     alert("no user");
                 }
-            },
-            (rej) => {
-                console.log(rej);
             }
         )
         setInputVal(initialVal);
