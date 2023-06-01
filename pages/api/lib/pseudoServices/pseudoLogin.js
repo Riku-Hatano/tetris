@@ -6,7 +6,8 @@ const pseudoLogin = (req, res) => {
             res.status(200).json({message: "pseudoLogin: GET"});
             break;
         case "POST":
-            fs.readFile("pages/api/pseudoDB/users.json", "utf-8", (err, data) => {
+            // fs.readFile("pages/api/pseudoDB/users.json", "utf-8", (err, data) => {
+            fs.readFile("api/pseudoDB/users.json", "utf-8", (err, data) => {
                 if(err) {
                     console.log(err);
                     res.status(400).json({message: "failed to read file"});
