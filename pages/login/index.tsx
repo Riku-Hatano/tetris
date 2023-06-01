@@ -35,6 +35,7 @@ const Login = () => {
         axios.create().post(`${axiosconfig.baseURL}pages/api/lib/pseudoServices/pseudoLogin`, inputVal).then(
             (res) => {
                 if(res.data.message != null) {
+                    console.log(res.data.message);
                     router.push("/user");
                     const dummyArr = [JSON.stringify(res.data.message)]
                     sessionStorage.setItem("logUser", JSON.stringify(res.data.message));
