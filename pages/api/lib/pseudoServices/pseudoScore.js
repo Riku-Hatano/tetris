@@ -8,7 +8,7 @@ const pseudoScore = (req, res) => {
             switch(req.body.purpose) {
                 case "send":
                     let prevScores = null;
-                    fs.readFile("api/pseudoDB/scores.json", "utf-8", (err, data) => {
+                    fs.readFile("https://tetris-riku-hatano.vercel.app/pages/api/pseudoDB/scores.json", "utf-8", (err, data) => {
                     // fs.readFile("pages/api/pseudoDB/scores.json", "utf-8", (err, data) => {
                         if(err) {
                             console.log(err);
@@ -33,7 +33,7 @@ const pseudoScore = (req, res) => {
                     })
                     break;
                 case "pick":
-                    fs.readFile("api/pseudoDB/scores.json", "utf-8", (err, data) => {
+                    fs.readFile("https://tetris-riku-hatano.vercel.app/pages/api/pseudoDB/scores.json", "utf-8", (err, data) => {
                     // fs.readFile("pages/api/pseudoDB/scores.json", "utf-8", (err, data) => {
                         if(err) {
                             console.log(err);
