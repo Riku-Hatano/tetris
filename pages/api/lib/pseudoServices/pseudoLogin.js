@@ -7,7 +7,7 @@ const pseudoLogin = (req, res) => {
             break;
         case "POST":
             // fs.readFile("pages/api/pseudoDB/users.json", "utf-8", (err, data) => {
-            fs.readFile("https://tetris-riku-hatano.vercel.app/pages/api/pseudoDB/users.json", "utf-8", (err, data) => {
+            fs.readFile("https://tetris-riku-hatano.vercel.app/api/pseudoDB/users.json", "utf-8", (err, data) => {
                 if(err) {
                     console.log(err);
                     res.status(400).json({message: "failed to read file"});
