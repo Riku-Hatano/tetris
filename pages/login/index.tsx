@@ -36,7 +36,6 @@ const Login = () => {
             (res) => {
                 if(res.data.message != null) {
                     router.push("/user");
-                    const dummyArr = [JSON.stringify(res.data.message)]
                     sessionStorage.setItem("logUser", JSON.stringify(res.data.message));
                 } else {
                     alert("no user");
