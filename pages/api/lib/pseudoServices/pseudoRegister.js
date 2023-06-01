@@ -27,7 +27,7 @@ const pseudoRegister = (req, res) => {
                     newOneData.uid = prevData.length + 1;
                     prevData.push(newOneData);
 
-                    fs.writeFile('https://tetris-riku-hatano.vercel.app/api/pages/pseudoDB/users.json', JSON.stringify(prevData), {flag: "w"}, (err) => {
+                    fs.writeFile('https://tetris-riku-hatano.vercel.app/pages/api/pseudoDB/users.json', JSON.stringify(prevData), {flag: "w"}, (err) => {
                     // fs.writeFile('pages/api/pseudoDB/users.json', JSON.stringify(prevData), {flag: "w"}, (err) => {
                         if (err) {
                             console.error(err);
