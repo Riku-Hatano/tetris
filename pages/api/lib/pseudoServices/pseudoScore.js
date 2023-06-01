@@ -37,7 +37,6 @@ const pseudoScore = (req, res) => {
                             res.status(400).json({message: err});
                         } else {
                             const returnScores = [];
-                            console.log(JSON.parse(data));
                             JSON.parse(data).forEach((score) => {
                                 if(score.uid === req.body.uid) {
                                     returnScores.push(score);
