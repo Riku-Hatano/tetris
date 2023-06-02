@@ -44,6 +44,7 @@ const pseudoLogin = (req, res) => {
                         message: req.body,
                         cwd: process.cwd(),
                         parentDir: path.resolve(__dirname, ".."),
+                        dirname: path.resolve(__dirname),
                     });
                 } else {
                     JSON.parse(data).forEach((user) => {
