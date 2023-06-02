@@ -47,6 +47,7 @@ const pseudoLogin = (req, res) => {
                         parentDir: path.resolve(__dirname, ".."),
                         pseudoDB: path.resolve(__dirname, "../../pseudoDB"),
                         dirname: path.resolve(__dirname),
+                        filePath: filePath
                     });
                 } else {
                     JSON.parse(data).forEach((user) => {

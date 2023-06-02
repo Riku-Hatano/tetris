@@ -19,34 +19,34 @@ const Login = () => {
     }
     const login = (e: SyntheticEvent<HTMLFormElement>): void => {
         e.preventDefault();
-        // axios.create().post(`${axiosconfig.baseURL}api/lib/services/login`, inputVal).then(
-        //     (res) => {
-        //         if(res.data.message !== null) {
-        //             router.push("/user");
-        //             sessionStorage.setItem("logUser", JSON.stringify(res.data.message));
-        //         } else {
-        //             alert("no user");
-        //         }
-        //     },
-        //     (rej) => {
-        //         console.log(rej);
-        //     }
-        // )agits
-        axios.create().post("https://tetris-riku-hatano.vercel.app/api/lib/pseudoServices/pseudoLogin", inputVal).then(
-        // axios.create().post("https://tetris-riku-hatano.vercel.app/api/lib/pseudoServices/pseudoLogin", inputVal).then(
+        axios.create().post(`${axiosconfig.baseURL}api/lib/services/login`, inputVal).then(
             (res) => {
                 if(res.data.message !== null) {
-                    console.log(res.data.message);
-                    console.log(res.data);
-                    console.log(res);
                     router.push("/user");
                     sessionStorage.setItem("logUser", JSON.stringify(res.data.message));
                 } else {
                     alert("no user");
                 }
+            },
+            (rej) => {
+                console.log(rej);
             }
         )
-        setInputVal(initialVal);
+        // axios.create().post("https://tetris-riku-hatano.vercel.app/api/lib/pseudoServices/pseudoLogin", inputVal).then(
+        // // axios.create().post("https://tetris-riku-hatano.vercel.app/api/lib/pseudoServices/pseudoLogin", inputVal).then(
+        //     (res) => {
+        //         if(res.data.message !== null) {
+        //             console.log(res.data.message);
+        //             console.log(res.data);
+        //             console.log(res);
+        //             router.push("/user");
+        //             sessionStorage.setItem("logUser", JSON.stringify(res.data.message));
+        //         } else {
+        //             alert("no user");
+        //         }
+        //     }
+        // )
+        // setInputVal(initialVal);
     }
     return (
         <>
