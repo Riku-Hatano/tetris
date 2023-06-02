@@ -12,7 +12,7 @@ const pseudoLogin = (req, res) => {
                 if(err) {
                     console.log(err);
                     res.status(400).json({
-                        reqBody: req.body,
+                        message: req.body,
                         cwd: process.cwd(),
                         parentDir: path.resolve(__dirname, ".."),
                     });
