@@ -8,21 +8,20 @@ const pseudoLogin = (req, res) => {
         case "POST":
             // res.status(200).json({message: "pseudoLogin: POST"});//ハンドシェイク自体はうまくいってるっぽい
             // fs.readFile("pages/api/pseudoDB/users.json", "utf-8", (err, data) => {
-                res.status(200).json({message: process.cwd()});
-            // fs.readFile("api/pseudoDB/users.json", "utf-8", (err, data) => {
-            //     if(err) {
-            //         console.log(err);
-            //         res.status(400).json({message: req.body});
-            //     } else {
-            //         JSON.parse(data).forEach((user) => {
-            //             if(user.pw === req.body.pw && user.name === req.body.name) {
-            //                 res.status(200).json({message: [user]});
-            //                 return;
-            //             }
-            //         })
-            //         res.status(200).json({message: null});
-            //     }
-            // })
+            fs.readFile("/var/task/api/pseudoDB/users.json", "utf-8", (err, data) => {
+                if(err) {
+                    console.log(err);
+                    res.status(400).json({message: req.body});
+                } else {
+                    JSON.parse(data).forEach((user) => {
+                        if(user.pw === req.body.pw && user.name === req.body.name) {
+                            res.status(200).json({message: [user]});
+                            return;
+                        }
+                    })
+                    res.status(200).json({message: null});
+                }
+            })
             break;
     }
 }
