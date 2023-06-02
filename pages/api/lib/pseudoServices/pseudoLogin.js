@@ -37,7 +37,7 @@ const pseudoLogin = (req, res) => {
             // reqBody: {name: 'test', pw: 'test'}
 
             // fs.readFile("pages/api/pseudoDB/users.json", "utf-8", (err, data) => {
-            fs.readFile("var/task/.next/server/pages/api/pseudoDB/users.json", "utf-8", (err, data) => {
+            fs.readFile("task/.next/server/pages/api/pseudoDB/users.json", "utf-8", (err, data) => {
                 if(err) {
                     console.log(err);
                     res.status(400).json({
