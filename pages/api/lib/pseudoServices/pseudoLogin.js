@@ -25,15 +25,19 @@ const pseudoLogin = (req, res) => {
             // })
             break;
         case "POST":
-            res.status(200).json({
-                message: "pseudoLogin: POST",
-                reqBody: req.body,
-                cwd: process.cwd(),
-                parentDir: path.resolve(__dirname, ".."),
-            });//ハンドシェイク自体はうまくいってるっぽい
+            // res.status(200).json({
+            //     message: "pseudoLogin: POST",
+            //     reqBody: req.body,
+            //     cwd: process.cwd(),
+            //     parentDir: path.resolve(__dirname, ".."),
+            // });//ハンドシェイク自体はうまくいってるっぽい
+            // cwd: "/var/task"
+            // message: "pseudoLogin: POST"
+            // parentDir: "/var/task/.next/server/pages/api/lib"
+            // reqBody: {name: 'test', pw: 'test'}
 
             // fs.readFile("pages/api/pseudoDB/users.json", "utf-8", (err, data) => {
-            fs.readFile("/var/task/.next/server/pages/api/pseudoDB/users.json", "utf-8", (err, data) => {
+            fs.readFile("var/task/.next/server/pages/api/pseudoDB/users.json", "utf-8", (err, data) => {
                 if(err) {
                     console.log(err);
                     res.status(400).json({
@@ -53,18 +57,7 @@ const pseudoLogin = (req, res) => {
             })
 
 
-            // cwd
-            // : 
-            // "/var/task"
-            // message
-            // : 
-            // "pseudoLogin: POST"
-            // parentDir
-            // : 
-            // "/var/task/.next/server/pages/api/lib"
-            // reqBody
-            // : 
-            // {name: 'test', pw: 'test'}
+           
             break;
     }
 }
