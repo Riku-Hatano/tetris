@@ -11,7 +11,11 @@ const pseudoLogin = (req, res) => {
             fs.readFile("/var/task/api/pseudoDB/users.json", "utf-8", (err, data) => {
                 if(err) {
                     console.log(err);
-                    res.status(400).json({message: req.body});
+                    res.status(400).json({
+                        reqBody: req.body,
+                        cwd: process.cwd(),
+                        parentDir: path.resolve(__dirname, ".."),
+                    });
                 } else {
                     JSON.parse(data).forEach((user) => {
                         if(user.pw === req.body.pw && user.name === req.body.name) {
