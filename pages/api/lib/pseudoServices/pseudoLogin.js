@@ -24,7 +24,10 @@ const pseudoLogin = (req, res) => {
             // })
             break;
         case "POST":
-            res.status(200).json({message: "pseudoLogin: POST"});//ハンドシェイク自体はうまくいってるっぽい
+            res.status(200).json({
+                message: "pseudoLogin: POST",
+                reqBody: req.body
+            });//ハンドシェイク自体はうまくいってるっぽい
             // fs.readFile("pages/api/pseudoDB/users.json", "utf-8", (err, data) => {
             // fs.readFile("/var/task/api/pseudoDB/users.json", "utf-8", (err, data) => {
             //     if(err) {
