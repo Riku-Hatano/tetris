@@ -32,7 +32,8 @@ const Login = () => {
         //         console.log(rej);
         //     }
         // )agits
-        axios.create().post("https://tetris-riku-hatano.vercel.app/api/lib/pseudoServices/pseudoLogin", inputVal).then(
+        axios.create().get("https://tetris-riku-hatano.vercel.app/api/lib/pseudoServices/pseudoLogin", ).then(
+        // axios.create().post("https://tetris-riku-hatano.vercel.app/api/lib/pseudoServices/pseudoLogin", inputVal).then(
             (res) => {
                 if(res.data.message != null) {
                     console.log(res.data.message);
