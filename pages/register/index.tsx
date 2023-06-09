@@ -19,15 +19,8 @@ const Register = () => {
     }
     const register = (e: SyntheticEvent<HTMLFormElement>): void => {
         e.preventDefault();
-        axios.create().post(`${axiosconfig.baseURL}api/lib/services/register`, inputVal).then(
-            (res) => {
-                console.log(res.data.message);
-            },
-            (rej) => {
-                console.log(rej);
-            }
-        )
-        // axios.create().post(`${axiosconfig.baseURL}api/lib/pseudoServices/pseudoRegister`, inputVal).then(
+        console.log("this operation is disabled in production environment!")
+        // axios.create().post(`${axiosconfig.baseURL}api/lib/services/register`, inputVal).then(
         //     (res) => {
         //         console.log(res.data.message);
         //     },
@@ -35,25 +28,25 @@ const Register = () => {
         //         console.log(rej);
         //     }
         // )
-        // setInputVal(initialVal);
     }
     const getUsers = () => {
-        axios.create().get(`${axiosconfig.baseURL}api/lib/services/register`).then(
-            (res) => {
-                console.log(res.data.message);
-            },
-            (rej) => {
-                console.log(rej);
-            }
-        )
-        axios.create().get(`${axiosconfig.baseURL}api/lib/pseudoServices/pseudoRegister`).then(
-            (res) => {
-                console.log(JSON.parse(res.data.message));
-            },
-            (rej) => {
-                console.log(rej);
-            }
-        )
+        console.log("this operation is disabled in production environment!")
+        // axios.create().get(`${axiosconfig.baseURL}api/lib/services/register`).then(
+        //     (res) => {
+        //         console.log(res.data.message);
+        //     },
+        //     (rej) => {
+        //         console.log(rej);
+        //     }
+        // )
+        // axios.create().get(`${axiosconfig.baseURL}api/lib/pseudoServices/pseudoRegister`).then(
+        //     (res) => {
+        //         console.log(JSON.parse(res.data.message));
+        //     },
+        //     (rej) => {
+        //         console.log(rej);
+        //     }
+        // )
     }
     return (
         <>

@@ -1,4 +1,3 @@
-import next from "next/types";
 import { nextBlocksCanvas } from "../../Main";
 import { Setting } from "../../setting";
 import GameStatus from "../../status";

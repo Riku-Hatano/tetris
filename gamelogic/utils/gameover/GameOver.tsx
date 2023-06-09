@@ -30,14 +30,14 @@ const GameOver = () => {
     }
     sessionStorage.getItem("logUser") ? scoreData.uid = JSON.parse(sessionStorage.getItem("logUser"))[0].uid : false;
     
-    axios.create().post(`${axiosconfig.baseURL}api/lib/services/score`, scoreData).then(
-        (res) => {
-            console.log(res);
-        },
-        (rej) => {
-            console.log(rej);
-        }
-    )
+    // axios.create().post(`${axiosconfig.baseURL}api/lib/services/score`, scoreData).then(
+    //     (res) => {
+    //         console.log(res);
+    //     },
+    //     (rej) => {
+    //         console.log(rej);
+    //     }
+    // )
     // axios.create().post(`${axiosconfig.baseURL}api/lib/pseudoServices/pseudoScore`, scoreData).then(
     //     (res) => {
     //         console.log(res);
