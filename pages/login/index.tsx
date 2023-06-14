@@ -19,20 +19,19 @@ const Login = () => {
     }
     const login = (e: SyntheticEvent<HTMLFormElement>): void => {
         e.preventDefault();
-        console.log("this operation is disabled in production environment!")
-        // axios.create().post(`${axiosconfig.baseURL}api/lib/services/login`, inputVal).then(
-        //     (res) => {
-        //         if(res.data.message !== null) {
-        //             router.push("/user");
-        //             sessionStorage.setItem("logUser", JSON.stringify(res.data.message));
-        //         } else {
-        //             alert("no user");
-        //         }
-        //     },
-        //     (rej) => {
-        //         console.log(rej);
-        //     }
-        // )
+        axios.create().post(`${axiosconfig.baseURL}api/lib/services/login`, inputVal).then(
+            (res) => {
+                if(res.data.message !== null) {
+                    router.push("/user");
+                    sessionStorage.setItem("logUser", JSON.stringify(res.data.message));
+                } else {
+                    alert("no user");
+                }
+            },
+            (rej) => {
+                console.log(rej);
+            }
+        )
     }
     return (
         <>
