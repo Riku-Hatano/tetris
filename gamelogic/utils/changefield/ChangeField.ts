@@ -14,7 +14,6 @@ const ChangeField = (movePixelX: number, movePixelY: number, doRotate: boolean =
     doRotate && !rotationRight ? GameStatus.block.rotateStatus = (GameStatus.block.rotateStatus + 3) % 4 : false;
     const rs = GameStatus.block.rotateStatus;
 
-    console.log(rs);
     switch(GameStatus.block.shape) {
         case "i":
             switch(rs) {

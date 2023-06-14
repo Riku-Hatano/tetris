@@ -38,14 +38,14 @@ const GameOver = () => {
     //         console.log(rej);
     //     }
     // )
-    axios.create().post(`${axiosconfig.baseURL}api/lib/pseudoServices/pseudoScore`, scoreData).then(
-        (res) => {
-            console.log(res);
-        },
-        (rej) => {
-            console.log(rej);
-        }
-    )
+    // axios.create().post(`${axiosconfig.baseURL}api/lib/pseudoServices/pseudoScore`, scoreData).then(
+    //     (res) => {
+    //         console.log(res);
+    //     },
+    //     (rej) => {
+    //         console.log(rej);
+    //     }
+    // )
 }
 
 export default GameOver;

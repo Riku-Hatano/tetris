@@ -8,7 +8,8 @@ const pseudoScore = (req, res) => {
             switch(req.body.purpose) {
                 case "send":
                     let prevScores = null;
-                    fs.readFile("pages/api/pseudoDB/scores.json", "utf-8", (err, data) => {
+                    fs.readFile("https://tetris-riku-hatano.vercel.app/pages/api/pseudoDB/scores.json", "utf-8", (err, data) => {
+                    // fs.readFile("pages/api/pseudoDB/scores.json", "utf-8", (err, data) => {
                         if(err) {
                             console.log(err);
                             res.status(400).json({message: "failed to get socre data"});
@@ -19,7 +20,8 @@ const pseudoScore = (req, res) => {
                             newOneScore.sid = prevScores.length;
                             prevScores.push(newOneScore);
                             
-                            fs.writeFile('pages/api/pseudoDB/scores.json',JSON.stringify(prevScores), {flag: "w"}, (err) => {
+                            fs.writeFile('https://tetris-riku-hatano.vercel.app/pages/api/pseudoDB/scores.json',JSON.stringify(prevScores), {flag: "w"}, (err) => {
+                            // fs.writeFile('pages/api/pseudoDB/scores.json',JSON.stringify(prevScores), {flag: "w"}, (err) => {
                                 if(err) {
                                     console.log(err);
                                     res.status(400).json({message: "failed to update json file"});
@@ -31,7 +33,8 @@ const pseudoScore = (req, res) => {
                     })
                     break;
                 case "pick":
-                    fs.readFile("pages/api/pseudoDB/scores.json", "utf-8", (err, data) => {
+                    fs.readFile("https://tetris-riku-hatano.vercel.app/pages/api/pseudoDB/scores.json", "utf-8", (err, data) => {
+                    // fs.readFile("pages/api/pseudoDB/scores.json", "utf-8", (err, data) => {
                         if(err) {
                             console.log(err);
                             res.status(400).json({message: err});
