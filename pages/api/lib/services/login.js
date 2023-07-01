@@ -49,13 +49,17 @@ const login = (req, res) => {
                             }
                         }
                     }
-                    resp.items.map((user) => {
+                    let returnObj = null;
+                    resp.items.forEach((user) => {
                         if(user.fields.uname === req.body.uname && user.fields.pw === req.body.pw) {
-                            res.status(200).json({ message: user.fields });
-                            return;
+                            returnObj = user.fields;
                         }
                     })
-                    res.status(200).json({ message: resp.items });
+                    if(returnObj === null) {
+                        res.status(200).json({ message: resp.items });
+                    } else {
+                        res.status(200).json({ message: returnObj });
+                    }
                 },
                 (rejc) => {
                     res.status(400).json({ message: "failed to get data" });
