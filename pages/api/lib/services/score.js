@@ -1,4 +1,4 @@
-import { dbconnect } from "../database/dbconnect";
+// import { dbconnect } from "../database/dbconnect";
 import { createClient } from "contentful";
 const contentful = require("contentful-management");
 

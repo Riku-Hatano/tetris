@@ -1,6 +1,6 @@
-import { dbconnect } from "../database/dbconnect";
+// import { dbconnect } from "../database/dbconnect";
 import { createClient } from "contentful";
-const contentful = require("contentful-management");
+// const contentful = require("contentful-msanagement");
 
 const login = (req, res) => {
     // switch(req.method) { //this is for database.

@@ -35,7 +35,7 @@ const register = (req, res) => {
                     entry = {
                         fields: {
                             uname: {
-                                "en-US": req.body.name
+                                "en-US": req.body.uname
                             },
                             pw: {
                                 "en-US": req.body.pw
