@@ -57,6 +57,7 @@ const login = (req, res) => {
                     res.status(200).json({ message: null });
                 },
                 (rejc) => {
+                    res.status(400).json({ message: "failed to get data" });
                     console.log(rejc);
                 }
             )
