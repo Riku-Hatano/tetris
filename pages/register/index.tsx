@@ -4,7 +4,7 @@ import axios from "axios";
 import { axiosconfig } from "../api/lib/axios/axiosconfig";
 
 const initialVal = {
-    name: "",
+    uname: "",
     pw: "",
     regdate: "2023-04-10"
 }
@@ -43,7 +43,7 @@ const Register = () => {
     return (
         <>
             <form onSubmit={register}>
-                <input type="text" placeholder="name" name="name" value={inputVal.name} onChange={inputChange} required />
+                <input type="text" placeholder="name" name="uname" value={inputVal.uname} onChange={inputChange} required />
                 <input type="text" placeholder="password" name="pw" value={inputVal.pw} onChange={inputChange} required />
                 <input type="date" placeholder="date" name="regdate" value={inputVal.regdate} onChange={inputChange} required />
                 <button type="submit">register</button>

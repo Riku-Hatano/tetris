@@ -25,6 +25,7 @@ const register = (req, res) => {
             res.status(200).json({ message: "get request" });
             break;
         case "POST":
+            console.log(req.body);
             const client = createClient({
                 space: "jivp4q6rn93f",
                 accessToken: "lX7fWPWoJdKgbnEgSCU2kSEGlEBT0H1PFqdWiuntS3s"
