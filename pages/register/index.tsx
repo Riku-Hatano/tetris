@@ -19,15 +19,15 @@ const Register = () => {
     }
     const register = (e: SyntheticEvent<HTMLFormElement>): void => {
         e.preventDefault();
-        console.log("this operation is disabled in production environment!")
-        // axios.create().post(`${axiosconfig.baseURL}api/lib/services/register`, inputVal).then(
-        //     (res) => {
-        //         console.log(res.data.message);
-        //     },
-        //     (rej) => {
-        //         console.log(rej);
-        //     }
-        // )
+        // console.log("this operation is disabled in production environment!")
+        axios.create().post(`${axiosconfig.baseURL}api/lib/services/register`, inputVal).then(
+            (res) => {
+                console.log(res.data.message);
+            },
+            (rej) => {
+                console.log(rej);
+            }
+        )
     }
     const getUsers = () => {
         console.log("this operation is disabled in production environment!")

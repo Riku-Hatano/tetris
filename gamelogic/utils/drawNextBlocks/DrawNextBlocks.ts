@@ -35,6 +35,7 @@ const DrawNextBlocks = () => {
                     nextBlocksCanvas.stroke();
                     break;
                 case "o":
+                    nextBlocksCanvas.beginPath();
                     nextBlocksCanvas.fillStyle = "#ffff00";
                     nextBlocksCanvas.fillRect(x + size / 4, y, size, size);
                     nextBlocksCanvas.moveTo(x + size / 4, y);

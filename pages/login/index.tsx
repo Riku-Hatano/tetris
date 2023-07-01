@@ -4,7 +4,7 @@ import { axiosconfig } from "../api/lib/axios/axiosconfig";
 import { useRouter } from "next/router";
 
 const initialVal = {
-    name: "",
+    uname: "",
     pw: ""
 }
 
@@ -19,25 +19,25 @@ const Login = () => {
     }
     const login = (e: SyntheticEvent<HTMLFormElement>): void => {
         e.preventDefault();
-        console.log("this operation is disabled in production environment!")
-        // axios.create().post(`${axiosconfig.baseURL}api/lib/services/login`, inputVal).then(
-        //     (res) => {
-        //         if(res.data.message !== null) {
-        //             router.push("/user");
-        //             sessionStorage.setItem("logUser", JSON.stringify(res.data.message));
-        //         } else {
-        //             alert("no user");
-        //         }
-        //     },
-        //     (rej) => {
-        //         console.log(rej);
-        //     }
-        // )
+        axios.create().post(`${axiosconfig.baseURL}api/lib/services/login`, inputVal).then(
+            (res) => {
+                if(res.data.message !== null) {
+                    console.log(res.data.message.fields);
+                    router.push("/user");
+                    sessionStorage.setItem("logUser", JSON.stringify(res.data.message.fields));
+                } else {
+                    alert("no user");
+                }
+            },
+            (rej) => {
+                console.log(rej);
+            }
+        )
     }
     return (
         <>
             <form onSubmit={login}>
-                <input type="text" placeholder="name" name="name" value={inputVal.name} onChange={inputChange} required/>
+                <input type="text" placeholder="name" name="uname" value={inputVal.uname} onChange={inputChange} required/>
                 <input type="password" placeholder="password" name="pw" value={inputVal.pw} onChange={inputChange} required/>
                 <button type="submit">login</button>
             </form>
