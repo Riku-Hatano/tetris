@@ -11,7 +11,8 @@ const User = () => {
     const [scores, setScores] = useState(null);
     useEffect(() => {
         reqBody.uid = JSON.parse(sessionStorage.getItem("logUser")).uid
-        axios.create().post(`${axiosconfig.baseURL}api/lib/services/score`, reqBody).then(
+        // axios.create().post(`${axiosconfig.baseURL}api/lib/services/score`, reqBody).then(
+        axios.create().post(`../api/lib/services/score`, reqBody).then(
             (res) => {
                 setScores(res.data.message);
             },

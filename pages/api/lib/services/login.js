@@ -51,7 +51,7 @@ const login = (req, res) => {
                     }
                     resp.items.map((user) => {
                         if(user.fields.uname === req.body.uname && user.fields.pw === req.body.pw) {
-                            res.status(200).json({ message: user});
+                            res.status(200).json({ message: user.fields });
                         }
                     })
                     res.status(200).json({ message: null });

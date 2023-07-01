@@ -19,7 +19,8 @@ const Register = () => {
     }
     const register = (e: SyntheticEvent<HTMLFormElement>): void => {
         e.preventDefault();
-        axios.create().post(`${axiosconfig.baseURL}api/lib/services/register`, inputVal).then(
+        // axios.create().post(`${axiosconfig.baseURL}api/lib/services/register`, inputVal).then(
+        axios.create().post(`../api/lib/services/register`, inputVal).then(
             (res) => {
                 console.log(res.data.message);
             },
@@ -29,7 +30,8 @@ const Register = () => {
         )
     }
     const getUsers = () => {
-        axios.create().get(`${axiosconfig.baseURL}api/lib/services/register`).then(
+        // axios.create().get(`${axiosconfig.baseURL}api/lib/services/register`).then(
+        axios.create().get(`../api/lib/services/register`).then(
             (res) => {
                 console.log(res.data.message);
             },

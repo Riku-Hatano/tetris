@@ -19,9 +19,11 @@ const Login = () => {
     }
     const login = (e: SyntheticEvent<HTMLFormElement>): void => {
         e.preventDefault();
-        axios.create().post(`${axiosconfig.baseURL}api/lib/services/login`, inputVal).then(
+        // axios.create().post(`${axiosconfig.baseURL}api/lib/services/login`, inputVal).then(
+        axios.create().post(`../api/lib/services/login`, inputVal).then(
             (res) => {
                 if(res.data.message !== null) {
+                    console.log(res.data.message)
                     router.push("/user");
                     sessionStorage.setItem("logUser", JSON.stringify(res.data.message));
                 } else {
