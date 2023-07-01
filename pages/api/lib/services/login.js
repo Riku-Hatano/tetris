@@ -54,7 +54,7 @@ const login = (req, res) => {
                             res.status(200).json({ message: user.fields });
                         }
                     })
-                    res.status(200).json({ message: null });
+                    res.status(200).json({ message: resp.items });
                 },
                 (rejc) => {
                     res.status(400).json({ message: "failed to get data" });
