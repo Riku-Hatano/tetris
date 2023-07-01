@@ -22,14 +22,8 @@ const Login = () => {
         axios.create().post(`${axiosconfig.baseURL}api/lib/services/login`, inputVal).then(
             (res) => {
                 if(res.data.message !== null) {
-<<<<<<< HEAD
-                    console.log(res.data.message.fields);
-                    router.push("/user");
-                    sessionStorage.setItem("logUser", JSON.stringify(res.data.message.fields));
-=======
                     router.push("/user");
                     sessionStorage.setItem("logUser", JSON.stringify(res.data.message));
->>>>>>> 19b65f54ae7b96960d8cd9ccfb6bfe33aa906890
                 } else {
                     alert("no user");
                 }
