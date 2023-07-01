@@ -19,7 +19,10 @@ const Register = () => {
     }
     const register = (e: SyntheticEvent<HTMLFormElement>): void => {
         e.preventDefault();
+<<<<<<< HEAD
         // console.log("this operation is disabled in production environment!")
+=======
+>>>>>>> 19b65f54ae7b96960d8cd9ccfb6bfe33aa906890
         axios.create().post(`${axiosconfig.baseURL}api/lib/services/register`, inputVal).then(
             (res) => {
                 console.log(res.data.message);
@@ -30,23 +33,14 @@ const Register = () => {
         )
     }
     const getUsers = () => {
-        console.log("this operation is disabled in production environment!")
-        // axios.create().get(`${axiosconfig.baseURL}api/lib/services/register`).then(
-        //     (res) => {
-        //         console.log(res.data.message);
-        //     },
-        //     (rej) => {
-        //         console.log(rej);
-        //     }
-        // )
-        // axios.create().get(`${axiosconfig.baseURL}api/lib/pseudoServices/pseudoRegister`).then(
-        //     (res) => {
-        //         console.log(JSON.parse(res.data.message));
-        //     },
-        //     (rej) => {
-        //         console.log(rej);
-        //     }
-        // )
+        axios.create().get(`${axiosconfig.baseURL}api/lib/services/register`).then(
+            (res) => {
+                console.log(res.data.message);
+            },
+            (rej) => {
+                console.log(rej);
+            }
+        )
     }
     return (
         <>

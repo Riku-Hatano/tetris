@@ -7,6 +7,7 @@ const DrawNextBlocks = () => {
     let x = Setting.block.size * 1.75;
     let y = Setting.block.size;
     let size = Setting.block.size;
+    
     if(nextBlocksCanvas !== undefined) {
         nextBlocksCanvas.clearRect(size / 2, size / 2, size * 4.25, size * 7);
         nextBlocksCanvas.fillStyle = "black";
@@ -30,9 +31,6 @@ const DrawNextBlocks = () => {
                     nextBlocksCanvas.lineTo(x / 1.75 + size / 2 + size, y + size / 2);
                     nextBlocksCanvas.moveTo(x / 1.75 + size / 2 + size * 1.5, y);
                     nextBlocksCanvas.lineTo(x / 1.75 + size / 2 + size * 1.5, y + size / 2);
-                    nextBlocksCanvas.strokeStyle = "white";
-                    nextBlocksCanvas.lineWidth = Setting.block.size / 14;
-                    nextBlocksCanvas.stroke();
                     break;
                 case "o":
                     nextBlocksCanvas.beginPath();
@@ -47,9 +45,6 @@ const DrawNextBlocks = () => {
                     nextBlocksCanvas.lineTo(x + size + size / 4, y + size / 2);
                     nextBlocksCanvas.moveTo(x + size * 0.75, y);
                     nextBlocksCanvas.lineTo(x + size * 0.75, y + size);
-                    nextBlocksCanvas.strokeStyle = "white";
-                    nextBlocksCanvas.lineWidth = Setting.block.size / 14;
-                    nextBlocksCanvas.stroke();
                     break;
                 case "t":
                     nextBlocksCanvas.beginPath();
@@ -82,9 +77,6 @@ const DrawNextBlocks = () => {
                     nextBlocksCanvas.lineTo(x + size / 2, y + size);
                     nextBlocksCanvas.moveTo(x + size, y + size / 2);
                     nextBlocksCanvas.lineTo(x + size, y + size);
-                    nextBlocksCanvas.strokeStyle = "white";
-                    nextBlocksCanvas.lineWidth = Setting.block.size / 14;
-                    nextBlocksCanvas.stroke();
                     break;
                 case "s":
                     nextBlocksCanvas.beginPath();
@@ -115,9 +107,6 @@ const DrawNextBlocks = () => {
                     nextBlocksCanvas.lineTo(x + size, y + size / 2);
                     nextBlocksCanvas.lineTo(x + size / 2, y + size / 2);
                     nextBlocksCanvas.lineTo(x + size / 2, y + size);
-                    nextBlocksCanvas.strokeStyle = "white";
-                    nextBlocksCanvas.lineWidth = Setting.block.size / 14;
-                    nextBlocksCanvas.stroke();
                     break;
                 case "z":
                     nextBlocksCanvas.beginPath();
@@ -144,14 +133,10 @@ const DrawNextBlocks = () => {
                     nextBlocksCanvas.lineTo(x + size * 1.5, y + size);
                     nextBlocksCanvas.lineTo(x + size / 2, y + size);
                     nextBlocksCanvas.lineTo(x + size / 2, y + size / 2);
-
                     nextBlocksCanvas.moveTo(x + size / 2, y);
                     nextBlocksCanvas.lineTo(x + size / 2, y + size / 2);
                     nextBlocksCanvas.lineTo(x + size, y + size / 2);
                     nextBlocksCanvas.lineTo(x + size, y + size);
-                    nextBlocksCanvas.strokeStyle = "white";
-                    nextBlocksCanvas.lineWidth = Setting.block.size / 14;
-                    nextBlocksCanvas.stroke();
                     break;
                 case "j":
                     nextBlocksCanvas.beginPath();
@@ -179,9 +164,6 @@ const DrawNextBlocks = () => {
                     nextBlocksCanvas.lineTo(x + size / 2, y + size);
                     nextBlocksCanvas.moveTo(x + size, y + size / 2);
                     nextBlocksCanvas.lineTo(x + size, y + size);
-                    nextBlocksCanvas.strokeStyle = "white";
-                    nextBlocksCanvas.lineWidth = Setting.block.size / 14;
-                    nextBlocksCanvas.stroke();
                     break;
                 case "l":
                     nextBlocksCanvas.beginPath();
@@ -206,19 +188,17 @@ const DrawNextBlocks = () => {
                     nextBlocksCanvas.lineTo(x, y + size);
                     nextBlocksCanvas.lineTo(x, y + size / 2);
                     nextBlocksCanvas.lineTo(x + size / 2, y + size / 2);
-
                     nextBlocksCanvas.moveTo(x + size / 2, y + size / 2);
                     nextBlocksCanvas.lineTo(x + size / 2, y + size);
                     nextBlocksCanvas.moveTo(x + size * 1.5, y + size / 2);
                     nextBlocksCanvas.lineTo(x + size, y + size / 2);
                     nextBlocksCanvas.lineTo(x + size, y + size);
-
-                    nextBlocksCanvas.strokeStyle = "white";
-                    nextBlocksCanvas.lineWidth = Setting.block.size / 14;
-                    nextBlocksCanvas.stroke();
                     break;
             }
             y += Setting.block.size * 2;
+            nextBlocksCanvas.strokeStyle = "white";
+            nextBlocksCanvas.lineWidth = Setting.block.size / 14;
+            nextBlocksCanvas.stroke();
         }
     }
 }
