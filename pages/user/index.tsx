@@ -34,7 +34,7 @@ const User = () => {
             <h4>user</h4>
             {
                 scores !== null ? 
-                <table>
+                <table border={1}>
                     <thead>
                         <tr>
                             <th>gamemode</th>

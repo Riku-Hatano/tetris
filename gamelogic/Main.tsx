@@ -29,7 +29,7 @@ const Main = () => {
     const gameOverModalRef = useRef<HTMLDivElement>(null);
     const gameStartModalRef = useRef<HTMLDivElement>(null);
     // const element = ref.current;
-    const [score, setScore] = useState(0); //this setScore will go through KeyHandler.ts -> Move.ts -> GetToBottom.ts -> CheckRow.ts and then finaly used.
+    const [score, setScore] = useState(GameStatus.score); //this setScore will go through KeyHandler.ts -> Move.ts -> GetToBottom.ts -> CheckRow.ts and then finaly used.
 
     // const keyPress = (e: any) => {
     //     // KeyHandler(e, setScore);
