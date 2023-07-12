@@ -1,6 +1,5 @@
 import { ChangeEvent, SyntheticEvent, useState } from "react";
 import axios from "axios";
-import { axiosconfig } from "../api/lib/axios/axiosconfig";
 import { useRouter } from "next/router";
 
 const initialVal = {
@@ -19,7 +18,6 @@ const Login = () => {
     }
     const login = (e: SyntheticEvent<HTMLFormElement>): void => {
         e.preventDefault();
-        // axios.create().post(`${axiosconfig.baseURL}api/lib/services/login`, inputVal).then(
         axios.create().post(`../api/lib/services/login`, inputVal).then(
             (res) => {
                 if(res.data.message !== null) {
