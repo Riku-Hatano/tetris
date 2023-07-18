@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import styles from "../css/components/Header.module.css"
 
 const Header = () => {
     const router = useRouter();
@@ -27,7 +28,7 @@ const Header = () => {
     
     return (
         <>
-            <ul>
+            <ul className={styles.list}>
                 <li><Link href="/">home</Link></li>
                 <li><Link href="/game">game</Link></li>
                 { logUser ? null : <li><Link href="/login">login</Link></li> }

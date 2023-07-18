@@ -1,6 +1,4 @@
-// import { dbconnect } from "../database/dbconnect";
 import { createClient } from "contentful";
-// const contentful = require("contentful-msanagement");
 
 const login = (req, res) => {
     // switch(req.method) { //this is for database.
@@ -56,7 +54,7 @@ const login = (req, res) => {
                         }
                     })
                     if(returnObj === null) {
-                        res.status(200).json({ message: resp.items });
+                        res.status(200).json({ message: null });
                     } else {
                         res.status(200).json({ message: returnObj });
                     }
@@ -66,23 +64,6 @@ const login = (req, res) => {
                     console.log(rejc);
                 }
             )
-            
-    
-            // const managementClient = contentful.createClient({
-            //     accessToken: "CFPAT-1TieUWuOMg6lso2jVKRKaaTnBwxd6-yuVti2-iqRQho"
-            // });
-    
-            // managementClient.getSpace("jivp4q6rn93f")
-            //     .then((space) => space.getEnvironment('master'))
-            //     .then((environment) => environment.createEntry('tetrisusers', entry))
-            //     .then((entry) => {
-            //         entry.publish();
-            //         res.status(200).json({ message: 'Entry created' });
-            //     })
-            //     .catch((error) => {
-            //         console.error('Error creating entry:', error);
-            //         res.status(400).json({ message: 'Failed to create entry' });
-            //     });
             break;
     }
 }

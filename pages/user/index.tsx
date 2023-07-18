@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { axiosconfig } from "../api/lib/axios/axiosconfig";
 
 const User = () => {
     const reqBody = {
@@ -11,7 +10,6 @@ const User = () => {
     const [scores, setScores] = useState(null);
     useEffect(() => {
         reqBody.uid = JSON.parse(sessionStorage.getItem("logUser")).uid
-        // axios.create().post(`${axiosconfig.baseURL}api/lib/services/score`, reqBody).then(
         axios.create().post(`../api/lib/services/score`, reqBody).then(
             (res) => {
                 setScores(res.data.message);
@@ -20,21 +18,13 @@ const User = () => {
                 console.log(rej);
             }
         )
-        // axios.create().post(`${axiosconfig.baseURL}api/lib/pseudoServices/pseudoScore`, reqBody).then(
-        //     (res) => {
-        //         setScores(res.data.message);
-        //     },
-        //     (rej) => {
-        //         console.log(rej);
-        //     }
-        // )
     }, [])
     return (
         <>
             <h4>user</h4>
             {
                 scores !== null ? 
-                <table>
+                <table border={1}>
                     <thead>
                         <tr>
                             <th>gamemode</th>
@@ -56,15 +46,6 @@ const User = () => {
                         }
                     </tbody>
                 </table>
-
-
-
-
-
-
-
-
-
                 : null
             }
         </>
