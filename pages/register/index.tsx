@@ -8,6 +8,11 @@ const initialVal = {
     regdate: ""
 }
 
+const regDate = new Date();
+initialVal.regdate = `${regDate.getFullYear()}-${String(regDate.getMonth() + 1).padStart(2, "0")}-${String(regDate.getDate() + 1).padStart(2, "0")}`;
+console.log(initialVal.regdate);
+console.log(regDate.getFullYear());
+
 const Register = () => {
     const [inputVal, setInputVal] = useState(initialVal);
     const inputChange = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -18,17 +23,8 @@ const Register = () => {
     }
     const register = (e: SyntheticEvent<HTMLFormElement>): void => {
         e.preventDefault();
+
         axios.create().post(`../api/lib/services/register`, inputVal).then(
-            (res) => {
-                console.log(res.data.message);
-            },
-            (rej) => {
-                console.log(rej);
-            }
-        )
-    }
-    const getUsers = () => {
-        axios.create().get(`../api/lib/services/register`).then(
             (res) => {
                 console.log(res.data.message);
             },
@@ -42,10 +38,9 @@ const Register = () => {
             <form onSubmit={register}>
                 <input type="text" placeholder="name" name="uname" value={inputVal.uname} onChange={inputChange} required />
                 <input type="text" placeholder="password" name="pw" value={inputVal.pw} onChange={inputChange} required />
-                <input type="date" placeholder="date" name="regdate" value={inputVal.regdate} onChange={inputChange} required />
+                {/* <input type="date" placeholder="date" name="regdate" value={inputVal.regdate} onChange={inputChange} required /> */}
                 <button type="submit">register</button>
             </form>
-            <button onClick={getUsers}>check users in database</button>
         </>
     )
 }
