@@ -10,8 +10,6 @@ const initialVal = {
 
 const regDate = new Date();
 initialVal.regdate = `${regDate.getFullYear()}-${String(regDate.getMonth() + 1).padStart(2, "0")}-${String(regDate.getDate() + 1).padStart(2, "0")}`;
-console.log(initialVal.regdate);
-console.log(regDate.getFullYear());
 
 const Register = () => {
     const [inputVal, setInputVal] = useState(initialVal);
@@ -23,10 +21,11 @@ const Register = () => {
     }
     const register = (e: SyntheticEvent<HTMLFormElement>): void => {
         e.preventDefault();
+        setInputVal(initialVal);
 
         axios.create().post(`../api/lib/services/register`, inputVal).then(
             (res) => {
-                console.log(res.data.message);
+                alert("thanks for registering! enjoy tetris!!");
             },
             (rej) => {
                 console.log(rej);
