@@ -1,13 +1,15 @@
 import { ChangeEvent, SyntheticEvent } from "react";
 import { useState } from "react";
 import axios from "axios";
-import { axiosconfig } from "../api/lib/axios/axiosconfig";
 
 const initialVal = {
-    name: "",
+    uname: "",
     pw: "",
-    regdate: "2023-04-10"
+    regdate: ""
 }
+
+const regDate = new Date();
+initialVal.regdate = `${regDate.getFullYear()}-${String(regDate.getMonth() + 1).padStart(2, "0")}-${String(regDate.getDate() + 1).padStart(2, "0")}`;
 
 const Register = () => {
     const [inputVal, setInputVal] = useState(initialVal);
@@ -19,19 +21,11 @@ const Register = () => {
     }
     const register = (e: SyntheticEvent<HTMLFormElement>): void => {
         e.preventDefault();
-        axios.create().post(`${axiosconfig.baseURL}api/lib/services/register`, inputVal).then(
+        setInputVal(initialVal);
+
+        axios.create().post(`../api/lib/services/register`, inputVal).then(
             (res) => {
-                console.log(res.data.message);
-            },
-            (rej) => {
-                console.log(rej);
-            }
-        )
-    }
-    const getUsers = () => {
-        axios.create().get(`${axiosconfig.baseURL}api/lib/services/register`).then(
-            (res) => {
-                console.log(res.data.message);
+                alert("thanks for registering! enjoy tetris!!");
             },
             (rej) => {
                 console.log(rej);
@@ -41,12 +35,11 @@ const Register = () => {
     return (
         <>
             <form onSubmit={register}>
-                <input type="text" placeholder="name" name="name" value={inputVal.name} onChange={inputChange} required />
+                <input type="text" placeholder="name" name="uname" value={inputVal.uname} onChange={inputChange} required />
                 <input type="text" placeholder="password" name="pw" value={inputVal.pw} onChange={inputChange} required />
-                <input type="date" placeholder="date" name="regdate" value={inputVal.regdate} onChange={inputChange} required />
+                {/* <input type="date" placeholder="date" name="regdate" value={inputVal.regdate} onChange={inputChange} required /> */}
                 <button type="submit">register</button>
             </form>
-            <button onClick={getUsers}>check users in database</button>
         </>
     )
 }

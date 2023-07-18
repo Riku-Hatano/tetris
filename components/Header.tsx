@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import styles from "../css/components/Header.module.css"
 
 const Header = () => {
     const router = useRouter();
@@ -8,14 +9,14 @@ const Header = () => {
 
     useEffect(() => { //This useEffect will be caused by SSR. //サーバーサイドレンダリング時のためのuseEffect
         if(sessionStorage.getItem("logUser") !== null) {
-            setLogUser(JSON.parse(sessionStorage.getItem("logUser"))[0].name);
+            setLogUser(JSON.parse(sessionStorage.getItem("logUser")).uname);
         } else {
             setLogUser(null);
         }
     }, []);
     useEffect(() => { //This useEffect will be caused by change by CSR when user move to another page. //ユーザーがサイト内のページ遷移したときのためのuseEffect
         if(sessionStorage.getItem("logUser") !== null) {
-            setLogUser(JSON.parse(sessionStorage.getItem("logUser"))[0].name);
+            setLogUser(JSON.parse(sessionStorage.getItem("logUser")).uname);
         } else {
             setLogUser(null);
         }
@@ -27,7 +28,7 @@ const Header = () => {
     
     return (
         <>
-            <ul>
+            <ul className={styles.list}>
                 <li><Link href="/">home</Link></li>
                 <li><Link href="/game">game</Link></li>
                 { logUser ? null : <li><Link href="/login">login</Link></li> }
