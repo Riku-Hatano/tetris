@@ -71,7 +71,8 @@ const score = (req, res) => {
                 case "pickHighest": {
                     const bodyData = JSON.parse(req.body.logUser);
                     const date = new Date()
-                    const today = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate() + 1).padStart(2, "0")}`;
+                    // const today = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate() + 1).padStart(2, "0")}`;
+                    const today = date.getFullYear() + "-" + String(date.getMonth() + 1).padStart(2, "0") + "-" + String(date.getDate() + 1).padStart(2, "0");
 
                     client.getEntries({ content_type: "tetrisscores" }).then(
                         (resp) => {
@@ -155,7 +156,6 @@ const score = (req, res) => {
                                         returnObj.todayHighest.uname = user.fields.uname
                                     }
                                 })
-                                console.log(returnObj);
                                 res.status(200).json({ message: returnObj });
                             },
                             (rejc) => {
