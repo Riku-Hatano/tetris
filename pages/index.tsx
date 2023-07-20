@@ -5,10 +5,12 @@ export default function Home() {
   const [highestScore, setHighestScore] = useState({
     highest: {
       uid: 0,
+      uname: "",
       score: 0
     },
     todayHighest: {
       uid: 0,
+      uname: "",
       score: 0
     },
     yourHighest: {
@@ -17,7 +19,8 @@ export default function Home() {
   })
   useEffect(() => {
     const bodyData = {
-      logUser: sessionStorage.getItem("logUser"),
+      // logUser: sessionStorage.getItem("logUser"),
+      logUser: sessionStorage.getItem("logUser") ? sessionStorage.getItem("logUser") : null,
       purpose: "pickHighest"
     }
     const reqBody = {
@@ -31,8 +34,6 @@ export default function Home() {
     fetch("./api/lib/services/score", reqBody)
       .then((data) => data.json())
       .then((data) => setHighestScore(data.message))
-      // .then((data) => setHighestScore(data.message.highest.score))
-      // .then((data) => console.log(data))
       .catch((err) => {
         console.log(err);
       })
@@ -48,8 +49,8 @@ export default function Home() {
       </section>
       <article>
         <h2>highest scores</h2>
-        <p>highest score in server: { highestScore.highest.score }</p>
-        <p>today's highest score: { highestScore.todayHighest.score }</p>
+        <p>highest score in server: { highestScore.highest.score } by { highestScore.highest.uname }</p>
+        <p>today's highest score: { highestScore.todayHighest.score } by { highestScore.todayHighest.uname }</p>
         <p>your highest score: { highestScore.yourHighest.score }</p>
       </article>
     </div>

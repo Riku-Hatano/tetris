@@ -77,10 +77,12 @@ const score = (req, res) => {
                         (resp) => {
                             const highest = {
                                 uname: "",
+                                uid: 0,
                                 score: 0
                             }
                             const todayHighest = {
                                 uname: "",
+                                uid: 0,
                                 score: 0
                             }
                             const yourHighest = {
@@ -91,26 +93,76 @@ const score = (req, res) => {
                                 todayHighest: todayHighest,
                                 yourHighest: yourHighest
                             }
-        
-                            resp.items.map((scoreData) => {
-                                if(scoreData.fields.score > highest.score) {
-                                    highest.score = scoreData.fields.score,
-                                    highest.uname = scoreData.fields.uid
-                                }
-                                if(bodyData.uid === scoreData.fields.uid && scoreData.fields.score > yourHighest.score) {
-                                    yourHighest.score = scoreData.fields.score
-                                }
-                                if(today === scoreData.fields.playdate && scoreData.fields.score > todayHighest.score) {
-                                    highest.score = scoreData.fields.score,
-                                    highest.uname = scoreData.fields.uid
-                                }
-                            })
-                            res.status(200).json({ message: returnArr });
+
+                            if(bodyData !== null) {
+                                resp.items.map((scoreData) => {
+                                    if(scoreData.fields.score > highest.score) {
+                                        highest.score = scoreData.fields.score,
+                                        highest.uid = scoreData.fields.uid
+                                    }
+                                    if(bodyData.uid === scoreData.fields.uid && scoreData.fields.score > yourHighest.score) {
+                                        yourHighest.score = scoreData.fields.score
+                                    }
+                                    if(today === scoreData.fields.playdate.slice(0, 10) && scoreData.fields.score > todayHighest.score) {
+                                        todayHighest.score = scoreData.fields.score,
+                                        todayHighest.uid = scoreData.fields.uid
+                                    }
+                                })
+                                return returnArr;
+                            } else {
+                                resp.items.map((scoreData) => {
+                                    if(scoreData.fields.score > highest.score) {
+                                        highest.score = scoreData.fields.score,
+                                        highest.uid = scoreData.fields.uid
+                                    }
+                                    if(today === scoreData.fields.playdate.slice(0, 10) && scoreData.fields.score > todayHighest.score) {
+                                        todayHighest.score = scoreData.fields.score,
+                                        todayHighest.uid = scoreData.fields.uid
+                                    }
+                                })
+                                returnArr.yourHighest.score = -1;
+                            }
+                            // res.status(200).json({ message: returnArr });
+                            return returnArr;
                         },
                         (rej) => {
                             res.status(400).json({ message: rej });
                         }
                     )
+                    .then((returnArr) => {
+                        const client = createClient({
+                            space: "jivp4q6rn93f",
+                            accessToken: "lX7fWPWoJdKgbnEgSCU2kSEGlEBT0H1PFqdWiuntS3s"
+                        })
+                        client.getEntries({ content_type: "tetrisusers" }).then(
+                            (resp) => {
+                                let entry = {
+                                    fields: {
+                                        highestUid: returnArr.highest.uid,
+                                        todayHighestUid: returnArr.todayHighest.uid
+                                    }
+                                }
+                                let returnObj = {
+                                    highest: returnArr.highest,
+                                    todayHighest: returnArr.todayHighest,
+                                    yourHighest: returnArr.yourHighest
+                                };
+                                resp.items.forEach((user) => {
+                                    if(user.fields.uid === entry.fields.highestUid) {
+                                        returnObj.highest.uname = user.fields.uname;
+                                    }
+                                    if(user.fields.uid === entry.fields.todayHighestUid) {
+                                        returnObj.todayHighest.uname = user.fields.uname
+                                    }
+                                })
+                                console.log(returnObj);
+                                res.status(200).json({ message: returnObj });
+                            },
+                            (rejc) => {
+                                res.status(400).json({ message: "failed to get data" });
+                                console.log(rejc);
+                            }
+                    )})
                 }
             }
             break;
