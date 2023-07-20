@@ -8,11 +8,13 @@ const User = () => {
         uid: 0
     }
     const [scores, setScores] = useState(null);
+    const [player, setPlayer] = useState("");
     useEffect(() => {
-        reqBody.uid = JSON.parse(sessionStorage.getItem("logUser")).uid
+        setPlayer(JSON.parse(sessionStorage.getItem("logUser")).uname);
+        reqBody.uid = JSON.parse(sessionStorage.getItem("logUser")).uid;
         axios.create().post(`../api/lib/services/score`, reqBody).then(
             (res) => {
-                setScores(res.data.message);
+                res.data.message[0] !== undefined ? setScores(res.data.message) : console.log("no scores");
             },
             (rej) => {
                 console.log(rej);
@@ -21,7 +23,7 @@ const User = () => {
     }, [])
     return (
         <>
-            <h4>user</h4>
+            <h4>welcome { player } !</h4>
             {
                 scores !== null ? 
                 <table border={1}>
@@ -46,7 +48,8 @@ const User = () => {
                         }
                     </tbody>
                 </table>
-                : null
+                : 
+                <h2>you haven't played yet!</h2>
             }
         </>
     )

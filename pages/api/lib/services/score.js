@@ -1,45 +1,15 @@
-// import { dbconnect } from "../database/dbconnect";
 import { createClient } from "contentful";
 const contentful = require("contentful-management");
 
 const score = (req, res) => {
-    // switch(req.method) {
-    //     case "GET":
-    //         dbconnect.query("SELECT * FROM scores", (err, scores) => {
-    //             if(err) throw err;
-    //             res.status(200).json({message: scores});
-    //         })
-    //         break;
-    //     case "POST":
-    //         switch(req.body.purpose) {
-    //             case "send":
-    //                 dbconnect.query("INSERT INTO scores (uid, score, gamemode, playdate) VALUES(?, ?, ?, ?)", [req.body.uid, req.body.score, req.body.gamemode, req.body.playdate], (err, result) => {
-    //                     if(err) throw err;
-    //                     res.status(200).json({message: result});
-    //                 })
-    //                 break;
-    //             case "pick":
-    //                 dbconnect.query("SELECT * FROM scores WHERE uid = ?", [req.body.uid], (err, scores) => {
-    //                     if(err) throw err;
-    //                     res.status(200).json({message: scores});
-    //                 })
-    //                 break;
-    //             default:
-    //                 res.status(400).json({message: "illegal purpose flag"});
-    //         }
-    //         break;
-    //     default:
-    //         res.status(400).json({message: "bad request!"})
-    // }
+    const client = createClient({
+        space: "jivp4q6rn93f",
+        accessToken: "lX7fWPWoJdKgbnEgSCU2kSEGlEBT0H1PFqdWiuntS3s"
+    })
     switch(req.method) {
         case "GET":
-            res.status(200).json({ message: "get request" });
             break;
         case "POST":
-            const client = createClient({
-                space: "jivp4q6rn93f",
-                accessToken: "lX7fWPWoJdKgbnEgSCU2kSEGlEBT0H1PFqdWiuntS3s"
-            })
             let entry;
             
             switch(req.body.purpose) {
@@ -98,6 +68,50 @@ const score = (req, res) => {
                         }
                     )
                     break;
+                case "pickHighest": {
+                    const bodyData = JSON.parse(req.body.logUser);
+                    const date = new Date()
+                    const today = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate() + 1).padStart(2, "0")}`;
+
+                    client.getEntries({ content_type: "tetrisscores" }).then(
+                        (resp) => {
+                            const highest = {
+                                uname: "",
+                                score: 0
+                            }
+                            const todayHighest = {
+                                uname: "",
+                                score: 0
+                            }
+                            const yourHighest = {
+                                score: 0
+                            }
+                            const returnArr = {
+                                highest: highest,
+                                todayHighest: todayHighest,
+                                yourHighest: yourHighest
+                            }
+        
+                            resp.items.map((scoreData) => {
+                                if(scoreData.fields.score > highest.score) {
+                                    highest.score = scoreData.fields.score,
+                                    highest.uname = scoreData.fields.uid
+                                }
+                                if(bodyData.uid === scoreData.fields.uid && scoreData.fields.score > yourHighest.score) {
+                                    yourHighest.score = scoreData.fields.score
+                                }
+                                if(today === scoreData.fields.playdate && scoreData.fields.score > todayHighest.score) {
+                                    highest.score = scoreData.fields.score,
+                                    highest.uname = scoreData.fields.uid
+                                }
+                            })
+                            res.status(200).json({ message: returnArr });
+                        },
+                        (rej) => {
+                            res.status(400).json({ message: rej });
+                        }
+                    )
+                }
             }
             break;
     }
