@@ -49,7 +49,7 @@ const User = () => {
                     </tbody>
                 </table>
                 : 
-                <h2>you haven't played yet!</h2>
+                <h2>you haven&apos;t played yet!</h2>
             }
         </>
     )

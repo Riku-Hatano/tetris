@@ -50,7 +50,7 @@ export default function Home() {
       <article>
         <h2>highest scores</h2>
         <p>highest score in server: { highestScore.highest.score } by { highestScore.highest.uname }</p>
-        <p>todays highest score: { highestScore.todayHighest.score } by { highestScore.todayHighest.uname }</p>
+        <p>today&apos;s highest score: { highestScore.todayHighest.score } by { highestScore.todayHighest.uname }</p>
         <p>your highest score: { highestScore.yourHighest.score }</p>
       </article>
     </div>
