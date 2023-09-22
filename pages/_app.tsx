@@ -1,15 +1,13 @@
 import type { AppProps } from 'next/app'
 import Layout from '../components/Layout'
-import styles from "../css/game.css";
+import styles from "../css/app.module.css"
 
 
 export default function App({ Component, pageProps }: AppProps) {
-  // return <Component {...pageProps} />
-  
   return (
     <>
-      <Layout>
-        <Component {...pageProps} />
+      <Layout className={styles.layout}>
+        <Component {...pageProps}/>
       </Layout>
     </>
   )

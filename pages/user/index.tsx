@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { axiosconfig } from "../api/lib/axios/axiosconfig";
 
 const User = () => {
     const reqBody = {
@@ -9,11 +8,13 @@ const User = () => {
         uid: 0
     }
     const [scores, setScores] = useState(null);
+    const [player, setPlayer] = useState("");
     useEffect(() => {
-        reqBody.uid = JSON.parse(sessionStorage.getItem("logUser"))[0].uid
-        axios.create().post(`${axiosconfig.baseURL}api/lib/services/score`, reqBody).then(
+        setPlayer(JSON.parse(sessionStorage.getItem("logUser")).uname);
+        reqBody.uid = JSON.parse(sessionStorage.getItem("logUser")).uid;
+        axios.create().post(`../api/lib/services/score`, reqBody).then(
             (res) => {
-                setScores(res.data.message);
+                res.data.message[0] !== undefined ? setScores(res.data.message) : console.log("no scores");
             },
             (rej) => {
                 console.log(rej);
@@ -22,10 +23,10 @@ const User = () => {
     }, [])
     return (
         <>
-            <h4>user</h4>
+            <h4>welcome { player } !</h4>
             {
                 scores !== null ? 
-                <table>
+                <table border={1}>
                     <thead>
                         <tr>
                             <th>gamemode</th>
@@ -47,16 +48,8 @@ const User = () => {
                         }
                     </tbody>
                 </table>
-
-
-
-
-
-
-
-
-
-                : null
+                : 
+                <h2>you haven&apos;t played yet!</h2>
             }
         </>
     )

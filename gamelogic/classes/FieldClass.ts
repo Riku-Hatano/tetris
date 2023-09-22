@@ -9,6 +9,7 @@ class FieldClass {
     flags: {
         twoBlocks: boolean,
         isPreviousDowdn: boolean,
+        isScored: boolean,
     }
     constructor(width: number, height: number) {
         this.width = width,
@@ -19,20 +20,21 @@ class FieldClass {
         this.flags = {
             twoBlocks: false,
             isPreviousDowdn: false,
+            isScored: false,
         }
     }
       
-    returnAll() {
+    returnAll() { //This initializes GameStatus.field in "../status.ts" //GameStatus.fieldを初期化するためのメソッド。
         return {
             width: this.width,
             height: this.height,
             widthBlock: this.widthBlock,
             heightBlock: this.heightBlock,
             field: this.field,
-            calcPiles: this.calcPiles,
             flags: {
                 twoBlocks: this.flags.twoBlocks,
                 isPreviousDown: this.flags.isPreviousDowdn,
+                isScored: this.flags.isScored,
             }
         }
     }
@@ -73,20 +75,6 @@ class FieldClass {
         ["gr", "gr", "gr", "gr", "gr", "gr", "gr", "gr", "gr", "gr"]
         ]
         return returnField;
-    }
-    calcPiles() {
-        const piles = [];
-        for(let i = 0 ; i < this.widthBlock ; i++) {
-            piles.push(0);
-        }
-        for(let row of this.field) {
-            for(let i = 0 ; i < row.length ; i++) {
-                if(row[i] !== null) {
-                    piles[i]++;
-                }
-            }
-        }
-        return piles;
     }
 }
 

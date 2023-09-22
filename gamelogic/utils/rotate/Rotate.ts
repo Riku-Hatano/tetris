@@ -7,7 +7,7 @@ import SuperRotationSystem from "./rotatechecker/srs/SuperRotationSystem";
 import ChangeField from "../changefield/ChangeField";
 
 const Rotate = () => {
-    const wall = 1.0;
+    const wall = 10;
     const x = GameStatus.block.positionX / GameStatus.block.size;
     const y = GameStatus.block.positionY / GameStatus.block.size;
     const bs = Setting.block.size;

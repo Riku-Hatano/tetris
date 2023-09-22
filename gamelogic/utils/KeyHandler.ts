@@ -1,8 +1,9 @@
 import react from "react";
 import GameStatus from "../status";
-import { canvas } from "../Main";
+import { tetrisFieldCanvas } from "../Main";
 import DrawBlocks from "./drawblocks/DrawBlocks";
 import Rotate from "./rotate/Rotate";
+import RotateLeft from "./rotate/RotateLeft";
 import Move from "./move/Move";
 
 const KeyHandler = (e: any, setScore: react.Dispatch<react.SetStateAction<number>>) => {
@@ -17,7 +18,6 @@ const KeyHandler = (e: any, setScore: react.Dispatch<react.SetStateAction<number
             GameStatus.field.flags.isPreviousDown = false;
             break;
         case "ArrowDown":
-            console.log("down")
             Move("down", setScore);
             GameStatus.field.flags.isPreviousDown = true;
             break;
@@ -25,12 +25,16 @@ const KeyHandler = (e: any, setScore: react.Dispatch<react.SetStateAction<number
             Rotate();
             GameStatus.field.flags.isPreviousDown = false;
             break;
+        case "z":
+            RotateLeft();
+            GameStatus.field.flags.isPreviousDown = false;
+            break;
         default:
             console.log(e.key);
             break;
     }
     GameStatus.field.field[GameStatus.block.positionY / GameStatus.block.size][GameStatus.block.positionX / GameStatus.block.size] = GameStatus.block; //renew the current block. 
-    canvas.clearRect(0, 0, GameStatus.field.width, GameStatus.field.height);
+    tetrisFieldCanvas.clearRect(0, 0, GameStatus.field.width, GameStatus.field.height);
     DrawBlocks(); //draw all of tetrimino exept for current one
 }
 
