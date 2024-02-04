@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import styles from "../css/components/Header.module.css";
+import { Typography } from "@mui/material";
 
 const Header = () => {
   const router = useRouter();
@@ -30,6 +31,18 @@ const Header = () => {
 
   return (
     <>
+      <Typography
+        variant="h1"
+        sx={{
+          backgroundColor: {
+            xs: "white",
+            sm: "red",
+            md: "blue",
+          },
+        }}
+      >
+        theme test
+      </Typography>
       <ul className={styles.list}>
         <li>
           <Link href="/">home</Link>
