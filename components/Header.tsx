@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import styles from "../css/components/Header.module.css";
-import { Typography } from "@mui/material";
+import { List, ListItem } from "@mui/material";
+import ThemeListItem from "./ListItem";
 
 const Header = () => {
   const router = useRouter();
@@ -31,48 +32,36 @@ const Header = () => {
 
   return (
     <>
-      <Typography
-        variant="h1"
-        sx={{
-          backgroundColor: {
-            xs: "white",
-            sm: "red",
-            md: "blue",
-          },
-        }}
-      >
-        theme test
-      </Typography>
-      <ul className={styles.list}>
-        <li>
+      <List className={styles.list}>
+        <ThemeListItem>
           <Link href="/">home</Link>
-        </li>
-        <li>
+        </ThemeListItem>
+        <ListItem>
           <Link href="/game">game</Link>
-        </li>
+        </ListItem>
         {logUser ? null : (
-          <li>
+          <ListItem>
             <Link href="/login">login</Link>
-          </li>
+          </ListItem>
         )}
         {logUser ? null : (
-          <li>
+          <ListItem>
             <Link href="/register">register</Link>
-          </li>
+          </ListItem>
         )}
         {logUser ? (
-          <li>
+          <ListItem>
             <Link href="/user">user</Link>
-          </li>
+          </ListItem>
         ) : null}
         {logUser ? (
-          <li>
+          <ListItem>
             <Link href="/" onClick={logout}>
               logout
             </Link>
-          </li>
+          </ListItem>
         ) : null}
-      </ul>
+      </List>
     </>
   );
 };
