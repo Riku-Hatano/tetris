@@ -6,38 +6,40 @@ export default function Home() {
     highest: {
       uid: 0,
       uname: "",
-      score: 0
+      score: 0,
     },
     todayHighest: {
       uid: 0,
       uname: "",
-      score: 0
+      score: 0,
     },
     yourHighest: {
-      score: 0
-    }
-  })
+      score: 0,
+    },
+  });
   useEffect(() => {
     const bodyData = {
       // logUser: sessionStorage.getItem("logUser"),
-      logUser: sessionStorage.getItem("logUser") ? sessionStorage.getItem("logUser") : null,
-      purpose: "pickHighest"
-    }
+      logUser: sessionStorage.getItem("logUser")
+        ? sessionStorage.getItem("logUser")
+        : null,
+      purpose: "pickHighest",
+    };
     const reqBody = {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(bodyData)
-    }
+      body: JSON.stringify(bodyData),
+    };
 
     fetch("./api/lib/services/score", reqBody)
       .then((data) => data.json())
       .then((data) => setHighestScore(data.message))
       .catch((err) => {
         console.log(err);
-      })
-  }, [])
+      });
+  }, []);
   return (
     <div className={style.main}>
       <section>
@@ -49,10 +51,16 @@ export default function Home() {
       </section>
       <article>
         <h2>highest scores</h2>
-        <p>highest score in server: { highestScore.highest.score } by { highestScore.highest.uname }</p>
-        <p>today&apos;s highest score: { highestScore.todayHighest.score } by { highestScore.todayHighest.uname }</p>
-        <p>your highest score: { highestScore.yourHighest.score }</p>
+        <p>
+          highest score in server: {highestScore.highest.score} by{" "}
+          {highestScore.highest.uname}
+        </p>
+        <p>
+          today&apos;s highest score: {highestScore.todayHighest.score} by{" "}
+          {highestScore.todayHighest.uname}
+        </p>
+        <p>your highest score: {highestScore.yourHighest.score}</p>
       </article>
     </div>
-  )
+  );
 }

@@ -4,6 +4,6 @@ const nextConfig = {
   // head: {
   //   favicon: './public/favicon.ico',
   // },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
